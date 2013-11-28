@@ -1,0 +1,24 @@
+/* Fixes for ie8 and below */
+	.clear{clear:both;width:100%;
+		height:1px !important;
+		line-height:0 !important;
+		font-size:1px;	
+	}
+
+	.space{
+		clear:both;
+		width:100%;
+		position:relative;
+		display:block;
+		height:1px !important;
+		line-height:0 !important;
+		font-size:1px;
+	}
+
+	.kwicks{
+		padding: 0 0 2px  0; 
+	}
+	
+    .sidebar .box ul.menu li {
+		list-style-image:none !important;
+    } 
