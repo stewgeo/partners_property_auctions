@@ -4,6 +4,9 @@ Description: A Child Theme of AuctionTheme incorporating tweaks
 Template: AuctionTheme
 */
 @import url(../AuctionTheme/style.css);
+body{
+	background:url(images/Harrogate_BG_Opt.jpg);
+}
 
 #header
 {

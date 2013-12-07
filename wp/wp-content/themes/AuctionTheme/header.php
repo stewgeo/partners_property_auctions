@@ -272,7 +272,7 @@
      <!-- ########################################## -->
      
 	</head>
-	<body  style="background:url(../../../../images/Harrogate_BG_Opt.jpg)" <?php body_class(); ?> >
+	<body <?php body_class(); ?> >
     
     
   <?php  
