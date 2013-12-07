@@ -268,11 +268,11 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 	margin-bottom:5px;
 	display:inline-block;
 	background:#679B08;
-	margin :auto;
-	border-bottom:5px solid #568206;
 	border-top:0;
 	margin-bottom:7px;
-	width:100%
+	width:100%;
+	background: white;
+	border-color: white;	
  
 }
 	
@@ -293,7 +293,7 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 
 .main-thing-menu ul li a:link , .main-thing-menu ul li a:visited
 { 
-	color:				#fff;
+	color: #1a1a1a;
 	font-size:			14px;
 	padding:			15px; 
 	padding-left:		15px; 
@@ -306,7 +306,11 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 .main-thing-menu ul li a.hm_cls:link, .main-thing-menu ul li a.hm_cls:visited
 { border-left:none }
 
-.main-thing-menu ul li a:hover { background:#72AA09; text-decoration:none }
+.main-thing-menu ul li a:hover {
+	background: white;
+	color: #0060a6;
+	text-decoration: none;
+}
 
 
 /***********************/
@@ -434,13 +438,12 @@ height: 20px;
 
 .featured-auctions .post { margin-top:10px }
 
-
-
 #header
 {
 	width:100%;
 	margin:auto;
 	display: inline-block;
+	border-bottom: solid 1px #fff;	
 }
 
 #header .top-bar-bg
