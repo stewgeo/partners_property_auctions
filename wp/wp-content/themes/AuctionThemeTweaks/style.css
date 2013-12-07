@@ -4,16 +4,16 @@ Description: A Child Theme of AuctionTheme incorporating tweaks
 Template: AuctionTheme
 */
 @import url(../AuctionTheme/style.css);
-body{
-	background:url(images/Harrogate_BG_Opt.jpg);
-}
 
-#header
-{
+#header{
 	width:100%;
 	margin:auto;
 	display: inline-block;
-		background:#000;
-		border-bottom: solid 1px #fff;
+	border-bottom: solid 1px #fff;
 
+}
+
+.main-thing-menu{
+	background: white;
+	border-color: white;
 }
