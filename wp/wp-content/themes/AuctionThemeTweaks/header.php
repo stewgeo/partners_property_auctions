@@ -483,12 +483,13 @@
 		?>
         <ul>
             <li class="padded_menu"><a href="<?php bloginfo('siteurl'); ?>" class="hm_cls"><?php _e('Home','AuctionTheme'); ?></a></li>
-            <li><a href="<?php echo get_post_type_archive_link('auction'); ?>"><?php _e('All Auctions','AuctionTheme'); ?></a></li> 
-            <li><a href="<?php echo AuctionTheme_adv_search_featured_ac(); ?>"><?php _e('All Featured Auctions','AuctionTheme'); ?></a></li> 
-            <li><a href="<?php echo get_permalink(get_option('AuctionTheme_adv_search_id')); ?>"><?php _e('Advanced Search','AuctionTheme'); ?></a></li> 
-            <li><a href="<?php echo get_permalink(get_option('AuctionTheme_all_cats_id')); ?>"><?php _e('Show All Categories','AuctionTheme'); ?></a></li> 
-            <li><a href="<?php echo get_permalink(get_option('AuctionTheme_all_locs_id')); ?>"><?php _e('Show All Locations','AuctionTheme'); ?></a></li>           
-                       
+            <li><a href="<?php echo get_page_link(1375); ?>"><?php echo get_the_title(1375)?></a></li>  
+            <li><a href="<?php echo get_page_link(1287); ?>"><?php echo get_the_title(1287)?></a></li>  
+                <li><a href="<?php echo get_page_link(1282); ?>"><?php echo get_the_title(1282)?></a></li>  
+        <li><a href="<?php echo get_page_link(1289); ?>"><?php echo get_the_title(1289)?></a></li>  
+            <li><a href="<?php echo get_post_type_archive_link('auction'); ?>">All Properties</a></li>
+            <li><a href="<?php echo get_permalink(get_option('AuctionTheme_adv_search_id')); ?>"><?php _e('Advanced Search','AuctionTheme'); ?></a></li>     
+            <li><a href="<?php echo get_page_link(1264); ?>"><?php echo get_the_title(1264)?></a></li>     
             </ul>
         	<?php else: 
 			
