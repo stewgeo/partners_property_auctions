@@ -25,7 +25,7 @@ define('DB_USER', 'freel300_PPA');
 define('DB_PASSWORD', '~Poc$.W^2i_A');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', '70.33.246.70');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
