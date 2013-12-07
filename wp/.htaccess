@@ -10,3 +10,7 @@ RewriteRule . /wp/index.php [L]
 </IfModule>
 
 # END WordPress
+AuthType Basic
+AuthName "WP"
+AuthUserFile "/home/freel300/.htpasswds/public_html/partnerspropertyauctions/wp/passwd"
+require valid-user

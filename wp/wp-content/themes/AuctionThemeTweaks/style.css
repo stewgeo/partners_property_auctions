@@ -1,0 +1,16 @@
+/*   
+Theme Name: AuctionThemeTweaks
+Description: A Child Theme of AuctionTheme incorporating tweaks
+Template: AuctionTheme
+*/
+@import url(../AuctionTheme/style.css);
+
+#header
+{
+	width:100%;
+	margin:auto;
+	display: inline-block;
+		background:#000;
+		border-bottom: solid 1px #fff;
+
+}

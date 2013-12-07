@@ -64,7 +64,7 @@
 		{
 			echo '<style>';
 			echo '.main-thing-menu, #search_button, a.post_bid_btn:link, a.post_bid_btn:visited, .slider-post a.buttonlight:link, a.buttonlight:visited,
-			#my-account-admin-menu_seller li a, #steps ul li.active_step{  background:#555; border-color:#222 }';
+			#my-account-admin-menu_seller li a, #steps ul li.active_step{  background:#000; border-color:#000 }';
 			echo '.special_breadcrumb, #steps {  border-color:#555 }';
 			echo 'a:link, a:visited { color:#555 }';
 			echo '.main-thing-menu ul li a:hover, #my-account-admin-menu_seller li a:hover, a.post_bid_btn:link, a.post_bid_btn:hover { background:#888 } ';
@@ -272,7 +272,7 @@
      <!-- ########################################## -->
      
 	</head>
-	<body <?php body_class(); ?> >
+	<body  style="background:url(../../../../images/Harrogate_BG_Opt.jpg)" <?php body_class(); ?> >
     
     
   <?php  
