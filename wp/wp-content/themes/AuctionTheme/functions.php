@@ -1272,6 +1272,10 @@ function auctionTheme_save_custom_fields($pid)
 			  
 			  update_post_meta($pid, 'auction_lat', 	$lat);
 			  update_post_meta($pid, 'auction_long', 	$long);
+
+// Add PDF source to custom Meta		
+		if(isset($_POST['epc']))
+	update_post_meta($pid,"epc",auctionTheme_clear_sums_of_cash($_POST['epc']));
 		}	  
 	
 }
@@ -3029,10 +3033,11 @@ function auctionTheme_create_post_type() {
 function auctionTheme_set_metaboxes()
 {
 	
-	    add_meta_box( 'auction_custom_fields', 	'Auction Custom Fields',	'auctionTheme_custom_fields_html', 'auction', 'advanced','high' );
-		add_meta_box( 'auction_images', 		'Auction Images',			'auctionTheme_theme_auction_images', 'auction', 'advanced','high' );
-		add_meta_box( 'auction_bids', 			'Auction Bids',				'auctionTheme_theme_auction_bids', 'auction', 'advanced','high' );
-		add_meta_box( 'auction_dets', 			'Auction Details',			'auctionTheme_theme_auction_dts', 'auction', 'side','high' );
+	    add_meta_box( 'auction_custom_fields', 	'Property Custom Fields',	'auctionTheme_custom_fields_html', 'auction', 'advanced','high' );
+		add_meta_box( 'auction_images', 		'Property Images',			'auctionTheme_theme_auction_images', 'auction', 'advanced','high' );
+		add_meta_box( 'auction_legal_pack', 		'Legal Pack',			'auctionTheme_theme_auction_legal_pack', 'auction', 'advanced','high' );
+		add_meta_box( 'auction_bids', 			'Property Bids',				'auctionTheme_theme_auction_bids', 'auction', 'advanced','high' );
+		add_meta_box( 'auction_dets', 			'Property Details',			'auctionTheme_theme_auction_dts', 'auction', 'side','high' );
 		do_action('AuctionTheme_meta_boxes_menu');
 	
 }
@@ -3041,6 +3046,25 @@ function auctionTheme_set_metaboxes()
 *	Function - AuctionTheme -
 *
 *****************************************************************************/
+add_action('admin_enqueue_scripts', 'my_admin_scripts');
+ 
+function my_admin_scripts() {
+        wp_enqueue_media();
+        wp_register_script('my-admin-js', get_template_directory_uri() . '/my-admin.js', array('jquery'));
+        wp_enqueue_script('my-admin-js');
+    }
+
+function auctionTheme_theme_auction_legal_pack(){
+	global $post;
+	$pid = $post->ID;
+	?>
+	<label for="upload_image">EPC: 
+    <input id="upload_image" type="text" size="36" name="epc" value="<?php echo get_post_meta($pid, 'epc', true); ?>" /> 
+    <input id="upload_image_button" class="button" type="button" value="Upload PDF" />
+</label>
+	<?php
+}
+
 function auctionTheme_theme_auction_images()
 {
 
