@@ -1,0 +1,53 @@
+/*------------Stewart---------*/
+
+.navbar-default{
+	background-color: white;
+	border-color: #e7e7e7;
+}
+
+.navbar-brand {
+  padding-bottom: 0px;
+}
+
+#site-search{
+  margin-bottom: 0;
+  margin-top: 0px;
+  padding-right: 9px;
+}
+
+#site-search, .nav{
+	padding-bottom: 0px;
+	padding-top: 12px;
+}
+
+#site-search, .navbar-form {
+  padding-bottom: 0px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: black;
+}
+
+#right-header-nav > li > a { 
+  color: #027dbd;
+  padding: 0px 10px;
+  border-right: 2px solid #dedede;
+  font-size:13px;
+
+}
+
+#right-header-nav > li:last-child > a{
+  border:none;
+}
+#site-search .form-control{
+	height: 28px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #027dbd;
+}
+
+/** hack to fix the bootstrap 3 override in carousel */
+.pager {
+  margin: 0;
+}
