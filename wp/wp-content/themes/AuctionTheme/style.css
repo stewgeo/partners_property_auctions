@@ -443,7 +443,7 @@ height: 20px;
 	width:100%;
 	margin:auto;
 	display: inline-block;
-	border-bottom: solid 1px #fff;	
+	border-bottom: solid 1px #EEE;
 }
 
 #header .top-bar-bg
@@ -519,6 +519,8 @@ height: 20px;
 {
 	float:left;
 	border:0px;
+	padding-left: 14px;
+	width:194px;
  
 }
 
@@ -765,7 +767,6 @@ margin-top: 0px;
 {
 	width:99.6%; 
 	height:auto;
-	border:2px solid #eee;
 	background:#fff;
 	margin:auto;
 	overflow:hidden;
@@ -781,7 +782,6 @@ margin-top: 0px;
 	border-right:0;
 	padding-left:0px;
 	padding-right:0px;
-	border-bottom:1px solid #eee;
 	margin-bottom:10px;
 	padding-bottom:1px;
 }
@@ -946,9 +946,9 @@ margin-top: 0px;
 
 .padd10
 {
-	padding:10px;
-	overflow:hidden
-	
+	padding: 10px 0px;
+	overflow:hidden;
+	float:left;
 	
 }
 
@@ -1779,26 +1779,6 @@ margin-right:4px;
 	margin-bottom:5px;
 }
 
-.nav a:link, .nav a:visited
-{
-	background:#3889E2 ; 
-	display: inline-block; 
-	padding: 0px 3px 0px 3px; 
-	color: #fff; 
-	text-decoration: none;
-	-moz-border-radius: 5px; 
-	-webkit-border-radius: 5px;
-	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-	border-bottom: 1px solid rgba(0,0,0,0.25);
-	position: relative;
-	cursor: pointer;
-	margin-left:3px;
-	font-size:12px;
-	text-align:center;
-	margin-bottom:5px;
-}
 
 .nav a:hover
 {
@@ -2189,12 +2169,10 @@ background: url('images/bul.png') no-repeat;
 	background:#eee;
 	border:2px solid #ddd;
 	display:none;
-	
 	margin-bottom:10px;
-	margin-top:4px;
- 
 	position:relative;
 	margin:auto;
+	margin-top: 30px;	
 	margin-bottom:13px;
 
 }
