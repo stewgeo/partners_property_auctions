@@ -1271,56 +1271,7 @@
 				$arrms = get_auction_fields_values($post->ID);
 			if(count($arrms) > 0) 
 							{
-			?>
-            	<div class="clear10"></div>
-            
-            
-            <div class="my_box3">
- 
-            
-            	<div class="box_title"><?php echo __("Item Specifics","AuctionTheme"); ?></div>
-                <div class="box_content">
-					
-                    	
-                        <?php
-							
-							
-							if(count($arrms) > 0) 
-							{
-								?>
-								
-                                <table width="100%">
-                                
-                                <?php
-								for($i=0;$i<count($arrms);$i++)
-								{
-							
-							?>
-							<tr>
-								 
-								<th class="gold_thing_th"><?php echo $arrms[$i]['field_name'];?></th>
-								<th><?php 
-			
-					
-								if(is_array($arrms[$i]['field_value'][0]))
-								{
-								
-									foreach($arrms[$i]['field_value'][0] as $vl)
-									{
-								
-										echo $vl	.'<br/>';
-									}
-								}
-								else echo $arrms[$i]['field_value'][0];
-								?></th>
-							</tr>
-							<?php } ?>
-                        </table>
-                        <?php } ?>
-                    
-				</div>
-			</div>
-            <?php } ?>
+		} ?>
             
 			<div class="clear10"></div>
 				<?php do_action('AuctionTheme_auction_page_before_description_div'); ?>
@@ -1337,26 +1288,7 @@
 				</div>
 			</div>
             
-            <div class="tags-placeholder">
-            <div class="tg1"><img src="<?php echo get_bloginfo('template_url'); ?>/images/tag.png" width="20" height="20" /> </div>
-            <div class="tg2"> 	 <?php the_tags(__('Tags', 'AuctionTheme').": ", ', ', ', '); ?></div> 
-            <div class="tg3"> 	
             
-            				<!-- AddThis Button BEGIN -->
-							<div class="addthis_toolbox addthis_default_style addthis_24x24_style">
-							<a class="addthis_button_preferred_1"></a>
-							<a class="addthis_button_preferred_2"></a>
-							<a class="addthis_button_preferred_3"></a>
-							<a class="addthis_button_preferred_4"></a>
-							<a class="addthis_button_compact"></a>
-							<a class="addthis_counter addthis_bubble_style"></a>
-							</div>
-							<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4df68b4a2795dcd9"></script>
-							<!-- AddThis Button END -->
-        
-            </div>
-            
-			</div>
 			
 			<div class="clear10"></div>
             
@@ -1432,123 +1364,7 @@
                 </div>
             </div>
             <div class="clear10"></div>
-            
-			<?php 
-			
-			endif;
-			
-			$private_bids = get_post_meta(get_the_ID(), 'private_bids', true);
-			$only_buy_now = get_post_meta(get_the_ID(), 'only_buy_now', true);
-			
-			if($only_buy_now != "1"):
-			
-			?>
-			<div class="my_box3">
- 
-            	<div class="box_title"><?php echo __("Posted Bids",'AuctionTheme'); ?> <?php
-				
-				if($private_bids == 'yes') _e('[auction has private bids]','AuctionTheme');
-				
-				 ?></div>
-                <div class="box_content">
-				<?php
-				
-				
-				
-				
-				$pid = get_the_ID();
-				
-				$bids = "select * from ".$wpdb->prefix."auction_bids where pid='$pid' order by id DESC";
-				$res  = $wpdb->get_results($bids);
-			
-				if($post->post_author == $uid) $owner = 1; else $owner = 0;
-				
-				if(count($res) > 0)
-				{
-					
-					if($private_bids == 'yes') 
-					{
-						if ($owner == 1) $show_stuff = 1;
-						else if(auctionTheme_current_user_has_bid($uid, $res)) $show_stuff = 1;
-						else $show_stuff = 0;
-					}
-					else $show_stuff = 1;
-					
-					//------------
-					
-					if($show_stuff == 1):
-					
-						echo '<table width="100%">';
-						echo '<thead><tr>';
-							echo '<th>'.__('Username','AuctionTheme').'</th>';
-							echo '<th>'.__('Bid Amount','AuctionTheme').'</th>';
-							echo '<th>'.__('Date Made','AuctionTheme').'</th>';
-							if ($owner == 1): 
-								if($reverse == 'yes' || $reverse == '1')
-								echo '<th>'.__('Choose Winner','AuctionTheme').'</th>';
-							echo '<th>'.__('Messaging','AuctionTheme').'</th>';
-							endif;
-							
-							if($closed == "1") echo '<th>'.__('Winner','AuctionTheme').'</th>';
-							
-						echo '</tr></thead><tbody>';
-					
-					endif;
-					
-					//-------------
-					
-					$using_perm = AuctionTheme_using_permalinks();
-	
-							if($using_perm)	$privurl_m = get_permalink(get_option('AuctionTheme_my_account_priv_mess_page_id')). "?";
-							else $privurl_m = get_bloginfo('siteurl'). "/?page_id=". get_option('AuctionTheme_my_account_priv_mess_page_id'). "&";	
-					
-					foreach($res as $row)
-					{
-						
-						if ($owner == 1) $show_this_around = 1;
-						else
-						{
-							if($private_bids == 'yes') 
-							{
-								if($uid == $row->uid) 	$show_this_around = 1;
-								else $show_this_around = 0;
-							}
-							else
-							$show_this_around = 1;
-							
-						}
-						
-						if($show_this_around == 1):
-						
-						$user = get_userdata($row->uid);
-						echo '<tr>';
-						echo '<th>'.$user->user_login.'</th>';
-						echo '<th>'.auctionTheme_get_show_price($row->bid).'</th>';
-						echo '<th>'.date_i18n("d-M-Y H:i:s", $row->date_made).'</th>';
-						if ($owner == 1 ) {
-							//if($reverse == 'yes' || $reverse == '1')
-							//echo '<th><a href="'.get_bloginfo('siteurl').'/choose-winner/'.get_the_ID().'/'.$row->id.'">'.__('Select','AuctionTheme').'</a></th>';						
-						
-							echo '<th><a href="'.$privurl_m.'priv_act=send&uid='.$row->uid.'&pid='.get_the_ID().'">'.__('Send Message','AuctionTheme').'</a></th>';
-						}
-						
-						if($closed == "1") { if($row->winner == 1) echo '<th>'.__('Yes','AuctionTheme').'</th>'; else echo '<th>&nbsp;</th>'; }
-						
-						echo '</tr>';
-						
-						
-						endif;
-					}
-					
-					echo '</tbody></table>';
-				}
-				else _e("No bids placed yet.",'AuctionTheme');
-				?>	
-		 
-			</div>
-			</div>
-			
-			<div class="clear10"></div> <?php endif; ?>
+             <?php endif; ?>
 			
 			<!-- ####################### -->
 				<?php do_action('AuctionTheme_auction_page_before_image_gallery_div'); ?>
@@ -1664,6 +1480,40 @@ codeAddress("<?php
 				
 			 
 			</div>
+            </div>
+            <div class="clear10"></div>
+           		
+			<div class="my_box3">
+ 
+            
+            	<div class="box_title"><?php echo __("Legal Pack","AuctionTheme"); ?></div>
+                <div class="box_content">
+					<p><a href="<?php global $post;
+	$pid = $post->ID;
+	echo get_post_meta($pid, 'epc', true); ?>" title="Energy Performance Certificate">Energy Performance Certificate</a></p>
+				</div>
+			</div>
+            
+            
+			<div class="tags-placeholder">
+<?php /*?>            <div class="tg1"><img src="<?php echo get_bloginfo('template_url'); ?>/images/tag.png" width="20" height="20" /> </div>
+<?php */?>            <div class="tg2"> 	 <?php the_tags(__('Tags', 'AuctionTheme').": ", ', ', ', '); ?></div> 
+            <div class="tg3"> 	
+            
+            				<!-- AddThis Button BEGIN -->
+							<div class="addthis_toolbox addthis_default_style addthis_24x24_style">
+							<a class="addthis_button_preferred_1"></a>
+							<a class="addthis_button_preferred_2"></a>
+							<a class="addthis_button_preferred_3"></a>
+							<a class="addthis_button_preferred_4"></a>
+							<a class="addthis_button_compact"></a>
+							<a class="addthis_counter addthis_bubble_style"></a>
+							</div>
+							<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4df68b4a2795dcd9"></script>
+							<!-- AddThis Button END -->
+        
+            </div>
+            
 			</div>
 			
 			<!-- ####################### -->
@@ -1733,17 +1583,67 @@ codeAddress("<?php
 					<h3><?php _e("Posted by",'AuctionTheme');?>:</h3>
 					<p><a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>"><?php the_author() ?></a></p> 
 				</li> 
-				<?php _e('Feedback','AuctionTheme'); ?>: <?php echo auction_get_star_rating($post->post_author); ?><br/><br/>
-               <a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>"><?php _e('See More Auctions by this user','AuctionTheme'); ?></a><br/>
-               <a href="<?php echo AuctionTheme_get_user_feedback_link($post->post_author);?>"><?php _e('User Feedback','AuctionTheme'); ?></a><br/>
-                		
+               <a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>"><?php _e('See More Auctions by this user','AuctionTheme'); ?></a><br/>                		
 			</ul>
    		</p>
         </div>
    </li>
-       
+   
+   
+   
+   
+   <li class="widget-container widget_text" id="ad-other-details">
+		<h3 class="widget-title"><?php _e("Property Specifics",'AuctionTheme'); ?></h3>
+        <div class="my-only-widget-content">
+		<p>
+        
+        <ul class="other-dets5">
+				<li>						
+                        <?php
+							
+							
+							if(count($arrms) > 0) 
+							{
+								?>
+								
+                                <table width="100%">
+                                
+                                <?php
+								for($i=0;$i<count($arrms);$i++)
+								{
+							
+							?>
+							<tr>
+								 
+								<th class="gold_thing_th"><?php echo $arrms[$i]['field_name'];?></th>
+								<th><?php 
+			
+					
+								if(is_array($arrms[$i]['field_value'][0]))
+								{
+								
+									foreach($arrms[$i]['field_value'][0] as $vl)
+									{
+								
+										echo $vl	.'<br/>';
+									}
+								}
+								else echo $arrms[$i]['field_value'][0];
+								?></th>
+							</tr>
+							<?php } ?>
+                        </table>
+                        <?php } ?>
+			</ul>
+   		</p>
+        </div>
+   </li>    
 
-    
+
+
+
+
+
 	<li class="widget-container widget_text" id="ad-other-details">
 		<h3 class="widget-title"><?php _e("Other Details",'AuctionTheme'); ?></h3>
         <div class="my-only-widget-content">
