@@ -107,19 +107,20 @@ get_header();
           <strong>Newsletter</strong>
         </div>
         <div class="panel-body">
-          <form method="post" action="#mc4wp-form-1" id="mc4wp-form-1" role="form" class="form form-inline">
-            <label for="mc4wp_email">Receive regular updates on new properties and auction details.</label>
+        <form action="http://partnerspropertyauctions.us3.list-manage.com/subscribe/post" method="POST" role="form" class="form form-inline">
+<input type="hidden" name="u" value="ff1e4de7554ad2af54c92698f">
+<input type="hidden" name="id" value="f21d2e6f30">
+<label for="email">Receive regular updates on new properties and auction details.</label>
             <div class="form-group">
-              <input class="form-control" type="email" id="mc4wp_email" name="EMAIL" required="" placeholder="Your email address">
+<input type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" class="form-control" size="25" value="" required="" placeholder="Your email address">
+<input type="text" name="MERGE1" class="form-control" id="MERGE1" size="25" value="" placeholder="Your first name">
+<input type="text" name="MERGE2" class="form-control" id="MERGE2" size="25" value="" placeholder="Your last name">
             </div>
-
-            <input type="submit" class="btn" value="Subscribe">
-            <textarea name="mc4wp_required_but_not_really" style="display: none;"></textarea><input type="hidden" name="mc4wp_form_submit" value="1"><input type="hidden" name="mc4wp_form_instance" value="1"><input type="hidden" name="mc4wp_form_nonce" value="69577a4867"></form>    
+            <input type="submit" class="btn" name="submit" value="Subscribe">
         </div>
       </div>      
     </div>
-  </div>
-
+</div>
 	<div id="featured-properties" class="row">
       <div class="col-md-12">
         <h3>Featured Properties</h3>
