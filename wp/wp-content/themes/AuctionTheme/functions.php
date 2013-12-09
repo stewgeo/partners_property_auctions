@@ -3805,11 +3805,10 @@ function auctionTheme_get_post_function( $arr = '')
 				  
 				  ?>     
                         
-                        <p class="mypostedon"><?php echo __("Posted on",'AuctionTheme');?> <?php the_time('F jS, Y'); ?>  by 
-                        <a href="<?php echo AuctionTheme_get_user_profile_link($author->ID); ?>"><?php the_author(); ?></a>
-                  <br/>
-                        <?php _e("Posted in","AuctionTheme");?> <?php echo get_the_term_list( get_the_ID(), 'auction_cat', '', ', ', '' ); ?> 
-                        
+                        <p class="mypostedon">
+<?php
+
+the_excerpt(); ?>
                         
                         <?php
 						
