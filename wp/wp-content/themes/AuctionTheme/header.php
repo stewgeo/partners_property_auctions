@@ -248,9 +248,6 @@
   					<div class="col-sm-4 col-md-4 pull-right">
               <ul class="nav navbar-nav pull-right" id="right-header-nav">
                 <?php 
-                  
-                  if(current_user_can('level_10')) {?> <li><a href="<?php bloginfo('siteurl'); ?>/wp-admin"><?php 
-                  echo __("Wp-Admin","AuctionTheme"); ?></a></li> <?php }
                 
                   if(is_home())
                   $home_class_active = 'active';  
@@ -301,16 +298,7 @@
                   <li>
                     <a class="<?php echo $watch_class; ?>" href="<?php echo AuctionTheme_watch_list(); ?>"><?php echo __("Watch List","AuctionTheme"); ?></a>
                   </li>
-                <?php
-                  if(AuctionTheme_is_able_to_post_auctions()):
-                ?>
-                  <li>
-                    <a href="<?php echo AuctionTheme_post_new_link(); ?>" class="<?php echo $post_new_class; ?>">
-                      <?php echo __("Post New Auction","AuctionTheme"); ?>
-                    </a> 
-                  </li>
-                            
-                <?php endif; ?>
+             
                             
                 <?php if(get_option('auctionTheme_enable_blog') == "yes") { ?>
                   <li>
@@ -331,14 +319,11 @@
               
                   if(is_user_logged_in())
                   {
-                    global $current_user;
-                    get_currentuserinfo();
-                    $user = $current_user->user_login;
                     ?>
                   
                     <li>
                       <a href="<?php echo AuctionTheme_my_account_link(); ?>" 
-                            class="<?php echo $account_new_class; ?>"><?php echo __("MyAccount","AuctionTheme"); ?> - <?php echo $user; ?></a>
+                            class="<?php echo $account_new_class; ?>"><?php echo __("My Account","AuctionTheme"); ?></a>
                     </li>
                     <li>
                       <a href="<?php echo wp_logout_url(); ?>"><?php echo __("Log Out","AuctionTheme"); ?></a>
