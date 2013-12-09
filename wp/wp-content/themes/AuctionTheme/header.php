@@ -466,9 +466,5 @@
        
        <!-- main menu ending -->      
     </div>
-	</div>	
-    
-       
-  <?php include 'home-slider.php'; ?>
-  <div id="main">
+	</div>
         

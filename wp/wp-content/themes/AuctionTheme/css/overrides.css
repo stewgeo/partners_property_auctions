@@ -51,3 +51,96 @@
 .pager {
   margin: 0;
 }
+
+
+#featured-properties h3{
+  text-align: left;
+  border-bottom: 1px solid rgb(224, 222, 222);
+  padding-bottom: 5px;
+}
+
+#news-panel .panel, #news-panel .panel-heading{
+  background-color: #475F77;
+}
+
+#news-panel .panel{
+  height: 238px;
+}
+
+#newsletter-panel{
+  text-align: left;
+}
+
+#newsletter-panel label{
+  font-weight: normal;
+  color: white;
+}
+
+#newsletter-panel .form-group{
+  width: 234px;
+}
+
+#newsletter-panel .panel-heading, #newsletter-panel .panel{
+  background-color: #D74B4B;
+}
+
+#news-panel .panel, #newsletter-panel .panel{
+  margin-top: 17px;
+  color: #DCDDD8;
+  border: 0px;
+}
+
+#news-panel .panel-body, #newsletter-panel .panel-body{
+  padding-top: 1px;
+}
+
+#news-panel .panel p{
+  border-bottom: 1px dotted rgb(224, 222, 222);
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+#news-panel .panel-heading, #newsletter-panel .panel-heading {
+  color: #fff;
+  border: 0;
+  text-transform:uppercase;
+}
+
+.img-panel{
+  padding-top:10px;
+
+}
+
+.img-panel > .description{
+  border-bottom: 1px solid rgb(224, 222, 222);
+  border-left: 1px solid rgb(224, 222, 222);
+  border-right: 1px solid rgb(224, 222, 222);
+  border-bottom-left-radius:6px;
+  border-bottom-right-radius:6px;
+  padding: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+}
+
+.img-panel, .title{
+  text-align: left;
+}
+
+.img-panel .price{
+  text-align: left;
+  color: rgb(71, 95, 119);
+}
+.img-rounded-top{
+  border-top-left-radius:6px;
+  border-top-right-radius:6px;
+}
+
+.panel-starter{
+  background-image: url("images/terraced_houses_blur.jpg");
+  text-align: left;
+  color:white;
+  height:320px;
+  background-repeat:no-repeat;
+  background-size: cover;
+}

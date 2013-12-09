@@ -14,8 +14,6 @@ Tags: auction, blue, bid, budget, rating, feedback
 body
 {
 	font-size:12px;
-	text-align:center;
-	font-family:Arial, Helvetica, sans-serif;
 	color:#333;
 	margin:0px;
 	padding:0px;
@@ -379,7 +377,7 @@ height: 20px;
 #content
 {
 	float:left;
-	width:707px;
+	width:850px;
 	padding-top:10px;
 	/*overflow:hidden;*/
 	height:auto;
@@ -552,7 +550,6 @@ tbody th { font-weight:normal }
 {
 	width:100%;
 	border-radius:5px;
-	background:#f2f2f2;
 	margin:auto;
 	padding-bottom:25px; 
 	min-height:60px;

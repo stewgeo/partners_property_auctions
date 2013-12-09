@@ -77,7 +77,7 @@
 </div>
 
 <div id="footer">
-	<div id="colophon">	
+	<div class="container">	
 	
 	<?php
 			get_sidebar( 'footer' );
