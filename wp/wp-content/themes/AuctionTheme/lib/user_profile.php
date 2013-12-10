@@ -38,7 +38,7 @@
                         ?>                        
                         </div>
                         
-                          <div class="user-profile-avatar"><img class="imgImg" width="100" height="100" src="<?php echo AuctionTheme_get_avatar($uid,100,100); ?>" /><br/><br/>
+                          <div class="user-profile-avatar"><?php echo get_avatar( $uid, 96 );; ?><br/><br/>
                           
                           <a class="nice_link" href="<?php
                 

@@ -1004,61 +1004,23 @@
                 
                 <div class="bid_panel">
                 <div class="padd10">
-                <form method="post" id="my_bid_form_1" onsubmit="return confirm_my_bid();">
-                <input type="hidden" value="1" name="bid_now_cc" />
+<?php /*?>                <form method="post" id="my_bid_form_1" onsubmit="return confirm_my_bid();">
+                <input type="hidden" value="1" name="bid_now_cc" /><?php */?>
                 	<ul class="auction-details">
 							<li>
-								<h3><?php echo __("Current Bid","AuctionTheme"); ?>:</h3>
+								<h3><?php echo __("Guide Price","AuctionTheme"); ?>:</h3>
 								<p><?php echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID())); ?></p>
 							</li>
                             
-                            <li>
+                            <?php /*?><li>
 								<h3>&nbsp;</h3>
 								<p><input type="text" name="bid" id="bids_val" size="10" /> 
                                 <input type="hidden" name="control_id" value="<?php echo base64_encode(get_the_ID()); ?>" />
                                 <input class="my-buttons" type="submit" id="place_bid" name="bid_now" value="<?php _e("Place Bid","AuctionTheme"); ?>" /></p>
-							</li>
+							</li><?php */?>
                             
                 	</ul>
-                   </form>
-                </div>
-                </div>
-                
-                <?php endif; ?>
-                
-                <!-- ######### -->
-                <?php 
-				
-				$buynow = get_post_meta(get_the_ID(),'buy_now',true);
-				if(!empty($buynow)): 
-				
-				?>
-				
-                <div class="bid_panel">
-                <div class="padd10">
-                <form method="post"> <input type="hidden" name="control_id" value="<?php echo base64_encode(get_the_ID()); ?>" />
-                	<ul class="auction-details">
-                    <?php if($only_buy_now == '1'): ?>
-                    
-							<li>
-								<h3><?php echo __("Quantity","AuctionTheme"); ?>:</h3>
-								<p><?php echo get_post_meta(get_the_ID(), 'quant', true); ?> <?php echo __("items"); ?></p>
-							</li>
-                            
-                   <?php endif; ?>     
-                        	
-                            <li>
-								<h3><?php echo __("Buy It Now","AuctionTheme"); ?>:</h3>
-								<p><?php echo auctionTheme_get_show_price(auctionTheme_get_buy_it_now_price(get_the_ID())); ?></p>
-							</li>
-                            
-                            <li>
-								<h3>&nbsp;</h3>
-								<p><input type="submit" class="my-buttons2" name="buy_now" value="<?php _e("Buy Now!","AuctionTheme"); ?>" /></p>
-							</li>
-                            
-                	</ul>
-                </form>
+ <?php /*?>                  </form><?php */?>
                 </div>
                 </div>
                 
@@ -1178,7 +1140,7 @@
 						<ul class="auction-details">
                         
                         
-                        <li>
+                       <?php /*?> <li>
 								<img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="20" height="20" /> 
 								<h3><?php echo __("Auction ID","AuctionTheme"); ?>:</h3>
 								<p>#<?php the_ID(); ?></p>
@@ -1200,19 +1162,19 @@
 								else echo __('Reserve price not met.',"AuctionTheme");
 								 ?></p>
 							</li> 
-                          <?php endif; ?>   
-                                            
+                          <?php endif; ?>   <?php */?>
+                           <?php /*?>                 
 							<li>
 								<img src="<?php echo get_bloginfo('template_url'); ?>/images/location.png" width="20" height="20" /> 
 								<h3><?php echo __("Location","AuctionTheme"); ?>:</h3>
 								<p><?php echo get_the_term_list( get_the_ID(), 'auction_location', '', ', ', '' ); ?></p>
-							</li>
+							</li><?php */?>
 							
-							<li>
+							<?php /*?><li>
 								<img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="20" height="20" /> 
 								<h3><?php echo __("Posted on","AuctionTheme"); ?>:</h3>
 								<p><?php the_time("jS \o\\f F Y \a\\t g:i A"); ?></p>
-							</li>
+							</li><?php */?>
 							
 							<?php
 							
@@ -1222,7 +1184,7 @@
 							//asd
 							else:
 							?>	
-							<li>
+							<?php /*?><li>
 								<img src="<?php echo get_bloginfo('template_url'); ?>/images/clock.png" width="20" height="20" /> 
 								<h3><?php echo __("Time Left","AuctionTheme"); ?>:</h3>
                                 
@@ -1231,31 +1193,34 @@
                                 
 							<!--	<p><?php echo ($closed == "0" ? AuctionTheme_prepare_seconds_to_words($ending - current_time('timestamp',0)) 
 								: __("Expired/Closed","AuctionTheme")); ?></p> -->
-							</li>
+							</li><?php */?>
                             <?php endif; endif; ?>
-                            
                             <li>
-								<img src="<?php echo get_bloginfo('template_url'); ?>/images/watch.png" width="20" height="20" /> 
-								<h3><?php echo __("Watch List","AuctionTheme"); ?>:</h3>
-								<p><div class="watch-list"><?php 
+<?php /*?>                            					<img src="<?php echo get_bloginfo('template_url'); ?>/images/clock.png" width="20" height="20" /> 
+<?php */?>					<h3><?php _e("Auction Details",'AuctionTheme');?>:</h3>
+					<p><?php echo get_the_term_list( $post->ID, 'auction_cat', '', ', ', '' ); ?></p> 
+
+                            </li>
+                            <?php /*?><li>
+								<p><div><?php 
 								
 			 
 				
 				if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):				
 				?>
                 
-                 <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- watchlist','AuctionTheme'); ?></a>
+                 <a rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Watch List','AuctionTheme'); ?></a>
                 
                 <?php else: ?>
                 
-                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ watchlist','AuctionTheme'); ?></a>
+                <a rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Watch List','AuctionTheme'); ?></a>
                 
                 <?php endif; ?>   
 								
 								
 								</div></p>
-							</li>
-							
+							</li><?php */?>
+							<li><h3><a href="#">Download as PDF</a></h3>
 						</ul>
 						
 						
@@ -1572,7 +1537,7 @@ codeAddress("<?php
 	?>
     
     	<li class="widget-container widget_text" id="ad-other-details">
-		<h3 class="widget-title"><?php _e("Seller Details",'AuctionTheme'); ?></h3>
+		<h3 class="widget-title"><?php _e("Partner Agent",'AuctionTheme'); ?></h3>
         <div class="my-only-widget-content">
 		<p>
         
@@ -1580,10 +1545,12 @@ codeAddress("<?php
 				<li>
 				
 					
-					<h3><?php _e("Posted by",'AuctionTheme');?>:</h3>
-					<p><a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>"><?php the_author() ?></a></p> 
+					<?php echo get_avatar( $uid, 96 );; ?>
+					<p><a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>"><?php the_author() ?></a></p>
+                    <p><?php the_author_description(); ?></p>
 				</li> 
-               <a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>"><?php _e('See More Auctions by this user','AuctionTheme'); ?></a><br/>                		
+                                   
+               <a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>">See more properties by <?php the_author();?> </a><br/>                		
 			</ul>
    		</p>
         </div>
@@ -1637,66 +1604,7 @@ codeAddress("<?php
 			</ul>
    		</p>
         </div>
-   </li>    
-
-
-
-
-
-
-	<li class="widget-container widget_text" id="ad-other-details">
-		<h3 class="widget-title"><?php _e("Other Details",'AuctionTheme'); ?></h3>
-        <div class="my-only-widget-content">
-		<p>
-			<ul class="other-dets5">
-				
-                <?php
-				
-				if($only_buy_now != "1"):
-				
-				?>
-                
-                <li>
-				<img src="<?php echo get_bloginfo('template_url'); ?>/images/posted.png" width="15" height="15" /> 	
-					
-					<h3><?php _e("Bids",'AuctionTheme');?>:</h3>
-					<p><?php echo auctionTheme_number_of_bid($post->ID); ?></p> 
-				</li> 
-				
-                <?php endif; ?>
-                
-				<li>
-					<img src="<?php echo get_bloginfo('template_url'); ?>/images/category.png" width="15" height="15" /> 
-					<h3><?php _e("Category",'AuctionTheme');?>:</h3>
-					<p><?php echo get_the_term_list( $post->ID, 'auction_cat', '', ', ', '' ); ?></p> 
-				</li>
-				
-                <?php do_action('AuctionTheme_small_thing_after_categories_single_page'); ?>
-                
-				<li>
-					<img src="<?php echo get_bloginfo('template_url'); ?>/images/location.png" width="15" height="15" /> 
-					<h3><?php _e("Address",'AuctionTheme');?>:</h3>
-					<p><?php echo $location; ?></p> 
-				</li>
-				
-                <?php
-				
-				$rt = get_option('auctionTheme_show_auction_views');
-				
-				if($rt != 'no'):
-				?>
-				
-				<li>
-					<img src="<?php echo get_bloginfo('template_url'); ?>/images/viewed.png" width="15" height="15" /> 
-					<h3><?php _e("Viewed",'AuctionTheme');?>:</h3>
-					<p><?php echo $views; ?> <?php _e("times",'AuctionTheme');?></p> 
-				</li>
-				<?php endif; ?>
-				
-                
-                
-				
-                
+   </li>        
 				
 			</ul>
 			<?php
@@ -1719,9 +1627,7 @@ codeAddress("<?php
 				
                 <?php } ?>
                 
-                
-                   <a href="" class="nice_link" id="report-this-link"><?php _e("Report Auction",'AuctionTheme'); ?></a>   
-		</p>
+       		</p>
         </li>
 	</li>
 	
