@@ -60,7 +60,8 @@
 }
 
 #news-panel .panel, #news-panel .panel-heading{
-  background-color: #475F77;
+
+  background-color: #D74B4B;  
 }
 
 #news-panel .panel{
@@ -81,11 +82,10 @@
 }
 
 #newsletter-panel .panel-heading, #newsletter-panel .panel{
-  background-color: #D74B4B;
+  background-color: #475F77;
 }
 
 #news-panel .panel, #newsletter-panel .panel{
-  margin-top: 17px;
   color: #DCDDD8;
   border: 0px;
 }
@@ -143,4 +143,5 @@
   height:320px;
   background-repeat:no-repeat;
   background-size: cover;
+  margin-bottom: 20px;
 }

@@ -63,34 +63,42 @@ get_header();
 
 ?>
 	
-	<div class="row panel-starter">
+	<div class="panel-starter">
   <div class="container">
-		<div class="col-md-9">
-      <h2>Partners Property Auctions. Yorkshire's Property Auction<h2>
-      <h4>Simply connecting buyers with sellers.</h4>
-      <ul>
-        <li>Largest Range</li>
-        <li>Buyers and Sellers Win</li>
-        <li>Coverage for the whole of Yorkshire</li>
-      </ul>
-		</div>
-    <div class="col-md-3">
-
-  		<div id="news-panel">
-  			<div class="panel panel-default">
-  			  <div class="panel-heading">
-            <strong>  News</strong>
-          </div>
-  			  <div class="panel-body">
-            <p>
-  			     First Auction on 14th March.
-            </p>
-            <p>
-              3 new partners signed up.
-            </p>       
-  			  </div>
-  			</div>			
+    <div class="row">
+  		<div class="col-md-12">
+        <h2>Partners Property Auctions. Yorkshire's Property Auction<h2>
+      </div>
+    </div>
+    <div class="row">    
+      <div class="col-md-8">
+        <h4>Simply connecting buyers with sellers.</h4>
+        <ul>
+          <li>Largest Range</li>
+          <li>Buyers and Sellers Win</li>
+          <li>Coverage for the whole of Yorkshire</li>
+        </ul>
   		</div>
+      <div id="newsletter-panel" class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong>Newsletter</strong>
+          </div>
+          <div class="panel-body">
+          <form action="http://partnerspropertyauctions.us3.list-manage.com/subscribe/post" method="POST" role="form" class="form form-inline">
+            <input type="hidden" name="u" value="ff1e4de7554ad2af54c92698f">
+            <input type="hidden" name="id" value="f21d2e6f30">
+            <label for="email">Receive regular updates on new properties and auction details.</label>
+            <div class="form-group">
+              <input type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" class="form-control" size="25" value="" required="" placeholder="Your email address">
+              <input type="text" name="MERGE1" class="form-control" id="MERGE1" size="25" value="" placeholder="Your first name">
+              <input type="text" name="MERGE2" class="form-control" id="MERGE2" size="25" value="" placeholder="Your last name">
+              </div>
+              <input type="submit" class="btn" name="submit" value="Subscribe">
+          </div>
+        </div>
+      </div>   
+    </div>    
   </div>
 
   </div>
@@ -101,25 +109,20 @@ get_header();
     <div class="col-md-8">
       <h3>Partner Logos?</h3>
     </div>
-    <div id="newsletter-panel" class="col-md-4">
+    <div id="news-panel" class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <strong>Newsletter</strong>
+          <strong>  News</strong>
         </div>
         <div class="panel-body">
-        <form action="http://partnerspropertyauctions.us3.list-manage.com/subscribe/post" method="POST" role="form" class="form form-inline">
-<input type="hidden" name="u" value="ff1e4de7554ad2af54c92698f">
-<input type="hidden" name="id" value="f21d2e6f30">
-<label for="email">Receive regular updates on new properties and auction details.</label>
-            <div class="form-group">
-<input type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" class="form-control" size="25" value="" required="" placeholder="Your email address">
-<input type="text" name="MERGE1" class="form-control" id="MERGE1" size="25" value="" placeholder="Your first name">
-<input type="text" name="MERGE2" class="form-control" id="MERGE2" size="25" value="" placeholder="Your last name">
-            </div>
-            <input type="submit" class="btn" name="submit" value="Subscribe">
-        </div>
-      </div>      
-    </div>
+          <p>
+           First Auction on 14th March.
+          </p>
+          <p>
+            3 new partners signed up.
+          </p>       
+        </div>     
+      </div>
 </div>
 	<div id="featured-properties" class="row">
       <div class="col-md-12">
