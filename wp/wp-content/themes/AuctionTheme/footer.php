@@ -94,6 +94,106 @@
 					<?php echo stripslashes(get_option('AuctionTheme_right_side_footer')); ?>
 				</div>
 			</div>
+	              <ul class="nav navbar-nav pull-right" id="right-header-nav">
+                <?php 
+                
+                  if(is_home())
+                  $home_class_active = 'active';  
+                  
+                  global $wp_query, $pagenow;
+                  $vars = $wp_query->query_vars;
+                  $special_page = $vars['special_page'];
+                  
+                  if($special_page == "post-new")   $post_new_class   = 'active'; 
+                  if($special_page == "adv-sea")    $adv_sea_new_class  = 'active';
+                  if($special_page == "account")    $account_new_class  = 'active';
+                  if($special_page == "blog")     $blog_new_class   = 'active'; 
+                  if($special_page == "watch")    $watch_class    = 'active';                 
+                  if($pagenow == "wp-login.php" and !isset($_GET['action']))    $class_log      = "active"; 
+                  if($pagenow == "wp-login.php" and $_GET['action'] == 'register')  $class_register   = "active"; 
+                  
+                    $AuctionTheme_show_blue_menu = get_option('AuctionTheme_show_main_menu');
+                    
+                    if($AuctionTheme_show_blue_menu != "yes"):
+                ?>
+              
+                  <li>
+                    <a href="<?php bloginfo('siteurl') ?>" class="<?php echo $home_class_active; ?>"><?php echo __("Home","AuctionTheme"); ?></a>
+                  </li>
+                                                       
+                 <?php
+                  
+                  endif;
+                  
+                  $menu_name = 'primary-auctiontheme-header';
+
+                  if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+                  $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+                
+                  $menu_items = wp_get_nav_menu_items($menu->term_id);
+              
+                
+                  foreach ( (array) $menu_items as $key => $menu_item ) {
+                    $title = $menu_item->title;
+                    $url = $menu_item->url;
+                    
+                    if(!empty($title))
+                    {echo '<li><a href="' . $url . '">' . $title . '</a></li>'; }
+                  }
+                    
+                  } 
+                ?>
+                  <li>
+                    <a class="<?php echo $watch_class; ?>" href="<?php echo AuctionTheme_watch_list(); ?>"><?php echo __("Watch List","AuctionTheme"); ?></a>
+                  </li>
+             
+                            
+                <?php if(get_option('auctionTheme_enable_blog') == "yes") { ?>
+                  <li>
+                    <a class="<?php echo $blog_new_class; ?>" href="<?php echo AuctionTheme_blog_link(); ?>"><?php echo __("Blog","AuctionTheme"); ?></a> 
+                  </li>
+                <?php } ?>
+                            
+                <?php
+                  if($AuctionTheme_show_blue_menu != "yes"):
+                ?>
+                  <li>
+                    <a href="<?php echo AuctionTheme_advanced_search_link(); ?>" 
+                            class="<?php echo $adv_sea_new_class; ?>"><?php _e("Advanced Search","AuctionTheme");?></a>
+                  </li> 
+                <?php
+              
+                  endif;
+              
+                  if(is_user_logged_in())
+                  {
+                    ?>
+                  
+                    <li>
+                      <a href="<?php echo AuctionTheme_my_account_link(); ?>" 
+                            class="<?php echo $account_new_class; ?>"><?php echo __("My Account","AuctionTheme"); ?></a>
+                    </li>
+                    <li>
+                      <a href="<?php echo wp_logout_url(); ?>"><?php echo __("Log Out","AuctionTheme"); ?></a>
+                    </li>                 
+                  <?php
+                  }
+                  else
+                  {     
+                    ?>
+                    
+                    <li>
+                      <a class="<?php echo $class_register; ?>" href="<?php bloginfo('siteurl') ?>/wp-login.php?action=register">
+                        <?php echo __("Register","AuctionTheme"); ?>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="<?php echo $class_log; ?>" href="<?php bloginfo('siteurl') ?>/wp-login.php">
+                        <?php echo __("Log In","AuctionTheme"); ?>
+                      </a>
+                    </li>
+                <?php } ?>             
+              </ul> 
 		</div>
 
 </div>
