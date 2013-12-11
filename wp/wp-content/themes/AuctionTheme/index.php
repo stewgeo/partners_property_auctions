@@ -66,17 +66,15 @@ get_header();
 	<div class="panel-starter">
   <div class="container">
     <div class="row">
-  		<div class="col-md-12">
-        <h2>Partners Property Auctions. Yorkshire's Property Auction<h2>
-      </div>
-    </div>
-    <div class="row">    
       <div class="col-md-8">
+        <h2>Partners. Yorkshire's Property Auction<h2>
         <h4>Simply connecting buyers with sellers.</h4>
         <ul>
-          <li>Largest Range</li>
-          <li>Buyers and Sellers Win</li>
-          <li>Coverage for the whole of Yorkshire</li>
+          <li>Independent Auctioneers</li>
+          <li>Established estate agent partners</li>
+          <li>Faster route to market </li>
+          <li>Large local audience</li>
+          <li>Highly competitive rates</li>
         </ul>
   		</div>
       <div id="newsletter-panel" class="col-md-4">
@@ -91,10 +89,9 @@ get_header();
             <label for="email">Receive regular updates on new properties and auction details.</label>
             <div class="form-group">
               <input type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" class="form-control" size="25" value="" required="" placeholder="Your email address">
-              <input type="text" name="MERGE1" class="form-control" id="MERGE1" size="25" value="" placeholder="Your first name">
-              <input type="text" name="MERGE2" class="form-control" id="MERGE2" size="25" value="" placeholder="Your last name">
-              </div>
-              <input type="submit" class="btn" name="submit" value="Subscribe">
+
+            </div>
+            <input type="submit" class="btn" name="submit" value="Subscribe">
           </div>
         </div>
       </div>   
@@ -106,8 +103,12 @@ get_header();
 <div class="container">
 
   <div class="row">
-    <div class="col-md-8">
-      <h3>Partner Logos?</h3>
+    <div class="col-md-8 partners-featured">
+      <h3>Featured Partners</h3>      
+      <img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/quantum.gif" class="img-responsive pull-left">
+      <img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/yhomes.png" class="img-responsive pull-left">
+      <img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/churchills.png" class="img-responsive pull-left">
+      <img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/hudson-moody.png" class="img-responsive pull-left">
     </div>
     <div id="news-panel" class="col-md-4">
       <div class="panel panel-default">
@@ -116,14 +117,18 @@ get_header();
         </div>
         <div class="panel-body">
           <p>
-           First Auction on 14th March.
+           <a href="">First auction in Ripley on 14th March.</a>
           </p>
           <p>
-            3 new partners signed up.
+            <a href="">4 partners on-board for launch.</a>
           </p>       
+          <p>
+            <a href="">New website launched.</a>
+          </p>  
         </div>     
       </div>
-</div>
+    </div>
+  </div>
 	<div id="featured-properties" class="row">
       <div class="col-md-12">
         <h3>Featured Properties</h3>

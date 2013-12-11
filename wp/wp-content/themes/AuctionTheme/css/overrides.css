@@ -53,23 +53,25 @@
 }
 
 
-#featured-properties h3{
+#featured-properties h3, .partners-featured h3{
   text-align: left;
   border-bottom: 1px solid rgb(224, 222, 222);
   padding-bottom: 5px;
+  color:   #475F77;
 }
 
-#news-panel .panel, #news-panel .panel-heading{
-
-  background-color: #D74B4B;  
+#news-panel{
+  height: 180px;
+  padding-top: 10px;
 }
 
 #news-panel .panel{
-  height: 238px;
+  height: 180px;
 }
 
 #newsletter-panel{
   text-align: left;
+  margin-top:20px;
 }
 
 #newsletter-panel label{
@@ -82,7 +84,7 @@
 }
 
 #newsletter-panel .panel-heading, #newsletter-panel .panel{
-  background-color: #475F77;
+  background-color: #D74B4B;
 }
 
 #news-panel .panel, #newsletter-panel .panel{
@@ -98,12 +100,21 @@
   border-bottom: 1px dotted rgb(224, 222, 222);
   margin-bottom: 8px;
   padding-bottom: 8px;
+  color:black;
 }
 
 #news-panel .panel-heading, #newsletter-panel .panel-heading {
-  color: #fff;
   border: 0;
   text-transform:uppercase;
+}
+
+#newsletter-panel .panel-heading {
+  color:white;
+}
+
+#news-panel .panel-heading{
+  background-color: white;
+  color:   #475F77;
 }
 
 .img-panel{
@@ -137,11 +148,16 @@
 }
 
 .panel-starter{
-  background-image: url("images/terraced_houses_blur.jpg");
+  background-image: url("images/terraced_houses_blur_bw.jpg");
   text-align: left;
   color:white;
-  height:320px;
+  height:258px;
   background-repeat:no-repeat;
   background-size: cover;
   margin-bottom: 20px;
+}
+
+.partners-featured img{
+  height:86px;
+  padding-right:20px;
 }
