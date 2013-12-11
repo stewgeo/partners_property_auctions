@@ -247,9 +247,8 @@
   					</div> <!-- middle-header-bg -->
   					<div class="col-sm-4 col-md-4 pull-right">
               <ul class="nav navbar-nav pull-right" id="right-header-nav">
-                <?php 
                   
-                  if(current_user_can('level_10')) {?> <li><a href="<?php bloginfo('siteurl'); ?>/wp-admin"><?php 
+                  <?php /*?><?php if(current_user_can('level_10')) {?> <li><a href="<?php bloginfo('siteurl'); ?>/wp-admin"><?php 
                   echo __("Wp-Admin","AuctionTheme"); ?></a></li> <?php }
                 
                   if(is_home())
@@ -297,11 +296,11 @@
                   }
                     
                   } 
-                ?>
+                ?><?php */?>
                   <li>
-                    <a class="<?php echo $watch_class; ?>" href="<?php echo AuctionTheme_watch_list(); ?>"><?php echo __("Bookmarks","AuctionTheme"); ?></a>
+                    <a class="<?php echo $watch_class; ?>" href="<?php echo AuctionTheme_watch_list(); ?>"><?php echo __("Favourites","AuctionTheme"); ?></a>
                   </li>
-                <?php
+                <?php /*?><?php
                   if(AuctionTheme_is_able_to_post_auctions()):
                 ?>
                   <li>
@@ -310,7 +309,7 @@
                     </a> 
                   </li>
                             
-                <?php endif; ?>
+                <?php endif; ?><?php */?>
                             
                 <?php if(get_option('auctionTheme_enable_blog') == "yes") { ?>
                   <li>
@@ -318,7 +317,7 @@
                   </li>
                 <?php } ?>
                             
-                <?php
+                <?php /*?><?php
                   if($AuctionTheme_show_blue_menu != "yes"):
                 ?>
                   <li>
@@ -327,8 +326,8 @@
                   </li> 
                 <?php
               
-                  endif;
-              
+                  endif;<?php */?>
+              <?php
                   if(is_user_logged_in())
                   {
                     global $current_user;
@@ -338,7 +337,7 @@
                   
                     <li>
                       <a href="<?php echo AuctionTheme_my_account_link(); ?>" 
-                            class="<?php echo $account_new_class; ?>"><?php echo __("MyAccount","AuctionTheme"); ?> - <?php echo $user; ?></a>
+                            class="<?php echo $account_new_class; ?>"><?php echo __("My Account","AuctionTheme"); ?></a>
                     </li>
                     <li>
                       <a href="<?php echo wp_logout_url(); ?>"><?php echo __("Log Out","AuctionTheme"); ?></a>
@@ -359,6 +358,7 @@
                         <?php echo __("Log In","AuctionTheme"); ?>
                       </a>
                     </li>
+                    <li><a href="<?php echo get_page_link(1264); ?>">Contact</a></li>
                 <?php } ?>             
               </ul>               
   			       <div class="navbar-form navbar-left" id="site-search" role="search">
@@ -415,8 +415,8 @@
                     <li><a href="<?php echo get_page_link(1282); ?>"><?php echo get_the_title(1282)?></a></li>  
                     <li><a href="<?php echo get_page_link(1289); ?>"><?php echo get_the_title(1289)?></a></li>  
                     <li><a href="<?php echo get_post_type_archive_link('auction'); ?>">All Properties</a></li>
-                    <li><a href="<?php echo get_permalink(get_option('AuctionTheme_adv_search_id')); ?>"><?php _e('Advanced Search','AuctionTheme'); ?></a></li>     
-                    <li><a href="<?php echo get_page_link(1264); ?>"><?php echo get_the_title(1264)?></a></li>     
+<?php /*?>                    <li><a href="<?php echo get_permalink(get_option('AuctionTheme_adv_search_id')); ?>"><?php _e('Advanced Search','AuctionTheme'); ?></a></li>     
+                    <li><a href="<?php echo get_page_link(1264); ?>"><?php echo get_the_title(1264)?></a></li>  <?php */?>   
                  </ul>
               <?php else: 
           
