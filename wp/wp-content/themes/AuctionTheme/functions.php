@@ -3013,6 +3013,27 @@ function auctionTheme_create_post_type() {
 	 )
 	
 	 );
+	 register_taxonomy( 'auction_info', 'auction', array( 'hierarchical' => true,
+		// This array of options controls the labels displayed in the WordPress Admin UI
+		'labels' => array(
+			'name' => _x( 'Auction Info', 'taxonomy general name' ),
+			'singular_name' => _x( 'Auction Info', 'taxonomy singular name' ),
+			'all_items' => __( 'All Auction Locations' ),
+			'parent_item' => __( 'Auction Location' ),
+			'parent_item_colon' => __( 'Auction Location:' ),
+			'edit_item' => __( 'Edit Auction' ),
+			'update_item' => __( 'Update Auction' ),
+			'add_new_item' => __( 'Add New Auction' ),
+			'new_item_name' => __( 'New Auction Date' ),
+			'menu_name' => __( 'Auctions' ),
+		),
+		// Control the slugs used for this taxonomy
+		'rewrite' => array(
+			'slug' => 'Auction', // This controls the base slug that will display before each term
+			'with_front' => false, // Don't display the category base before "/locations/"
+			'hierarchical' => true // This will allow URL's like "/locations/boston/cambridge/"
+		),
+	 ));
 	register_taxonomy( 'auction_location', 'auction', array( 'hierarchical' => true, 'label' => __('Locations','AuctionTheme'),
 	'rewrite'                       => array('slug'=>$location_url_link,'with_front'=>false)
 	 ) );

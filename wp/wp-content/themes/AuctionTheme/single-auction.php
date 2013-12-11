@@ -1204,8 +1204,8 @@
                             <?php endif; endif; ?>
                             <li>
 <?php /*?>                            					<img src="<?php echo get_bloginfo('template_url'); ?>/images/clock.png" width="20" height="20" /> 
-<?php */?>					<h3><?php _e("Auction Details",'AuctionTheme');?>:</h3>
-					<p><?php echo get_the_term_list( $post->ID, 'auction_cat', '', ', ', '' ); ?></p> 
+<?php */?>					<h3><?php _e("Auction",'AuctionTheme');?>:</h3>
+					<p><?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?></p> 
 
                             </li><br /><br />
                             <li>
