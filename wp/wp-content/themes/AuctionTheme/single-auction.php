@@ -1227,7 +1227,8 @@
 								
 								</div>
 							</li>
-							<li><a href="#">Download as PDF</a>
+							<li><a href="#">Download as PDF</a></li>
+                            <li><a href="javascript:window.print()">Click to Print This Page</a></li>
 						</ul>
 						
 						
@@ -1557,7 +1558,7 @@ codeAddress("<?php
                     <p><?php the_author_description(); ?></p>
 				</li> 
                                    
-               <a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>">See more properties by <?php the_author();?> </a><br/>                		
+               <li><p class="auto-width"><a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>">See more properties by <?php the_author();?> </a></p></li>                		
 			</ul>
    		</p>
         </div>
