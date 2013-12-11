@@ -3634,11 +3634,11 @@ function auctionTheme_get_post_function_grid( $arr = '')
 				if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):				
 				?>
                 
-                <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- watchlist','AuctionTheme'); ?></a>
+                 <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Favourites','AuctionTheme'); ?></a>
                 
                 <?php else: ?>
                 
-                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ watchlist','AuctionTheme'); ?></a>
+                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Favourites','AuctionTheme'); ?></a>
                 <?php endif; ?>   
 								
 				
@@ -3777,11 +3777,11 @@ function auctionTheme_get_post_function( $arr = '')
 				if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):				
 				?>
                 
-                <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- watchlist','AuctionTheme'); ?></a>
+                 <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Favourites','AuctionTheme'); ?></a>
                 
                 <?php else: ?>
                 
-                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ watchlist','AuctionTheme'); ?></a>
+                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Favourites','AuctionTheme'); ?></a>
                 <?php endif; ?>   
 								
 				
@@ -4105,11 +4105,11 @@ function auctionTheme_get_post_sent_offer_function()
 				if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):				
 				?>
                 
-                <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- watchlist','AuctionTheme'); ?></a>
+                 <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Favourites','AuctionTheme'); ?></a>
                 
                 <?php else: ?>
                 
-                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ watchlist','AuctionTheme'); ?></a>
+                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Favourites','AuctionTheme'); ?></a>
                 <?php endif; ?>   
 								
 				
@@ -4221,11 +4221,11 @@ function auctionTheme_get_post_received_offer_function()
 				if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):				
 				?>
                 
-                <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- watchlist','AuctionTheme'); ?></a>
+                 <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Favourites','AuctionTheme'); ?></a>
                 
                 <?php else: ?>
                 
-                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ watchlist','AuctionTheme'); ?></a>
+                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Favourites','AuctionTheme'); ?></a>
                 <?php endif; ?>   
 								
 				
@@ -4345,11 +4345,11 @@ function auctionTheme_get_post_not_shipped_function()
 				if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):				
 				?>
                 
-                <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- watchlist','AuctionTheme'); ?></a>
+                 <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Favourites','AuctionTheme'); ?></a>
                 
                 <?php else: ?>
                 
-                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ watchlist','AuctionTheme'); ?></a>
+                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Favourites','AuctionTheme'); ?></a>
                 <?php endif; ?>   
 								
 				
@@ -4483,11 +4483,11 @@ function auctionTheme_get_post_outstanding_payment( $bid_id )
 				if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) ):				
 				?>
                 
-                <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- watchlist','AuctionTheme'); ?></a>
+                 <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Favourites','AuctionTheme'); ?></a>
                 
                 <?php else: ?>
                 
-                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ watchlist','AuctionTheme'); ?></a>
+                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Favourites','AuctionTheme'); ?></a>
                 <?php endif; ?>   
 								
 				

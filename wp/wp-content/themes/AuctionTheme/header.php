@@ -57,8 +57,8 @@
 			 
 			var SITE_URL 			= '<?php echo get_bloginfo('siteurl'); ?>';
 			var is_on_check_list 	= '<?php echo $on_check_list; ?>';
-			var minus_watchlist 	= "<?php echo __('- watchlist','AuctionTheme'); ?>";
-			var plus_watchlist 		= "<?php echo __('+ watchlist','AuctionTheme'); ?>";
+			var minus_watchlist 	= "<?php echo __('Remove from Favourites','AuctionTheme'); ?>";
+			var plus_watchlist 		= "<?php echo __('Add to Favourites','AuctionTheme'); ?>";
 			 
 	function suggest(inputString){
 	
