@@ -801,7 +801,9 @@ margin-top: 0px;
 
  
 .auction_page_title h1 { padding:0; margin:0; font-size:20px; font-family:Arial, Helvetica, sans-serif; padding-top:10px; padding-bottom:10px }
-
+.auction_page_title h2 {
+	 padding:0; margin:0; font-size:14px; font-family:Arial, Helvetica, sans-serif; 
+}
 .ad-page-image-holder
 {
 	float:left;
@@ -2181,10 +2183,11 @@ background: url('images/bul.png') no-repeat;
 
 .bid_panel
 {
-	background:#e8e8e8;
-	overflow:hidden	;
+/*	background:#e8e8e8;
+*/	overflow:hidden	;
 	width:100%;
 	border-bottom:1px solid #ccc;	
+	border-top:1px solid #ccc;	
 }
 
 .bid_panel_err

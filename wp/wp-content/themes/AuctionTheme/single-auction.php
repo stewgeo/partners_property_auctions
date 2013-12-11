@@ -820,7 +820,14 @@
  			<div class="my_box3">
  
             
-            	<div class="box_title auction_page_title"><h1><?php the_title() ?></h1></div>
+            	<div class="box_title auction_page_title"><h1><?php the_title() ?></h1><br />
+
+<h2><?php
+					$location = get_post_meta($pid, "Location", true);	
+	echo $location;
+	
+	?></h2>
+</div>
                 <div class="box_content">
 				
 					<div class="ad-page-image-holder">
@@ -978,7 +985,7 @@
 				
 				?>	
                 
-                <div class="bid_panel">
+                <?php /*?><div class="bid_panel">
                 <div class="padd10">
                 <ul class="auction-details">
 							<li>
@@ -987,7 +994,7 @@
 							</li>
                 </ul>
                 </div>
-                </div>
+                </div><?php */?>
                 <?php endif; ?>
                 
                 
@@ -1200,27 +1207,27 @@
 <?php */?>					<h3><?php _e("Auction Details",'AuctionTheme');?>:</h3>
 					<p><?php echo get_the_term_list( $post->ID, 'auction_cat', '', ', ', '' ); ?></p> 
 
-                            </li>
-                            <?php /*?><li>
-								<p><div><?php 
+                            </li><br /><br />
+                            <li>
+							<div><?php 
 								
 			 
 				
 				if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):				
 				?>
                 
-                 <a rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Watch List','AuctionTheme'); ?></a>
+                 <a rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Favourites','AuctionTheme'); ?></a>
                 
                 <?php else: ?>
                 
-                <a rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Watch List','AuctionTheme'); ?></a>
+                <a rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Favourites','AuctionTheme'); ?></a>
                 
                 <?php endif; ?>   
 								
 								
-								</div></p>
-							</li><?php */?>
-							<li><h3><a href="#">Download as PDF</a></h3>
+								</div>
+							</li>
+							<li><a href="#">Download as PDF</a>
 						</ul>
 						
 						
@@ -1330,7 +1337,7 @@
             </div>
             <div class="clear10"></div>
              <?php endif; ?>
-			
+			<?php /*?>
 			<!-- ####################### -->
 				<?php do_action('AuctionTheme_auction_page_before_image_gallery_div'); ?>
 			<div class="my_box3">
@@ -1363,7 +1370,7 @@
 			</div>
 			</div>
 			
-			<div class="clear10"></div>
+			<div class="clear10"></div><?php */?>
 			
 			<!-- ####################### -->
 				<?php do_action('AuctionTheme_auction_page_before_map_div'); ?>
@@ -1381,7 +1388,7 @@
             	<div class="box_title"><?php echo __("Map Location",'AuctionTheme'); ?></div>
                 <div class="box_content">
 	
-				<div id="map" style="width: 655px; height: 300px;border:2px solid #ccc;float:left"></div>
+				<div id="map" style="width: 100%; height: 300px;border:2px solid #ccc;float:left"></div>
 				
                 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
             
@@ -1545,7 +1552,7 @@ codeAddress("<?php
 				<li>
 				
 					
-					<?php echo get_avatar( $uid, 96 );; ?>
+					<?php echo get_avatar( get_the_author_meta('email'), 96 );; ?>
 					<p><a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>"><?php the_author() ?></a></p>
                     <p><?php the_author_description(); ?></p>
 				</li> 
