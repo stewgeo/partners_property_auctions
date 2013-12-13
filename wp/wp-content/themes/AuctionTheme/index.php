@@ -67,9 +67,8 @@ get_header();
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <h2>Partners. Yorkshire's Property Auction<h2>
-        <h4>Simply connecting buyers with sellers.</h4>
-        <ul>
+        <h2>Yorkshire's property auctions where everybody wins.</h2>
+        <ul class="lead">
           <li>Independent Auctioneers</li>
           <li>Established estate agent partners</li>
           <li>Faster route to market </li>
