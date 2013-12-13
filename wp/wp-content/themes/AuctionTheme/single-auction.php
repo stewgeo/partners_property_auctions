@@ -820,7 +820,7 @@
  			<div class="my_box3">
  
             
-            	<div class="box_title auction_page_title"><h1><?php the_title() ?></h1><br />
+            	<div class="box_title auction_page_title"><h1><?php the_title() ?></h1>
 
 <h2><?php
 					$location = get_post_meta($pid, "Location", true);	
