@@ -410,11 +410,12 @@
               if($m == 0):
               ?>
                  <ul class="nav navbar-nav"> 
+                    <li><a href="<?php echo get_page_link(1375); ?>"><?php echo get_the_title(1375)?></a></li>                     
                     <li><a href="<?php echo get_page_link(1287); ?>"><?php echo get_the_title(1287)?></a></li>  
                     <li><a href="<?php echo get_page_link(1282); ?>"><?php echo get_the_title(1282)?></a></li>  
                     <li><a href="<?php echo get_page_link(1289); ?>"><?php echo get_the_title(1289)?></a></li>  
                     <li><a href="<?php echo get_post_type_archive_link('auction'); ?>">All Properties</a></li>
-                    <li><a href="<?php echo get_page_link(1375); ?>"><?php echo get_the_title(1375)?></a></li>                     
+                    <li><a href="<?php echo get_page_link(1524); ?>"><?php echo get_the_title(1524)?></a></li>                     
 <?php /*?>                    <li><a href="<?php echo get_permalink(get_option('AuctionTheme_adv_search_id')); ?>"><?php _e('Advanced Search','AuctionTheme'); ?></a></li>     
                     <li><a href="<?php echo get_page_link(1264); ?>"><?php echo get_the_title(1264)?></a></li>  <?php */?>   
                  </ul>
