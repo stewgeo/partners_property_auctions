@@ -87,11 +87,15 @@
 		<div id="site-info">
 				<div id="site-info-left">
 					
-					<h3><?php echo stripslashes(get_option('AuctionTheme_left_side_footer')); ?></h3>
+					<h3>Copyright &copy; Partners Property Auctions <?php 
+ $time = time () ; 
+ $year= date("Y",$time) . "<br>"; 
+ echo $year;
+ ?> </h3>
 					
 				</div>
 				<div id="site-info-right">
-
+<a href="<?php echo get_page_link(1607); ?>">Conditions of Sale</a>
 				</div>
 			</div>
 		</div>
