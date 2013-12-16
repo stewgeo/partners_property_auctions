@@ -66,8 +66,8 @@ get_header();
 	<div class="panel-starter">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
-        <h2>Yorkshire's property auctions where everybody wins.</h2>
+      <div class="col-md-7">
+        <h2>Yorkshire's property auctions, where everyone's a winner.</h2>
         <ul class="lead">
           <li>Independent Auctioneers</li>
           <li>Established estate agent partners</li>
@@ -76,7 +76,7 @@ get_header();
           <li>Highly competitive rates</li>
         </ul>
   		</div>
-      <div id="newsletter-panel" class="col-md-4">
+      <div id="newsletter-panel" class="col-md-4 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-heading">
             <strong>Newsletter</strong>
@@ -116,13 +116,13 @@ get_header();
         </div>
         <div class="panel-body">
           <p>
-           <a href="">First auction in Ripley on 14th March.</a>
+           First auction in York on 26th March.
           </p>
           <p>
-            <a href="">4 partners on-board for launch.</a>
+            4 partners on-board for launch.
           </p>       
           <p>
-            <a href="">New website launched.</a>
+            New website launched.
           </p>  
         </div>     
       </div>
