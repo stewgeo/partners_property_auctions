@@ -1216,11 +1216,11 @@
 				if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):				
 				?>
                 
-                 <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('Remove from Favourites','AuctionTheme'); ?></a>
+                 <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- Favourites','AuctionTheme'); ?></a>
                 
                 <?php else: ?>
                 
-                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('Add to Favourites','AuctionTheme'); ?></a>
+                <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ Favourites','AuctionTheme'); ?></a>
                 
                 <?php endif; ?>   
 								
