@@ -358,7 +358,7 @@
                         <?php echo __("Log In","AuctionTheme"); ?>
                       </a>
                     </li>
-                    <li><a href="<?php echo get_page_link(1264); ?>">Contact</a></li>
+                    
                 <?php } ?>             
               </ul>               
   			       <div class="navbar-form navbar-left" id="site-search" role="search">
