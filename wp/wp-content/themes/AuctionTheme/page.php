@@ -38,7 +38,6 @@
 <div id="content">	
 			<div class="my_box3">
             
-            	<div class="box_title"><?php  the_title(); ?></div>
                 <div class="box_content post-content"> 
 
 
