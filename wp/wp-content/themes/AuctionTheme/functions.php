@@ -4045,7 +4045,7 @@ function auctionTheme_get_homepage_post_function()
       <div class="col-md-12">
         <h3>Featured Properties</h3>
       </div>';
-	$args = array( 'post_type' => 'auction', 'posts_per_page' => 8 );
+	$args = array( 'post_type' => 'auction', 'orderby' => 'rand', 'posts_per_page' => 8 );
 	$loop = new WP_Query( $args );
 while ( $loop->have_posts() ) : $loop->the_post(); $count++;
 	echo '<div class="img-panel col-md-3" id="post-ID-';
