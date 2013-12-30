@@ -4054,11 +4054,11 @@ while ( $loop->have_posts() ) : $loop->the_post(); $count++;
 	the_permalink();
 	echo' ">';
 echo AuctionTheme_get_home_post_image(get_the_ID());
-	echo'</a><div class="description"><div class="title">';
+	echo'<div class="description"><div class="title">';
 		  the_title();
 		  echo '</div><div class="price">Guide Price: ';
 		  echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID()));
-		  echo '</div></div></div>';
+		  echo '</div></div></a></div>';
 		  if ( 0 == $count%4 ) {
         echo '</div><div class="row">';
     }
