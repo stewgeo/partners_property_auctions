@@ -17,12 +17,12 @@
 	
 	get_header();
 ?>
-
+<div class="container">
 <div id="content">
 	
     		<div class="my_box3">
             
-            	<div class="box_title"><?php _e("User Profile",'AuctionTheme'); ?> - <?php echo html_entity_decode($username); ?> </div>
+            	<div class="box_title"><?php echo html_entity_decode($username); ?> </div>
             	<div class="box_content">	
                     	
                       
@@ -66,7 +66,7 @@
 
 			<div class="my_box3">
             
-            	<div class="box_title"><?php _e("User Latest Posted Auctions",'AuctionTheme'); ?></div>
+            	<div class="box_title">Properties by <?php echo html_entity_decode($username); ?></div>
             	<div class="box_content">	
 
         
@@ -115,130 +115,9 @@
 
 </div>
 </div>
-
-
 <div class="clear10"></div>
+</div></div>
 
-
-			<div class="my_box3">
-            
-            	<div class="box_title"><?php _e("User Latest Won Auctions",'AuctionTheme'); ?></div>
-            	<div class="box_content">	
-
-        
-<?php
-
-	
-	$nrpostsPage = 8;
-	$args = array( 'meta_key' => 'winner', 'meta_value' => $uid ,'posts_per_page' => $nrpostsPage, 'paged' => $paged, 'post_type' => 'auction', 'order' => "DESC" , 'orderby'=>"date");
-	$the_query = new WP_Query( $args );
-		
-		// The Loop
-		
-		if($the_query->have_posts()):
-		while ( $the_query->have_posts() ) : $the_query->the_post();
-			
-			auctionTheme_get_post();
-	
-			
-		endwhile;
-	
-	if(function_exists('wp_pagenavi'))
-	wp_pagenavi( array( 'query' => $the_query ) );
-	
-          ?>
-          
-          <?php                                
-     	else:
-		
-		echo __('No auctions posted.','AuctionTheme');
-		
-		endif;
-		// Reset Post Data
-		wp_reset_postdata();
-
-            
-					 
-		?>
-	
-
-	
-
-</div>
-</div>
-
-<div class="clear10"></div>
-
-<div class="my_box3">
-          
-            
-            	<div class="box_title"><?php _e("User Latest Feedback",'AuctionTheme'); ?> 
-               <span class="sml_ltrs"> [<a href="<?php bloginfo('siteurl'); ?>?a_action=user_feedback&post_author=<?php echo $uid; ?>"><?php _e('See All Feedback','AuctionTheme'); ?></a>]</span>
-               </div>
-            	<div class="box_content">	
-               <!-- ####### -->
-                
-                
-                <?php
-					
-					global $wpdb;
-					$query = "select * from ".$wpdb->prefix."auction_ratings where touser='$uid' AND awarded='1' order by id desc limit 5";
-					$r = $wpdb->get_results($query);
-					
-					if(count($r) > 0)
-					{
-						echo '<table width="100%">';
-							echo '<tr>';
-								echo '<th>&nbsp;</th>';	
-								echo '<th><b>'.__('Item Title','AuctionTheme').'</b></th>';								
-								echo '<th><b>'.__('From User','AuctionTheme').'</b></th>';	
-								echo '<th><b>'.__('Aquired on','AuctionTheme').'</b></th>';								
-								echo '<th><b>'.__('Price','AuctionTheme').'</b></th>';
-								echo '<th><b>'.__('Rating','AuctionTheme').'</b></th>';
-								
-							
-							echo '</tr>';	
-						
-						
-						foreach($r as $row)
-						{
-							$post = $row->pid;
-							$post = get_post($post);
-							$bid = auctionTheme_get_winner_bid($row->pid);
-							$user = get_userdata($row->fromuser);
-							echo '<tr>';
-								
-								echo '<th>'.AuctionTheme_get_first_post_image($row->pid, 42, 42).'</th>';	
-								echo '<th><a href="'.get_permalink($row->pid).'">'.$post->post_title.'</a></th>';
-								echo '<th><a href="'.AuctionTheme_get_user_profile_link($user->user_login).'">'.$user->user_login.'</a></th>';								
-								echo '<th>'.date('d-M-Y H:i:s',$row->datemade).'</th>';								
-								echo '<th>'.auctionTheme_get_show_price($bid->bid).'</th>';
-								echo '<th>'.AuctionTheme_get_auction_stars(floor($row->grade/2)).' ('.floor($row->grade/2).'/5)</th>';
-								
-							
-							echo '</tr>';
-							echo '<tr>';
-							echo '<th></th>';
-							echo '<th colspan="5"><b>'.__('Comment','AuctionTheme').':</b> '.$row->comment.'</th>'	;						
-							echo '</tr>';
-							
-							echo '<tr><th colspan="6"><hr color="#eee" /></th></tr>';
-							
-						}
-						
-						echo '</table>';
-					}
-					else
-					{
-						_e("There are no reviews to be awareded.","AuctionTheme");	
-					}
-				?>
-                
-                
-				<!-- ####### -->
-                </div>
-                
-            </div>
           
 
 
