@@ -4034,6 +4034,38 @@ the_excerpt(); ?>
 <?php
 }
 }
+/*****************************************************************************
+
+							Homepage Function
+
+*****************************************************************************/
+function auctionTheme_get_homepage_post_function()
+{
+	echo '<div id="featured-properties" class="row">
+      <div class="col-md-12">
+        <h3>Featured Properties</h3>
+      </div>';
+	$args = array( 'post_type' => 'auction', 'posts_per_page' => 8 );
+	$loop = new WP_Query( $args );
+while ( $loop->have_posts() ) : $loop->the_post(); $count++;
+	echo '<div class="img-panel col-md-3" id="post-ID-';
+	the_ID();
+	echo'"> <a href="';
+	the_permalink();
+	echo' ">';
+echo AuctionTheme_get_home_post_image(get_the_ID(), 640, 170, '');
+	echo'</a><div class="description"><div class="title">';
+		  the_title();
+		  echo '</div><div class="price">Guide Price: ';
+		  echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID()));
+		  echo '</div></div></div>';
+		  if ( 0 == $count%4 ) {
+        echo '</div><div class="row">';
+    }
+endwhile;
+					
+}
+
 
 /*****************************************************************************
 *
@@ -4638,6 +4670,60 @@ function AuctionTheme_get_first_post_image($pid, $w = 100, $h = 100, $clss = '',
 			$url = wp_get_attachment_image( $attachment->ID, $string_image_size );
 			else
 			$url = wp_get_attachment_image( $attachment->ID, array($w, $h) ); //wp_get_attachment_link($attachment->ID,  array($w, $h));
+			
+			return $url;	  
+		}
+	}
+	else{
+			return '<img src="' . get_bloginfo('template_url') .'/images/nopic.png' . '" alt="no image" width="'.$w.'" height="'.$h.'" class="'.$clss.'" />';
+			
+	}
+}
+
+function AuctionTheme_get_home_post_image($pid, $w = 100, $h = 100, $clss = '', $string_image_size = '', $m = 0)
+{
+	
+	//---------------------
+	// build the exclude list
+	$exclude = array();
+	
+	$args = array(
+	'order'          => 'ASC',
+	'post_type'      => 'attachment',
+	'post_parent'    => get_the_ID(),
+	'meta_key'		 => 'another_reserved1',
+	'meta_value'	 => '1',
+	'numberposts'    => -1,
+	'post_status'    => null,
+	);
+	$attachments = get_posts($args);
+	if ($attachments) {
+	    foreach ($attachments as $attachment) {
+		$url = $attachment->ID;
+		array_push($exclude, $url);
+	}
+	}
+	
+	//-----------------
+
+	$args = array(
+	'order'          => 'ASC',
+	'orderby'        => 'post_date',
+	'post_type'      => 'attachment',
+	'post_parent'    => $pid,
+	'exclude'    		=> $exclude,
+	'post_mime_type' => 'image',
+	'post_status'    => null,
+	'numberposts'    => 1,
+	);
+	$attachments = get_posts($args);
+	if ($attachments) {
+	    foreach ($attachments as $attachment) 
+	    {
+			if($m == 1)
+			$url = wp_get_attachment_image( $attachment->ID, $string_image_size );
+			else
+			$url = wp_get_attachment_image($attachment->ID,  full, 0, array('class'	=> "img-rounded-top img-responsive")); //wp_get_attachment_link( $attachment->ID, array($w, $h) ); 
 			
 			return $url;	  
 		}
