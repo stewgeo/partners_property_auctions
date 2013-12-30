@@ -4066,7 +4066,20 @@ endwhile;
 					
 }
 
-
+function get_news_posts()
+{
+	$args = array( 'post_type' => 'post', 'orderby' => 'asc', 'posts_per_page' => 4 );
+	$loop = new WP_Query( $args );
+while ( $loop->have_posts() ) : $loop->the_post();
+	echo '<p>';
+		  echo '<a href="';
+	the_permalink();
+	echo '">';
+	echo the_title();
+		  echo '</a></p>';
+endwhile;
+					
+}
 /*****************************************************************************
 *
 *	Function - AuctionTheme -

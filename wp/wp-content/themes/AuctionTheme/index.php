@@ -115,15 +115,7 @@ get_header();
           <strong>  News</strong>
         </div>
         <div class="panel-body">
-          <p>
-           First auction in York on 26th March.
-          </p>
-          <p>
-            4 partners on-board for launch.
-          </p>       
-          <p>
-            New website launched.
-          </p>  
+         <?php get_news_posts(); ?> 
         </div>     
       </div>
     </div>
