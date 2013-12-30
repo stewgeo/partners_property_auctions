@@ -30,12 +30,18 @@
                         <div class="user-profile-description">
                         <?php
                         
-                        $info = get_user_meta($uid, 'personal_info', true);
+                        $info = get_user_meta($uid, 'description', true);
                         if(empty($info)) _e("No personal info defined.",'AuctionTheme');
                         else echo $info;
                         
                         
-                        ?>                        
+                        ?><br />
+                        <a href="<?php
+                        $user_info = get_userdata($uid);
+      					if(empty($user_info)) echo "#";
+						else echo $user_info->user_url
+                        
+                        ?>"><?php echo html_entity_decode($username); ?>'s Website</a>
                         </div>
                         
                           <div class="user-profile-avatar"><?php echo get_avatar( $uid, 96 );; ?><br/><br/>
