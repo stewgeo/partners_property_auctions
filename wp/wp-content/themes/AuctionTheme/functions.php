@@ -4053,7 +4053,7 @@ while ( $loop->have_posts() ) : $loop->the_post(); $count++;
 	echo'"> <a href="';
 	the_permalink();
 	echo' ">';
-echo AuctionTheme_get_home_post_image(get_the_ID(), 640, 170, '');
+echo AuctionTheme_get_home_post_image(get_the_ID());
 	echo'</a><div class="description"><div class="title">';
 		  the_title();
 		  echo '</div><div class="price">Guide Price: ';
@@ -4723,7 +4723,7 @@ function AuctionTheme_get_home_post_image($pid, $w = 100, $h = 100, $clss = '', 
 			if($m == 1)
 			$url = wp_get_attachment_image( $attachment->ID, $string_image_size );
 			else
-			$url = wp_get_attachment_image($attachment->ID,  full, 0, array('class'	=> "img-rounded-top img-responsive")); //wp_get_attachment_link( $attachment->ID, array($w, $h) ); 
+			$url = wp_get_attachment_image($attachment->ID,  medium, 0, array('class'	=> "img-rounded-top img-responsive")); //wp_get_attachment_link( $attachment->ID, array($w, $h) ); 
 			
 			return $url;	  
 		}
