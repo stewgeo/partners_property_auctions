@@ -892,7 +892,7 @@ margin-top: 0px;
 .auction-details1 li h3
 {
 	float:left;
-	width:65px;
+	width:70px;
 	font-size:11px;
 	margin:0px;
 	padding:0px;
@@ -1361,7 +1361,9 @@ a.nice_link:hover
 	
 }
 
-
+.partner_image{
+	float:left;
+}
 .details_holder_grid
 {
 	float:left;

@@ -3942,7 +3942,7 @@ the_excerpt(); ?>
                     <div class="details_holder"> 
                   
                   
-                  <ul class="auction-details1">
+                 <?php /*?> <ul class="auction-details1">
 							<li>
 								<img src="<?php echo get_bloginfo('template_url'); ?>/images/price.png" alt="price" width="15" height="15" /> 
 								<h3><?php echo __("Price",'AuctionTheme'); ?>:</h3>
@@ -4025,12 +4025,18 @@ the_excerpt(); ?>
                             
                             <?php endif; ?>
                             
-						</ul>
+						</ul><?php */?>
                       
-                
-                  </div>   
-                     
-                     </div></div>
+										  <ul class="auction-details1">
+                                          <li><h3>Agent:</h3><p><?php the_author() ?></p></li>
+					<li><h3>Guide Price:</h3><p><?php echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID())); ?></p></li>
+					<li><h3>Auction:</h3><p><?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?></p></li>
+</ul>
+                                     
+                     </div>
+                     <div class="partner_image"><?php echo get_avatar( $uid, 72 );; ?>
+</div>
+                     </div>
 <?php
 }
 }
