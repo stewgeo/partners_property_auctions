@@ -4034,7 +4034,7 @@ the_excerpt(); ?>
 </ul>
                                      
                      </div>
-                     <div class="partner_image"><?php echo get_avatar( $uid, 72 );; ?>
+                     <div class="partner_image"><?php echo get_avatar( get_the_author_meta('email'), 72 );; ?>
 </div>
                      </div>
 <?php
