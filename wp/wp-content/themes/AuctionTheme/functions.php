@@ -1186,6 +1186,9 @@ function auctionTheme_save_custom_fields($pid)
 			if(isset($_POST['shipping']))
 			update_post_meta($pid, "shipping", auctionTheme_clear_sums_of_cash($_POST['shipping']));
 			
+			if(isset($_POST['guide_price']))
+			update_post_meta($pid, "guide_price", auctionTheme_clear_sums_of_cash($_POST['guide_price']));
+			
 			if(isset($_POST['start_price']))
 			update_post_meta($pid, "start_price", auctionTheme_clear_sums_of_cash($_POST['start_price']));
 			
@@ -3057,9 +3060,13 @@ function auctionTheme_set_metaboxes()
 	    add_meta_box( 'auction_custom_fields', 	'Property Custom Fields',	'auctionTheme_custom_fields_html', 'auction', 'advanced','high' );
 		add_meta_box( 'auction_images', 		'Property Images',			'auctionTheme_theme_auction_images', 'auction', 'advanced','high' );
 		add_meta_box( 'auction_legal_pack', 		'Legal Pack',			'auctionTheme_theme_auction_legal_pack', 'auction', 'advanced','high' );
-		add_meta_box( 'auction_bids', 			'Property Bids',				'auctionTheme_theme_auction_bids', 'auction', 'advanced','high' );
+//		add_meta_box( 'auction_bids', 			'Property Bids',				'auctionTheme_theme_auction_bids', 'auction', 'advanced','high' );
 		add_meta_box( 'auction_dets', 			'Property Details',			'auctionTheme_theme_auction_dts', 'auction', 'side','high' );
 		do_action('AuctionTheme_meta_boxes_menu');
+		remove_meta_box( 'postimagediv', 'auction', 'side');
+		remove_meta_box( 'postexcerpt', 'auction', 'normal');
+		remove_meta_box( 'tagsdiv-post_tag', 'auction', 'side');
+		
 	
 }
 /*****************************************************************************
@@ -4038,7 +4045,7 @@ the_excerpt(); ?>
                       
 										  <ul class="auction-details1">
                                           <li><h3>Agent:</h3><p><?php the_author() ?></p></li>
-					<li><h3>Guide Price:</h3><p><?php echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID())); ?></p></li>
+					<li><h3>Guide Price:</h3><p><?php echo get_post_meta($pid, 'guide_price' ,true); ?></p></li>
 					<li><h3>Auction:</h3><p><?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?></p></li>
 </ul>
                                      
@@ -4072,7 +4079,7 @@ echo AuctionTheme_get_home_post_image(get_the_ID());
 	echo'</a><div class="description"><div class="title">';
 		  the_title();
 		  echo '</div><div class="price">Guide Price: ';
-		  echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID()));
+		  echo get_post_meta(get_the_ID(), 'guide_price' ,true);
 		  echo '</div></div></div>';
 		  if ( 0 == $count%4 ) {
         echo '</div><div class="row">';
@@ -4951,31 +4958,38 @@ function auctionTheme_theme_auction_dts()
     <ul id="post-new4"> 
     <input name="fromadmin" type="hidden" value="1" />
     
-    <li>
+       <li>
+        	<h2><?php echo __('Guide Price','AuctionTheme'); ?>:</h2>
+        <p><input type="text" name="guide_price" class="do_input" 
+        	value="<?php echo get_post_meta($pid, 'guide_price', true); ?>" /> 
+			</p>
+        </li>
+        
+        
+        
+         <li>
         	<h2><?php echo __('Address','AuctionTheme'); ?>:</h2>
         <p><input type="text" size="15" name="Location" class="do_input" 
         	value="<?php echo get_post_meta($pid, 'Location', true); ?>" /></p>
         </li>
-    
  
-   
         
-        <li>
+ <?php /*?>       <li>
         	<h2><?php echo __('Start Price','AuctionTheme'); ?>:</h2>
         <p><input type="text" size="10" name="start_price" class="do_input" 
         	value="<?php echo get_post_meta($pid, 'start_price', true); ?>" /> 
 			<?php echo auctionTheme_currency(); ?></p>
-        </li>
+        </li><?php */?>
         
         
-         <li>
+       <?php /*?>  <li>
         	<h2><?php echo __('Reserve Price','AuctionTheme'); ?>:</h2>
         <p><input type="text" size="10" name="reserve" class="do_input" 
         	value="<?php echo get_post_meta($pid, 'reserve', true); ?>" /> 
 			<?php echo auctionTheme_currency(); ?></p>
-        </li>
+        </li><?php */?>
         
-        
+        <?php /*?>
          <li>
         	<h2><?php echo __('Buy Now Price','AuctionTheme'); ?>:</h2>
         <p><input type="text" size="10" name="buy_now" class="do_input" 
@@ -5013,7 +5027,7 @@ function auctionTheme_theme_auction_dts()
         
         </select>
         </p>
-        </li>
+        </li><?php */?>
     
      	<li>
         <h2><?php _e("Feature this auction",'AuctionTheme');?>:</h2>

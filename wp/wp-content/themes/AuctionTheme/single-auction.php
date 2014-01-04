@@ -1016,7 +1016,7 @@
                 	<ul class="auction-details">
 							<li>
 								<h3><?php echo __("Guide Price","AuctionTheme"); ?>:</h3>
-								<p><?php echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID())); ?></p>
+								<p><?php echo get_post_meta(get_the_ID(), 'guide_price' ,true); ?></p>
 							</li>
                             
                             <?php /*?><li>
