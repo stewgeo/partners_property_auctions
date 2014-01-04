@@ -64,16 +64,9 @@ $term_title = $term->name;
 <div class="my_box3">
       
             	<div class="box_title"><?php
-						if(empty($term_title)) echo __("All Posted Items",'AuctionTheme');
-						else { echo sprintf( __("Latest Posted Items in %s",'AuctionTheme'), $term_title);
-						
-						?>
+						if(empty($term_title)) echo __("All Properties",'AuctionTheme');
+						else { echo sprintf( __("Properties for Sale in %s",'AuctionTheme'), $term_title);
                         
-                        <a href="<?php bloginfo('siteurl'); ?>/?feed=rss2&<?php echo get_query_var( 'taxonomy' ); ?>=<?php echo get_query_var( 'term' ); ?>"><img src="<?php bloginfo('template_url'); ?>/images/rss_icon.png" 
-                    border="0" width="19" height="19" alt="rss icon" /></a>
-                        
-                        <?php
-						
 						}
 					?> 
             		<?php

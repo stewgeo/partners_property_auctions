@@ -78,7 +78,7 @@ $tgs = $wp_query->queried_object->name;
 						else
 						{
 						
-						if(empty($term_title)) echo __("All Posted Auctions",'AuctionTheme');
+						if(empty($term_title)) echo __("All Properties",'AuctionTheme');
 						else echo sprintf( __("Latest Posted Auctions in %s",'AuctionTheme'), $term_title);
 						
 						}
