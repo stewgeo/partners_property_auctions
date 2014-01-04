@@ -5053,15 +5053,7 @@ function auctionTheme_theme_auction_dts()
         </li>
                  <li>
         <h2>Viewing Days</h2>
-        <p><input type="text" name="viewing_days" id="viewing_days" value="<?php
-		
-		$d = get_post_meta($pid,'viewing_days',true);
-		
-		if(!empty($d)) {
-		$r = date_i18n('m/d/Y H:i:s', $d);
-		echo $r;
-		}
-		 ?>" class="do_input"  /></p>
+        <p><input type="text" name="viewing_days" id="viewing_days" value="<?php echo get_post_meta($pid,'viewing_days',true);?>" class="do_input"  /></p>
         </li>
         
         
