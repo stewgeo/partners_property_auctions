@@ -3710,32 +3710,12 @@ function auctionTheme_get_post_function_grid( $arr = '')
                  	
                     <div class="details_holder_grid"> 
                   
-                  
-                  <ul class="auction-details1">
-							<li>
-								
-								<p><?php echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID())); ?>
-                                <?php if($only_buy_now == '1') : ?>
-                                
-                                [<?php _e("BuyNow",'AuctionTheme'); ?>]                                
-                                <?php endif; ?>
-                                </p>
-							</li>
-					
-                  
-							
-							 
-							
-							<?php if($closed == "0"): ?>
-							<li>
-								
-                                <p class="expiration_auction_p"><?php echo ($closed=="1" ? __('Closed', 'AuctionTheme') : ($ending - current_time('timestamp',0))); ?></p>
-                                
-								<!--<p><?php echo ($closed=="1" ? __('Closed', 'AuctionTheme') : AuctionTheme_prepare_seconds_to_words($ending - current_time('timestamp',0))); ?></p> -->
-							</li>
-							<?php endif; ?>
-                            
-						</ul>
+                   <ul class="auction-details1">
+                   		<li><p><?php echo get_post_meta($pid, 'guide_price' ,true); ?></p></li>
+           				<li><p><?php the_author() ?></p></li>
+</ul>
+                                     
+                     </div>
                       
                 
                   </div>   
