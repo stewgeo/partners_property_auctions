@@ -1210,8 +1210,11 @@
                             </li>
                               <?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
 				   if(!empty($viewing)){
-					   echo "<li><h3>Viewing Days:</h3>" . $viewing . "</li>";
+					   echo "<li><h3>Viewing Day:</h3>" . $viewing . " or <a>Arrange a Viewing</a></li>";
 					   }
+					   else
+					   					   echo "<li><a>Arrange a Viewing</a></li>";
+
                     ?><br /><br />
                             <li>
 							<div class="watch-list"><?php 
