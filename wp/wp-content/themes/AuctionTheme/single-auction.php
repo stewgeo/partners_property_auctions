@@ -1207,7 +1207,12 @@
 <?php */?>					<h3><?php _e("Auction",'AuctionTheme');?>:</h3>
 					<p><?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?></p> 
 
-                            </li><br /><br />
+                            </li>
+                              <?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
+				   if(!empty($viewing)){
+					   echo "<li><h3>Viewing Days:</h3>" . $viewing . "</li>";
+					   }
+                    ?><br /><br />
                             <li>
 							<div class="watch-list"><?php 
 								
@@ -1227,7 +1232,7 @@
 								
 								</div>
 							</li>
-							<li><a href="#">Download as PDF</a></li>
+                          	<li><a href="#">Download as PDF</a></li>
                             <li><a href="javascript:window.print()">Click to Print This Page</a></li>
 						</ul>
 						

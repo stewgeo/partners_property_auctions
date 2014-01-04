@@ -1189,6 +1189,8 @@ function auctionTheme_save_custom_fields($pid)
 			if(isset($_POST['guide_price']))
 			update_post_meta($pid, "guide_price", auctionTheme_clear_sums_of_cash($_POST['guide_price']));
 			
+			if(isset($_POST['viewing_days']))
+			update_post_meta($pid, "viewing_days", auctionTheme_clear_sums_of_cash($_POST['viewing_days']));
 			if(isset($_POST['start_price']))
 			update_post_meta($pid, "start_price", auctionTheme_clear_sums_of_cash($_POST['start_price']));
 			
@@ -4047,6 +4049,11 @@ the_excerpt(); ?>
                                           <li><h3>Agent:</h3><p><?php the_author() ?></p></li>
 					<li><h3>Guide Price:</h3><p><?php echo get_post_meta($pid, 'guide_price' ,true); ?></p></li>
 					<li><h3>Auction:</h3><p><?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?></p></li>
+                   <?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
+				   if(!empty($viewing)){
+					   echo "<li><h3>Viewing Days:</h3><p>" . $viewing . "</p></li>";
+					   }
+                    ?>
 </ul>
                                      
                      </div>
@@ -5044,21 +5051,24 @@ function auctionTheme_theme_auction_dts()
         <h2><?php _e("Closed",'AuctionTheme');?>:</h2>
         <p><input type="checkbox" value="1" name="closed" <?php if($t == '1') echo ' checked="checked" '; ?> /></p>
         </li>
-        
+                 <li>
+        <h2>Viewing Days</h2>
+        <p><input type="text" name="viewing_days" id="viewing_days" value="<?php
+		
+		$d = get_post_meta($pid,'viewing_days',true);
+		
+		if(!empty($d)) {
+		$r = date_i18n('m/d/Y H:i:s', $d);
+		echo $r;
+		}
+		 ?>" class="do_input"  /></p>
+        </li>
         
         
         
                  <li>
         <h2>
-        
-     
- 
-        
-        
-      
-          
-          
-          
+
           
        <?php _e("Auction Ending On",'AuctionTheme'); ?>:</h2>
         <p><input type="text" name="ending" id="ending" value="<?php
@@ -5075,7 +5085,7 @@ function auctionTheme_theme_auction_dts()
  <script>
 
 jQuery(document).ready(function() {
-             jQuery('#ending').datetimepicker({
+             jQuery('#ending,#viewing_days').datetimepicker({
             showSecond: true,
 			dateFormat: 'dd-mm-yy',
             timeFormat: 'hh:mm:ss'
