@@ -289,14 +289,83 @@ function AuctionTheme_adv_search_area_function()
 	
 
 	?>
-    
+        <div id="right-sidebar">
+    <ul class="xoxo">
+    	<li id="text-6" class="widget-container widget_text">
+        <h3 class="widget-title"><?php _e('Search Options','AuctionTheme'); ?></h3>	
+        <div class="textwidget" style="overflow:hidden">
+        
+                <div style="float:left;width:100%">
+                                
+                <form method="get" action="<?php echo AuctionTheme_advanced_search_link(); ?>" role="form" class="form form-inline">
+                
+                <?php
+							
+							if(AuctionTheme_using_permalinks() == false)
+							echo '<input type="hidden" value="'.get_option('AuctionTheme_adv_search_id').'" name="page_id" />';
+							
+							?>
+                    
+                    
+                   <label for="term">Keyword:</label>
+                   <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['term']); ?>" name="term" />
+                   
+                   <label for="price_min">Min Price:</label>
+                    <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['price_min']); ?>" name="price_min" />
+                    
+                   <label for="price_max">Max Price:</label>
+                   <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['price_max']); ?>" name="price_max" />
+          		
+                   <label for="zip_code">Postcode:</label>
+                   <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['zip_code']); ?>" name="zip_code" />
+                   
+                   <label for="radius">Search Radius (miles):</label>
+                   <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['radius']); ?>" name="radius" />
+                                       
+<table width="100%" >
+                        <?php
+		
+		$get_catID = AuctionTheme_get_CATID($_GET['auction_cat_cat']);
+		
+		if(empty($get_catID)) $get_catID = 0;
+		
+		$get_catID = array($get_catID);
+		$arr = AuctionTheme_get_auction_category_fields_without_vals($get_catID, 'no');
+		
+		for($i=0;$i<count($arr);$i++)
+		{
+			
+			        echo '<tr>';
+					echo '<td><label>'.$arr[$i]['field_name'].$arr[$i]['id'].':</label></td>';
+					echo '<td>'.$arr[$i]['value'].'</td>';
+					echo '</tr>';
+			
+			
+		}	
+		
+		
+		?>  
+                
+               
+
+                   <tr><td></td><td></table>
+                   <input type="submit" value="<?php _e("Refine Search","AuctionTheme"); ?>" name="ref-search" class="big-search-submit2 btn" /></td></tr>
+                   </form>
+ </div>
+</div>
+</li>
+
+<?php dynamic_sidebar( 'other-page-area'); ?>
+
+  	</ul>  
+    </div>
     
     <div id="content">
     <!-- ############################################# -->
     
       <div class="my_box3">
             
-            	<div class="box_title"><?php _e("Advanced Search","AuctionTheme"); ?></div>
+            	<div class="box_title"><?php _e("Search Results","AuctionTheme"); ?></div>
             	<div class="box_content">
                 
              		
@@ -327,7 +396,7 @@ function AuctionTheme_adv_search_area_function()
 		endwhile;
 		//********************** pagination ***********************************
 		?>
-		
+</div>		
 		 <div class="nav">
                      <?php
 					 	
@@ -428,7 +497,7 @@ function AuctionTheme_adv_search_area_function()
             	<div class="box_title"><?php _e("Map Results","AuctionTheme"); ?></div>
             	<div class="box_content">	
                 
-                <div id="map" style="width: 655px; height: 300px;border:2px solid #ccc;float:left"></div>
+                <div id="map" style="width: 100%; height: 300px;border:2px solid #ccc;float:left"></div>
                 
                 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
             
@@ -484,95 +553,7 @@ map.fitBounds(bounds);
     
     
     
-    <div id="right-sidebar">
-    <ul class="xoxo">
-    	<li id="text-6" class="widget-container widget_text">
-        <h3 class="widget-title"><?php _e('Search Options','AuctionTheme'); ?></h3>	
-        <div class="textwidget" style="overflow:hidden">
-        
-                <div style="float:left;width:100%">
-                <table width="100%">
-                
-                
-                <form method="get" action="<?php echo AuctionTheme_advanced_search_link(); ?>">
-                
-                <?php
-							
-							if(AuctionTheme_using_permalinks() == false)
-							echo '<input type="hidden" value="'.get_option('AuctionTheme_adv_search_id').'" name="page_id" />';
-							
-							?>
-                <tr><td><?php _e('Auction ID#',"AuctionTheme"); ?>: </td><td>
-                   <input class="do_input_afs" size="10" value="<?php echo strip_tags($_GET['auction_ID']); ?>" name="auction_ID" />
-                   </td></tr>	
-                    
-                    
-                   <tr><td><?php _e('Keyword',"AuctionTheme"); ?>: </td><td>
-                   <input class="do_input_afs" size="10" value="<?php echo strip_tags($_GET['term']); ?>" name="term" />
-                   </td></tr>
-                   
-                   <tr><td><?php _e('Min Price',"AuctionTheme"); ?>:</td><td>
-                    <input class="do_input_afs" size="10" value="<?php echo strip_tags($_GET['price_min']); ?>" name="price_min" /></td></tr> 
-                    
-                   <tr><td><?php _e('Max Price',"AuctionTheme"); ?>:</td><td> 
-                   <input class="do_input_afs" size="10" value="<?php echo strip_tags($_GET['price_max']); ?>" name="price_max" /></td></tr>
-          			<?php
-					
-					$AuctionTheme_enable_locations = get_option('AuctionTheme_enable_locations');
-					if($AuctionTheme_enable_locations != "no"):
-					
-					?>
-                   <tr><td><?php _e('Postcode',"AuctionTheme"); ?>:</td><td> 
-                   <input class="do_input_afs" size="10" value="<?php echo strip_tags($_GET['zip_code']); ?>" name="zip_code" /></td></tr>
-                   
-                   <tr><td><?php _e('Radius',"AuctionTheme"); ?>: </td><td>
-                   <input class="do_input_afs" size="10" value="<?php echo strip_tags($_GET['radius']); ?>" name="radius" />
-                   <?php _e('miles','AuctionTheme'); ?></td></tr>
-                    
-                   <tr><td><?php _e('Filter by Location',"AuctionTheme"); ?>:</td><td> 
-				   <?php	echo AuctionTheme_get_categories_slug("auction_location", $_GET['auction_location_cat'], __("Select Location","AuctionTheme"), "do_input_afs2"); ?></td></tr>
-                   
-                   <?php endif; ?>
-                   
-                   <tr><td><?php _e('Filter by Category',"AuctionTheme"); ?>: </td><td>
-				   <?php	echo AuctionTheme_get_categories_slug("auction_cat", $_GET['auction_cat_cat'], __("Select Category","AuctionTheme"), "do_input_afs2"); ?></td></tr>
 
-                        <?php
-		
-		$get_catID = AuctionTheme_get_CATID($_GET['auction_cat_cat']);
-		
-		if(empty($get_catID)) $get_catID = 0;
-		
-		$get_catID = array($get_catID);
-		$arr = AuctionTheme_get_auction_category_fields_without_vals($get_catID, 'no');
-		
-		for($i=0;$i<count($arr);$i++)
-		{
-			
-			        echo '<tr>';
-					echo '<td>'.$arr[$i]['field_name'].$arr[$i]['id'].':</td>';
-					echo '<td>'.$arr[$i]['value'].'</td>';
-					echo '</tr>';
-			
-			
-		}	
-		
-		
-		?>  
-                
-               
-
-                   <tr><td></td><td>
-                   <input type="submit" value="<?php _e("Refine Search","AuctionTheme"); ?>" name="ref-search" class="big-search-submit2" /></td></tr>
-                   </form>
-</table> </div>
-</div>
-</li>
-
-<?php dynamic_sidebar( 'other-page-area'); ?>
-
-  	</ul>  
-    </div>
     
     
     <?php

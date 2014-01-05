@@ -647,8 +647,8 @@ margin-top: 0px;
 	width:100%;
 	margin:auto;
 	overflow:hidden;
-	border-bottom:1px solid #dfdfdf;
-	position:relative
+/*	border-bottom:1px solid #dfdfdf;
+*/	position:relative
 	/*margin-bottom:15px*/
 }
 
@@ -659,8 +659,8 @@ margin-top: 0px;
 	margin-left:5px;
 	margin-right:5px;
 	overflow:hidden;
-	border-bottom:1px solid #dfdfdf;
-	position:relative
+/*	border-bottom:1px solid #dfdfdf;
+*/	position:relative
 	/*margin-bottom:15px*/
 }
 
@@ -702,8 +702,8 @@ margin-top: 0px;
 .stretch-area .widget-container, #right-sidebar .widget-container, #content .widget-container, #left-sidebar .widget-container
 {
  
-	border:2px solid #eee;
-	background:#fff;
+/*	border:2px solid #eee;
+*/	background:#fff;
 
 }
 
