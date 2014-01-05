@@ -138,5 +138,21 @@ endif;
 
 ?>
 <?php wp_footer(); ?>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".various").fancybox({
+		maxWidth	: 300,
+		maxHeight	: 600,
+		fitToView	: false,
+		width		: '70%',
+		height		: '60%',
+		autoSize	: false,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+		
+	});
+});
+</script>
 </body>
 </html>

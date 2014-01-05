@@ -705,9 +705,7 @@
 	get_header();
 ?>
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-
 <div id="content">
-
 <?php 
 
 			if(function_exists('bcn_display'))
@@ -1210,12 +1208,15 @@
                             </li>
                               <?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
 				   if(!empty($viewing)){
-					   echo "<li><h3>Viewing Day:</h3>" . $viewing . " or <a>Arrange a Viewing</a></li>";
+					   echo "<li><h3>Viewing Day:</h3>" . $viewing . " or";?>
+					   <a class='various fancybox.iframe' href="<?php echo get_bloginfo('template_url')?>/contact.php?subject=viewing_request%3A_<?php echo urlencode(strtolower(str_replace(' ', '_', $location)));?>">Arrange a Viewing</a>
+                       <?php
+                       echo "</li>";
 					   }
-					   else
-					   					   echo "<li><a>Arrange a Viewing</a></li>";
-
-                    ?><br /><br />
+					   else {?>
+					       <li><a class='various fancybox.iframe' href="<?php echo get_bloginfo('template_url')?>/contact.php?subject=viewing_request%3A_<?php echo urlencode(strtolower(str_replace(' ', '_', $location)));?>">Arrange a Viewing</a></li>
+<?php } ?>
+                    <br /><br />
                             <li>
 							<div class="watch-list"><?php 
 								
@@ -1623,7 +1624,7 @@ codeAddress("<?php
    </li>        
 				
 			</ul>
-			<?php
+			<?php /*?><?php
 				
 				 if(!AuctionTheme_is_owner_of_post()) {?>
 			
@@ -1641,13 +1642,10 @@ codeAddress("<?php
 			
 			?>" class="nice_link"><?php _e("Contact Seller",'AuctionTheme'); ?></a>
 				
-                <?php } ?>
-                
-       		</p>
+                <?php } ?><?php */?>
+		<a class="various fancybox.iframe" href="<?php echo get_bloginfo('template_url')?>/contact.php?subject=<?php  echo urlencode(strtolower(str_replace(' ', '_', $location)));?>">Contact <?php the_author() ?></a>       		</p>
         </li>
-	</li>
-	
-	
+	</li>	
 	<?php
 	
 						dynamic_sidebar( 'auction-widget-area' );
