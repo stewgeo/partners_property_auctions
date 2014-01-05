@@ -548,13 +548,7 @@ function AuctionTheme_adv_search_area_function()
 map.fitBounds(bounds);
 </script>
     
-    <!-- ############################################# -->
-    </div>
-    
-    
-    
-
-    
+    <!-- ############################################# -->    
     
     <?php
 	
