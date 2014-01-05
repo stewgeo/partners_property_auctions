@@ -46,18 +46,7 @@
                         
                           <div class="user-profile-avatar"><?php echo get_avatar( $uid, 96 );; ?><br/><br/>
                           
-                          <a class="nice_link" href="<?php
-                
-				
-				$using_perm = AuctionTheme_using_permalinks();
-	
-			if($using_perm)	$privurl_m = get_permalink(get_option('AuctionTheme_my_account_priv_mess_page_id')). "?";
-			else $privurl_m = get_bloginfo('siteurl'). "/?page_id=". get_option('AuctionTheme_my_account_priv_mess_page_id'). "&";	
-			
-			echo $privurl_m."priv_act=send&";
-			echo 'uid='.$user->ID;
-				
-				?>"><?php _e('Contact User','AuctionTheme'); ?></a>
+                          <a class="various fancybox.iframe" href="<?php echo get_bloginfo('template_url')?>/contact.php">Contact <?php echo html_entity_decode($username); ?></a>
                           
                           
                    	 	</div>
