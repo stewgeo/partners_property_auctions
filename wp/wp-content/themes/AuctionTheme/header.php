@@ -27,6 +27,8 @@
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css" />
   <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/overrides.css" />  
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<link rel="stylesheet" href="<?php echo get_bloginfo('template_url')?>/js/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+
 	<?php wp_enqueue_script("jquery"); ?>
 
 	<?php
@@ -125,6 +127,8 @@
 	
 		
 	</script>
+        <script type="text/javascript" src="<?php echo get_bloginfo('template_url')?>/js/fancybox/source/jquery.fancybox.pack.js"></script>
+
      <?php
 	 	
 		$AuctionTheme_color_for_footer = get_option('AuctionTheme_color_for_footer');
@@ -297,6 +301,8 @@
                     
                   } 
                 ?><?php */?>
+                  <li><a class="various fancybox.iframe" href="<?php echo get_bloginfo('template_url')?>/contact.php">Contact</a>       		</p>
+</li>
                   <li>
                     <a class="<?php echo $watch_class; ?>" href="<?php echo AuctionTheme_watch_list(); ?>"><?php echo __("Favourites","AuctionTheme"); ?></a>
                   </li>
