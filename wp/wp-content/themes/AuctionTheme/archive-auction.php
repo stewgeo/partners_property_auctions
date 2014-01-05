@@ -137,7 +137,7 @@ else AuctionTheme_get_post_grid() ?>
 		?>
 
 
-</div></div></div> </div></div>
+</div></div></div>
 
 
 <div id="right-sidebar">
