@@ -342,9 +342,12 @@
                     $user = $current_user->user_login;
                     ?>
                   
-                    <li>
+                    <?php /*?><li>
                       <a href="<?php echo AuctionTheme_my_account_link(); ?>" 
                             class="<?php echo $account_new_class; ?>"><?php echo __("My Account","AuctionTheme"); ?></a>
+                    </li><?php */?>
+                    <li>
+                      <a href="<? echo get_bloginfo('url').'/wp-admin/'?>" class="<?php echo $account_new_class; ?>"><?php echo __("My Account","AuctionTheme"); ?></a>
                     </li>
                     <li>
                       <a href="<?php echo wp_logout_url(); ?>"><?php echo __("Log Out","AuctionTheme"); ?></a>
@@ -355,11 +358,11 @@
                   {     
                     ?>
                     
-                    <li>
+                   <?php /*?> <li>
                       <a class="<?php echo $class_register; ?>" href="<?php bloginfo('siteurl') ?>/wp-login.php?action=register">
                         <?php echo __("Register","AuctionTheme"); ?>
                       </a>
-                    </li>
+                    </li><?php */?>
                     <li>
                       <a class="<?php echo $class_log; ?>" href="<?php bloginfo('siteurl') ?>/wp-login.php">
                         <?php echo __("Log In","AuctionTheme"); ?>

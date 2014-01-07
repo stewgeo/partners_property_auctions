@@ -4052,13 +4052,19 @@ the_excerpt(); ?>
 *****************************************************************************/
 function auctionTheme_get_homepage_post_function()
 {
-	echo '<div id="featured-properties" class="row">
+	global $wpdb;
+	$args = array( 'post_type' => 'auction', 'orderby' => 'rand', 'posts_per_page' => 8 );
+	$loop = new WP_Query( $args );
+echo '<div id="featured-properties" class="row">
       <div class="col-md-12">
         <h3>Featured Properties</h3>
       </div>';
-	$args = array( 'post_type' => 'auction', 'orderby' => 'rand', 'posts_per_page' => 8 );
-	$loop = new WP_Query( $args );
-while ( $loop->have_posts() ) : $loop->the_post(); $count++;
+	  if($wpdb->num_rows==0){
+		echo "We are currently compiling a catalogue of properties for our next auction. Please check back soon!"; 
+	  }
+	  else {
+		  	  while ( $loop->have_posts() ) : $loop->the_post(); $count++;
+
 	echo '<div class="img-panel col-md-3" id="post-ID-';
 	the_ID();
 	echo'"> <a href="';
@@ -4074,7 +4080,7 @@ echo AuctionTheme_get_home_post_image(get_the_ID());
         echo '</div><div class="row">';
     }
 endwhile;
-					
+	  }
 }
 
 function get_news_posts()

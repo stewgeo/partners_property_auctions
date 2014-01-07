@@ -115,7 +115,7 @@ else AuctionTheme_get_post_grid() ?>
 		                             
      	else:
 		
-		echo __('No auctions posted.',"AuctionTheme");
+		echo __('We are currently compiling a catalogue of properties for our next auction. Please check back soon!',"AuctionTheme");
 		
 		endif;
 		// Reset Post Data
