@@ -18,11 +18,16 @@
 	<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes('xhtml'); ?> >
 	<head>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-	<title>
-	<?php
-		wp_title();
-	?>
-    </title>
+	<title><?php
+    if(is_front_page()){
+		bloginfo('description');
+		}
+		else 
+		{
+			wp_title('') ;
+			echo  " | ";
+		}
+		?><?php bloginfo('name'); ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />    
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css" />
