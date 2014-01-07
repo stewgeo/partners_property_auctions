@@ -51,7 +51,6 @@ $term_title = $term->name;
 	
 
 ?>
-
 <?php 
 
 		if(function_exists('bcn_display'))
@@ -61,42 +60,98 @@ $term_title = $term->name;
 			echo '</div></div>';
 		}
 
-?>	
+?>
+
+<div id="content">
+  <div class="my_box3">
+    <div class="box_title">
+      <?php
+						
+						if(is_tag())
+ {
+		 				
+$tgs = $wp_query->queried_object->name;
+							echo sprintf(__("All Auctions Tagged: '%s'",'AuctionTheme'), $tgs);	
+						}
+						else
+						{
+						
+						if(empty($term_title)) echo __("All Properties",'AuctionTheme');
+						else echo sprintf( __("Latest Posted Auctions in %s",'AuctionTheme'), $term_title);
+						
+						}
+					?>
+      <?php
+					
+						$view = auctiontheme_get_view_grd();
+						
+						if($view == "normal")
+						{
+							$list_view = __('List View','AuctionTheme');
+							$grid_view = '<a href="'.get_bloginfo('siteurl').'/?switch_to_view=grid&ret_u='.urlencode(auctionTheme_curPageURL()).'">'.__('Grid View','AuctionTheme') . '</a>';	
+						}
+						else
+						{
+							$list_view = '<a href="'.get_bloginfo('siteurl').'/?switch_to_view=list&ret_u='.urlencode(auctionTheme_curPageURL()).'">'.__('List View','AuctionTheme') . '</a>';
+							$grid_view = __('Grid View','AuctionTheme');	
+						}
+					
+					
+					?>
+      <p class="pk_lst_grd"><?php echo $list_view; ?> | <?php echo $grid_view; ?></p>
+    </div>
+    <div class="box_content">
+      <?php if ( have_posts() ): while ( have_posts() ) : the_post(); ?>
+      <?php 
+
+if($view == "normal")
+AuctionTheme_get_post();
+else AuctionTheme_get_post_grid() ?>
+      <?php  
+ 		endwhile; 
+		
+		if(function_exists('wp_pagenavi')):
+		wp_pagenavi(); endif;
+		                             
+     	else:
+		
+		echo __('No auctions posted.',"AuctionTheme");
+		
+		endif;
+		// Reset Post Data
+		wp_reset_postdata();
+		 
+		?>
+    </div>
+  </div>
+</div>
 <div id="right-sidebar">
-    <ul class="xoxo">
-    	<li id="text-6" class="widget-container widget_text">
-        <h3 class="widget-title"><?php _e('Search Options','AuctionTheme'); ?></h3>	
-        <div class="textwidget" style="overflow:hidden">
-        
-                <div style="float:left;width:100%">
-                                
-                <form method="get" action="<?php echo AuctionTheme_advanced_search_link(); ?>" role="form" class="form form-inline">
-                
-                <?php
+  <ul class="xoxo">
+    <li id="text-6" class="widget-container widget_text">
+      <h3 class="widget-title">
+        <?php _e('Search Options','AuctionTheme'); ?>
+      </h3>
+      <div class="textwidget" style="overflow:hidden">
+        <div style="float:left;width:100%">
+          <form method="get" action="<?php echo AuctionTheme_advanced_search_link(); ?>" role="form" class="form form-inline">
+            <?php
 							
 							if(AuctionTheme_using_permalinks() == false)
 							echo '<input type="hidden" value="'.get_option('AuctionTheme_adv_search_id').'" name="page_id" />';
 							
 							?>
-                    
-                    
-                   <label for="term">Keyword:</label>
-                   <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['term']); ?>" name="term" />
-                   
-                   <label for="price_min">Min Price:</label>
-                    <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['price_min']); ?>" name="price_min" />
-                    
-                   <label for="price_max">Max Price:</label>
-                   <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['price_max']); ?>" name="price_max" />
-          		
-                   <label for="zip_code">Postcode:</label>
-                   <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['zip_code']); ?>" name="zip_code" />
-                   
-                   <label for="radius">Search Radius (miles):</label>
-                   <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['radius']); ?>" name="radius" />
-                                       
-<table width="100%" >
-                        <?php
+            <label for="term">Keyword:</label>
+            <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['term']); ?>" name="term" />
+            <label for="price_min">Min Price:</label>
+            <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['price_min']); ?>" name="price_min" />
+            <label for="price_max">Max Price:</label>
+            <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['price_max']); ?>" name="price_max" />
+            <label for="zip_code">Postcode:</label>
+            <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['zip_code']); ?>" name="zip_code" />
+            <label for="radius">Search Radius (miles):</label>
+            <input class="do_input_afs form-control" size="10" value="<?php echo strip_tags($_GET['radius']); ?>" name="radius" />
+            <table width="100%" >
+              <?php
 		
 		$get_catID = AuctionTheme_get_CATID($_GET['auction_cat_cat']);
 		
@@ -117,98 +172,16 @@ $term_title = $term->name;
 		}	
 		
 		
-		?>  
-                
-               
-
-                   <tr><td></td><td></table>
-                   <input type="submit" value="<?php _e("Refine Search","AuctionTheme"); ?>" name="ref-search" class="big-search-submit2 btn" /></td></tr>
-                   </form>
- </div>
-</div>
-</li>
-
-<?php dynamic_sidebar( 'other-page-area'); ?>
-
-  	</ul>  
-    </div>
-
-<div id="content">
-
-<div class="my_box3">
-         
-            	<div class="box_title"><?php
-						
-						if(is_tag())
- {
-		 				
-$tgs = $wp_query->queried_object->name;
-							echo sprintf(__("All Auctions Tagged: '%s'",'AuctionTheme'), $tgs);	
-						}
-						else
-						{
-						
-						if(empty($term_title)) echo __("All Properties",'AuctionTheme');
-						else echo sprintf( __("Latest Posted Auctions in %s",'AuctionTheme'), $term_title);
-						
-						}
-					?>
-            		
-            		
-            		
-                    
-                    <?php
-					
-						$view = auctiontheme_get_view_grd();
-						
-						if($view == "normal")
-						{
-							$list_view = __('List View','AuctionTheme');
-							$grid_view = '<a href="'.get_bloginfo('siteurl').'/?switch_to_view=grid&ret_u='.urlencode(auctionTheme_curPageURL()).'">'.__('Grid View','AuctionTheme') . '</a>';	
-						}
-						else
-						{
-							$list_view = '<a href="'.get_bloginfo('siteurl').'/?switch_to_view=list&ret_u='.urlencode(auctionTheme_curPageURL()).'">'.__('List View','AuctionTheme') . '</a>';
-							$grid_view = __('Grid View','AuctionTheme');	
-						}
-					
-					
-					?>
-            		<p class="pk_lst_grd"><?php echo $list_view; ?> | <?php echo $grid_view; ?></p>
-            		
-                    
-            	</div> 
-				<div class="box_content">
-
-<?php if ( have_posts() ): while ( have_posts() ) : the_post(); ?>
-
-<?php 
-
-if($view == "normal")
-AuctionTheme_get_post();
-else AuctionTheme_get_post_grid() ?>
-
- 
-
-<?php  
- 		endwhile; 
-		
-		if(function_exists('wp_pagenavi')):
-		wp_pagenavi(); endif;
-		                             
-     	else:
-		
-		echo __('No auctions posted.',"AuctionTheme");
-		
-		endif;
-		// Reset Post Data
-		wp_reset_postdata();
-		 
 		?>
-
-
-</div></div></div>
-
+            </table>
+            <input type="submit" value="<?php _e("Refine Search","AuctionTheme"); ?>" name="ref-search" class="big-search-submit2 btn" />
+          </form>
+        </div>
+      </div>
+    </li>
+    <?php dynamic_sidebar( 'other-page-area'); ?>
+  </ul>
+</div>
 <?php
 
 	get_footer();
