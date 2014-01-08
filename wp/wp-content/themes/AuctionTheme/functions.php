@@ -7722,4 +7722,6 @@ function auctiontheme_show_status_offer($approved, $rejected)
   if($approved == 1 and $rejected == 0) return __('Accepted','AuctionTheme'); 
 }
 
+global $wp_rewrite; $wp_rewrite->flush_rules();
+
 ?>
