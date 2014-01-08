@@ -307,7 +307,7 @@
                     
                   } 
                 ?><?php */?>
-                  <li><a class="various fancybox.iframe" href="<?php echo get_bloginfo('template_url')?>/contact.php">Contact</a>       		</p>
+                  <li><a class="various fancybox.iframe" href="<?php echo get_bloginfo('template_url')?>/contact.php">Contact Us</a>       		</p>
 </li>
                   <li>
                     <a class="<?php echo $watch_class; ?>" href="<?php echo AuctionTheme_watch_list(); ?>"><?php echo __("Favourites","AuctionTheme"); ?></a>
