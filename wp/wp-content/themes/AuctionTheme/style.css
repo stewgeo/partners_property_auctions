@@ -29,6 +29,10 @@ body
 
 /*-----*/
 
+.table-hover tr:hover {
+    cursor: pointer;
+}
+
 
 .alignleft {
 	float: left;

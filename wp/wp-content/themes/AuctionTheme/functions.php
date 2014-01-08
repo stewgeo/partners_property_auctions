@@ -739,10 +739,10 @@ function auctionTheme_add_theme_styles()
   
   
   
-    wp_register_style( 'bx_styles', get_bloginfo('template_url').'/css/bx_styles.css', array(), '20120822', 'all' );
+  wp_register_style( 'bx_styles', get_bloginfo('template_url').'/css/bx_styles.css', array(), '20120822', 'all' );
   wp_register_script( 'social_pr', get_bloginfo('template_url').'/js/connect.js');
   wp_register_script( 'respond_js', get_bloginfo('template_url').'/js/vendor/respond.js');  
-
+  wp_register_script( 'rowlink_js', get_bloginfo('template_url').'/js/vendor/bootstrap-rowlink.js');
   
   wp_register_script( 'easing', get_bloginfo('template_url').'/js/jquery.easing.1.3.js');
   wp_register_script( 'bx_slider', get_bloginfo('template_url').'/js/jquery.bxSlider.min.js');
@@ -797,6 +797,7 @@ function auctionTheme_add_theme_styles()
      wp_enqueue_style( 'bx_styles' );
      wp_enqueue_script( 'social_pr' );
      wp_enqueue_script( 'respond_js' );
+     wp_enqueue_script( 'rowlink_js' );
      wp_enqueue_script( 'easing' );
      wp_enqueue_script( 'bx_slider' );
      wp_enqueue_script( 'jquery_cowntdown' );
