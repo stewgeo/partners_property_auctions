@@ -69,7 +69,6 @@ get_header();
       <div class="col-md-7">
         <h2>Yorkshire's property auctions, where everyone's a winner.</h2>
         <ul class="lead">
-        <li>Hi</li>
           <li>Independent Auctioneers</li>
           <li>Established estate agent partners</li>
           <li>Faster route to market </li>
