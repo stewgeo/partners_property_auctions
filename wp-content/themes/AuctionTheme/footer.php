@@ -97,6 +97,8 @@ endif;
 				</div>
 				<div class="pull-right">
 					<a href="<?php echo get_page_link(1607); ?>">Conditions of Sale</a>
+					<a href="<?php echo get_page_link(1851); ?>">Privacy Policy</a>
+					<a href="<?php echo get_page_link(1849); ?>">Partner Download Area</a>
 				</div>
 			</div>
 		</div>
@@ -106,9 +108,9 @@ endif;
 					<a href="http://www.tpos.co.uk/">
 						<img src="<?php echo get_bloginfo('template_url');?>/images/footer/ombudsman.jpg">
 					</a>
-					<a href="http://www.nava.org.uk/">
+<?php /*?>					<a href="http://www.nava.org.uk/">
 						<img src="<?php echo get_bloginfo('template_url');?>/images/footer/nava.jpg">
-					</a>
+					</a><?php */?>
 					<a href="http://www.tradingstandards.gov.uk/">
 						<img src="<?php echo get_bloginfo('template_url');?>/images/footer/trading_standards_logo.png">
 					</a>
