@@ -104,19 +104,15 @@ get_header();
   <div class="row">
     <div class="col-md-8 partners-featured">
       <h3>Featured Partners</h3>      
-       <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=6"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/quantum.gif" class="img-responsive pull-left"></a>
-       <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=7"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/yhomes.png" class="img-responsive pull-left"></a>
-       <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=5"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/churchills.png" class="img-responsive pull-left"></a>
-      <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=4"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/hudson-moody.png" class="img-responsive pull-left"></a>
+       <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=6"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/quantum.gif" class="img-responsive"></a>
+       <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=7"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/yhomes.png" class="img-responsive"></a>
+       <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=5"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/churchills.png" class="img-responsive"></a>
+      <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=4"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/hudson-moody.png" class="img-responsive"></a>
     </div>
     <div id="news-panel" class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <strong>  News</strong>
-        </div>
-        <div class="panel-body">
-         <?php get_news_posts(); ?> 
-        </div>     
+      <h4>Latest News</h4>
+      <div>
+       <?php get_news_posts(); ?> 
       </div>
     </div>
   </div>

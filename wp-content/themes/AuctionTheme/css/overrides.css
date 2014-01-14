@@ -15,14 +15,40 @@
   padding-right: 9px;
 }
 
-#site-search, .nav{
-	padding-bottom: 0px;
-	padding-top: 12px;
+#site-search form{
+  width:300px;
 }
 
-#site-search, .navbar-form {
-  padding-bottom: 0px;
+#site-search{
+	padding-bottom: 0px;
+	padding-top: 5px;
 }
+
+@media (min-width:768px) {
+  #site-search{
+    float:right;
+    width:300px;
+  } 
+}
+
+/* Padding for main header text at different page widths */
+.nav{
+  padding-bottom: 0px;
+} 
+
+@media (min-width:1200px) {
+  .nav{
+    padding-top: 55px;
+  } 
+}
+
+
+@media (max-width:1199px) {
+  .nav{
+    padding-top: 6px;
+  } 
+}
+
 
 .navbar-default .navbar-nav > li > a {
   color: black;
@@ -30,8 +56,6 @@
 
 #right-header-nav > li > a { 
   color: #027dbd;
-  padding: 0px 10px;
-  border-right: 2px solid #dedede;
   font-size:13px;
 
 }
@@ -61,7 +85,6 @@
 }
 
 #news-panel{
-  height: 180px;
   padding-top: 10px;
 }
 
@@ -118,20 +141,11 @@
 }
 
 .img-panel{
-  padding-top:10px;
-
+  margin-top:10px;
 }
 
 .img-panel > .description{
-  border-bottom: 1px solid rgb(224, 222, 222);
-  border-left: 1px solid rgb(224, 222, 222);
-  border-right: 1px solid rgb(224, 222, 222);
-  border-bottom-left-radius:6px;
-  border-bottom-right-radius:6px;
-  padding: 5px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  padding-top: 5px;
 }
 
 .img-panel, .title{
@@ -142,24 +156,25 @@
   text-align: left;
   color: rgb(71, 95, 119);
 }
-.img-rounded-top{
-  border-top-left-radius:6px;
-  border-top-right-radius:6px;
-}
 
 .panel-starter{
   background-image: url("images/terraced_houses_blur_wash.jpg");
   text-align: left;
   color:white;
-  height:258px;
   background-repeat:no-repeat;
   background-size: cover;
   margin-bottom: 20px;
 }
 
+.partners-featured{
+  padding-bottom: 10px;
+}
+
 .partners-featured img{
   height:86px;
-  padding-right:20px;
+  display:inline-block;
+  padding-right:5px;
+  padding-top:5px;
 }
 .auto-width{
 	width:auto !important;
@@ -167,4 +182,31 @@
 
 #ad-other-details{
   margin-top:50px;
+}
+
+.top {
+  padding-top: 8px;
+}
+
+.top ul.loginbar {
+  margin: 0;
+  padding: 0;
+  z-index: 9999;
+  position: relative;
+}
+
+.top ul.loginbar > li {
+display: inline;
+list-style: none;
+padding-bottom: 15px;
+}
+
+.top ul.loginbar li.devider {
+top: -1px;
+padding: 0;
+font-size: 8px;
+position: relative;
+margin: 0 9px 0 5px;
+font-family: Tahoma;
+border-right: solid 1px #bbb;
 }
