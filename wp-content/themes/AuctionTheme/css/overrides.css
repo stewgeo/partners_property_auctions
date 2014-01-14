@@ -214,3 +214,16 @@ margin: 0 9px 0 5px;
 font-family: Tahoma;
 border-right: solid 1px #bbb;
 }
+
+#buying .collapse-item{
+  background-color: #E7E7E7;
+  padding: 10px; 
+}
+
+#buying .collapse-item:hover{
+  cursor:pointer; 
+}
+
+#buying .glyphicon-ok{
+  color: green;
+}
