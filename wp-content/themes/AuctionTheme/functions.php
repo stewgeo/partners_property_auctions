@@ -3995,7 +3995,7 @@ echo '<div id="featured-properties" class="row">
         <h3>Featured Properties</h3>
       </div>';
     if($wpdb->num_rows==0){
-    echo "We are currently compiling a catalogue of properties for our next auction. Please check back soon!"; 
+    echo "<div class='col-md-12'>We are currently compiling a catalogue of properties for our next auction. Please check back soon!</div>"; 
     }
     else {
           while ( $loop->have_posts() ) : $loop->the_post(); $count++;

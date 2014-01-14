@@ -97,6 +97,10 @@
   margin-top:20px;
 }
 
+#newsletter-panel .btn{
+  background-color: #C4C4C4;  
+}
+
 #newsletter-panel label{
   font-weight: normal;
   color: white;
