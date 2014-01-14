@@ -742,6 +742,7 @@ function auctionTheme_add_theme_styles()
   wp_register_style( 'bx_styles', get_bloginfo('template_url').'/css/bx_styles.css', array(), '20120822', 'all' );
   wp_register_script( 'social_pr', get_bloginfo('template_url').'/js/connect.js');
   wp_register_script( 'respond_js', get_bloginfo('template_url').'/js/vendor/respond.js');  
+  wp_register_script( 'bootstrap_js', get_bloginfo('template_url').'/js/bootstrap.js');
   wp_register_script( 'rowlink_js', get_bloginfo('template_url').'/js/vendor/bootstrap-rowlink.js');
   
   wp_register_script( 'easing', get_bloginfo('template_url').'/js/jquery.easing.1.3.js');
@@ -798,6 +799,7 @@ function auctionTheme_add_theme_styles()
      wp_enqueue_script( 'social_pr' );
      wp_enqueue_script( 'respond_js' );
      wp_enqueue_script( 'rowlink_js' );
+     wp_enqueue_script( 'bootstrap_js' );
      wp_enqueue_script( 'easing' );
      wp_enqueue_script( 'bx_slider' );
      wp_enqueue_script( 'jquery_cowntdown' );
@@ -3998,9 +4000,9 @@ echo '<div id="featured-properties" class="row">
     else {
           while ( $loop->have_posts() ) : $loop->the_post(); $count++;
 
-  echo '<div class="img-panel col-md-3" id="post-ID-';
+  echo '<div class="col-md-3 col-sm-6" id="post-ID-';
   the_ID();
-  echo'"> <a href="';
+  echo'"> <div class="img-panel"><a href="';
   the_permalink();
   echo' ">';
 echo AuctionTheme_get_home_post_image(get_the_ID());
@@ -4008,7 +4010,7 @@ echo AuctionTheme_get_home_post_image(get_the_ID());
       the_title();
       echo '</div><div class="price">Guide Price: ';
       echo get_post_meta(get_the_ID(), 'guide_price' ,true);
-      echo '</div></div></div>';
+      echo '</div></div></div></div>';
       if ( 0 == $count%4 ) {
         echo '</div><div class="row">';
     }
