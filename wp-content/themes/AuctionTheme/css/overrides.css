@@ -224,6 +224,6 @@ border-right: solid 1px #bbb;
   cursor:pointer; 
 }
 
-#buying .glyphicon-ok{
+#buying .glyphicon-ok, #selling .glyphicon-ok{
   color: green;
 }
