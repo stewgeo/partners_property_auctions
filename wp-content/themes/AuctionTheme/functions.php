@@ -32,7 +32,7 @@
   $category_url_link    = get_option("AuctionTheme_category_permalink");
   $location_url_link    = get_option("AuctionTheme_location_permalink");
   $auctions_url_thing   = get_option("AuctionTheme_auction_permalink");
-  $auction_thing_list   = "auction-list";
+  $auction_thing_list   = "property-list";
   
   if(empty($category_url_link))   $category_url_link = 'section';
   if(empty($location_url_link))   $location_url_link = 'location';
@@ -2990,20 +2990,20 @@ function auctionTheme_create_post_type() {
   register_post_type( 'auction',
     array(
       'labels' => array(
-        'name'      => __( 'Auctions','AuctionTheme' ),
-        'singular_name' => __( 'Auction','AuctionTheme' ),
-    'add_new'     => __('Add New Auction','AuctionTheme'),
-    'new_item'    => __('New Auction','AuctionTheme'),
-    'edit_item'   => __('Edit Auction','AuctionTheme'),
-    'add_new_item'  => __('Add New Auction','AuctionTheme'),
-    'search_items'  => __('Search Auctions','AuctionTheme'),
+        'name'      => __( 'Properties','AuctionTheme' ),
+        'singular_name' => __( 'Property','AuctionTheme' ),
+    'add_new'     => __('Add New Property','AuctionTheme'),
+    'new_item'    => __('New Property','AuctionTheme'),
+    'edit_item'   => __('Edit Property','AuctionTheme'),
+    'add_new_item'  => __('Add New Property','AuctionTheme'),
+    'search_items'  => __('Search Properties','AuctionTheme'),
     
     
       ),
       'public' => true,
     'menu_position' => 5,
     'register_meta_box_cb' => 'auctionTheme_set_metaboxes',
-    'has_archive' => "auction-list",
+    'has_archive' => "property-list",
       'rewrite' => array('slug'=> $auctions_url_thing."/%auction_cat%",'with_front'=>false), 
     'supports' => array('title','editor','author','thumbnail','excerpt','comments'),
     '_builtin' => false,

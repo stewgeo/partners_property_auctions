@@ -124,7 +124,7 @@ if(function_exists('bcn_display'))
     				wp_pagenavi(); 
           endif;
     		else:
-    			echo __('No auctions posted.',"AuctionTheme");
+    			echo __('No properties posted.',"AuctionTheme");
     		endif;
         // Reset Post Data
         wp_reset_postdata();
