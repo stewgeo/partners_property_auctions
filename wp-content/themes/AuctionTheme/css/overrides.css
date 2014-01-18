@@ -220,7 +220,7 @@ border-right: solid 1px #bbb;
   padding: 10px; 
 }
 
-#buying .collapse-item:hover{
+#buying .collapse-item:hover, #partners .collapse-item:hover{
   cursor:pointer; 
 }
 
