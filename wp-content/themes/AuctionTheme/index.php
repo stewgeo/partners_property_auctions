@@ -108,6 +108,11 @@ get_header();
        <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=7"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/yhomes.png" class="img-responsive"></a>
        <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=5"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/churchills.png" class="img-responsive"></a>
       <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=4"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/hudson-moody.png" class="img-responsive"></a>
+      
+            <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=8"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/austin-brooks.png" class="img-responsive"></a>
+                  <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=9"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/dale-eddison.png" class="img-responsive"></a>
+                        <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=10"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/giles-edwards.png" class="img-responsive"></a>
+                              <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=11"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/ribston-pippin.png" class="img-responsive"></a>
     </div>
     <div id="news-panel" class="col-md-4">
       <h4>Latest News</h4>
