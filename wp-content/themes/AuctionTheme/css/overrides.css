@@ -215,7 +215,7 @@ font-family: Tahoma;
 border-right: solid 1px #bbb;
 }
 
-#buying .collapse-item{
+#buying .collapse-item,#partners .collapse-item{
   background-color: #E7E7E7;
   padding: 10px; 
 }
