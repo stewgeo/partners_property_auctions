@@ -227,3 +227,8 @@ border-right: solid 1px #bbb;
 #buying .glyphicon-ok, #selling .glyphicon-ok{
   color: green;
 }
+
+.radio-spacer{
+  padding-left: 10px;
+  padding-bottom: 10px;
+}

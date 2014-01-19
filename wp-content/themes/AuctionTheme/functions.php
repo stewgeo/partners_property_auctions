@@ -5370,7 +5370,7 @@ function AuctionTheme_get_auction_category_fields_without_vals($catid, $clas_op 
       
         $s2 = "select * from ".$wpdb->prefix."auction_custom_options where custid='$ids' order by ordr ASC ";
         $r2 = $wpdb->get_results($s2);
-        
+        $arr[$i]['value']  .= '<span class="radio-spacer"></span>';
         if(count($r2) > 0)
         foreach($r2 as $row2) // = mysql_fetch_object($r2))
         {
@@ -5389,7 +5389,7 @@ function AuctionTheme_get_auction_category_fields_without_vals($catid, $clas_op 
           }       
           else $value = '';
           
-          $arr[$i]['value']  .= '<input type="radio" '.$value.' value="'.$row2->valval.'" name="custom_field_value_'.$ids.'"> '.$row2->valval.'<br/>';
+          $arr[$i]['value']  .= '<label class="radio-inline">'.$row2->valval.'<input type="radio" '.$value.' value="'.$row2->valval.'" name="custom_field_value_'.$ids.'"></label>';
         }
     }
     
@@ -5431,7 +5431,7 @@ function AuctionTheme_get_auction_category_fields_without_vals($catid, $clas_op 
     
     if($tp == 2) //select
     {
-      $arr[$i]['value']  = '<select class="'.$clas_op.'" name="custom_field_value_'.$ids.'" /><option value="">'.__('Select','AuctionTheme').'</option>';
+      $arr[$i]['value']  = '<br><select class="form-control '.$clas_op.'" name="custom_field_value_'.$ids.'" /><option value="">'.__('Select','AuctionTheme').'</option>';
       
         $s2 = "select * from ".$wpdb->prefix."auction_custom_options where custid='$ids' order by ordr ASC ";
         $r2 = $wpdb->get_results($s2);

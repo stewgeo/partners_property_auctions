@@ -378,15 +378,6 @@ height: 20px;
 	
 }
 
-#content
-{
-	float:left;
-	width:850px;
-	padding-top:10px;
-	/*overflow:hidden;*/
-	height:auto;
-}
-
 .wp-pagenavi
 {
 	margin-top:15px	
