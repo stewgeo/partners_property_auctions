@@ -867,15 +867,12 @@ margin-top: 0px;
 .auction-details1 li img
 {
 	float:left;
-	margin-top:0px;
-	margin-right:6px
+	margin-top:5px;
 }
 
-.auction-details1 li h3
+.auction-details1 li
 {
-	float:left;
-	width:70px;
-	font-size:11px;
+	font-size:14px;
 	margin:0px;
 	padding:0px;
 	border:0px;
@@ -883,22 +880,9 @@ margin-top: 0px;
 	
 }
 
-.auction-details1 li p
-{
-	margin:0px;
-	float:left;
-	width:155px;
-	font-size:11px
-	
-}
-
 .details_holder_grid .auction-details1 li p
 {
-	margin:0px;
-	float:left;
-	width:100%;
-	font-size:11px;
-	text-align:center
+
 	
 }
 
@@ -1405,6 +1389,10 @@ a:hover
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
 	width:100%;
+}
+
+.box_content h4{
+	margin-top: 4px;
 }
 
 .img_class, .image_class, .attachment-250x170, .attachment-100x80
@@ -2437,8 +2425,8 @@ a.active-search-link:hover { background:#9ABECF }
 	background:url('images/featured.png');
 	width:56px;
 	height:58px; 
-	top:11px; 
-	left:15px;
+	top:4px; 
+	left:20px;
 	position:absolute	;
 	pointer-events: none;
 }
@@ -2533,8 +2521,9 @@ a.pay_now:link, a.pay_now:visited { background:#4483B7; color:white; border:1px 
  
  .watch-list{
 	padding-top:8px;
-	margin-left:-4px;	
-	text-align:center 
+	padding-bottom:8px;
+	text-align:left;
+	border-top: 1px whiteSmoke solid;
  }
  
  .watch-list a.add-to-watchlist:link, .watch-list a.add-to-watchlist:visited

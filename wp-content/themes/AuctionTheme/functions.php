@@ -3778,30 +3778,24 @@ function auctionTheme_get_post_function( $arr = '')
         
       }
       ?>
-      <div class="post" id="post-ID-<?php the_ID(); ?>">
-        <?php if($featured == "1"): ?>
-        <div class="featured-two"></div>
-        <?php endif; ?>
-          <div class="padd10">
-            <div class="image_holder">
-              <a href="<?php the_permalink(); ?>"><?php echo AuctionTheme_get_first_post_image(get_the_ID(),75,65 , 'attachment-75x65', 'normal-auction-thumb',1); ?></a>
-
-              <div class="watch-list">
-                <?php if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true): ?>
-                  <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- Favourites','AuctionTheme'); ?></a>
-                <?php else: ?>
-                  <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ Favourites','AuctionTheme'); ?></a>
+      <div class="row post" id="post-ID-<?php the_ID(); ?>">
+          <div class="">
+            <div class="col-md-3">
+              <a href="<?php the_permalink(); ?>">
+                <?php if($featured == "1"): ?>
+                  <div class="featured-two"></div>
                 <?php endif; ?>
-              </div>
+                <?php echo AuctionTheme_get_first_post_image(get_the_ID(), 250, 170, 'img_class'); ?>
+              </a>
             </div>
-            <div  class="title_holder" > 
-              <h2>
+            <div  class="col-md-6" >
+              <h4>
                 <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>">
                   <?php
                     the_title();
                   ?>
                 </a>
-              </h2>
+              </h4>
               <?php if(!AuctionTheme_is_different_home_layout()) { 
                 $author = get_userdata($post->post_author);
               ?>
@@ -3835,10 +3829,11 @@ function auctionTheme_get_post_function( $arr = '')
                 <?php endif; ?>
 
                 <?php if(!AuctionTheme_is_different_home_layout() ) { ?>  
-
+                  <!--
                   <?php if( $pay_this_me != 1): ?>
                     <a href="<?php the_permalink(); ?>" class="post_bid_btn"><?php echo __("Read More", "AuctionTheme");?></a>
                   <?php endif; ?>
+                  -->
 
                   <?php if( $paid != 1 and ($post->post_author == $uid)): ?>
                     <a href="<?php echo AuctionTheme_post_new_with_pid_stuff_thg(get_the_ID(), 3); ?>" class="post_bid_btn"><?php echo __("Publish", "AuctionTheme");?></a>
@@ -3887,93 +3882,103 @@ function auctionTheme_get_post_function( $arr = '')
                 <?php } ?>
                   <?php do_action('AuctionTheme_post_content_after_buttons'); ?>
               </div>
+              <div class="watch-list">
+                <?php if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true): ?>
+                  <a class="btn btn-danger btn-xs rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- Favourites','AuctionTheme'); ?></a>
+                <?php else: ?>
+                  <a class="btn btn-default btn-xs add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ Favourites','AuctionTheme'); ?></a>
+                <?php endif; ?>
+              </div>
               <!-- ############### -->
             </div> <!--  title_holder -->
-            <?php } ?>
-            <div class="details_holder"> 
-              <?php /*?> 
-              <ul class="auction-details1">
-                <li>
-                  <img src="<?php echo get_bloginfo('template_url'); ?>/images/price.png" alt="price" width="15" height="15" /> 
-                  <h3><?php echo __("Price",'AuctionTheme'); ?>:</h3>
-                  <p><?php echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID())); ?>
-                  <?php if($only_buy_now == '1') : ?>
-                    [<?php _e("BuyNow",'AuctionTheme'); ?>]                                
-                  <?php endif; ?>
-                  </p>
-                </li>
-          
-                <?php if($only_buy_now != '1') : ?>
-                  <?php if(!empty($buy_now)): ?>
-                  
-                    <li>
-                      <img src="<?php echo get_bloginfo('template_url'); ?>/images/price.png" alt="price" width="15" height="15" /> 
-                      <h3><?php echo __("Buy Now",'AuctionTheme'); ?>:</h3>
-                      <p><?php echo auctionTheme_get_show_price($buy_now); ?></p>
-                    </li>
-                  <?php endif; ?>
-                  
-                  
+            <div  class="col-md-3" >
+              <?php } ?>
+              <div class="details_holder"> 
+                <?php /*?> 
+                <ul class="auction-details1">
                   <li>
-                    <img src="<?php echo get_bloginfo('template_url'); ?>/images/posted.png" width="15" alt="posted" height="15" />  
-                    <h3><?php _e("Bids",'AuctionTheme');?>:</h3>
-                    <p><?php echo auctionTheme_number_of_bid(get_the_ID()); ?></p> 
-                  </li>   
-                <?php endif; ?>
-
-                <li>
-                  <img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="15" alt="posted" height="15" /> 
-                  <h3><?php echo __("Posted on",'AuctionTheme'); ?>:</h3>
-                  <p><?php the_time("j F Y g:i A"); ?></p>
-                </li>
-                
-                <?php if($closed == "0"):              
-                  $AuctionTheme_no_time_on_buy_now = get_option('AuctionTheme_no_time_on_buy_now');
-                  if($only_buy_now == "1" and $AuctionTheme_no_time_on_buy_now == "yes"): 
-                    //asd
-                  else:
-                  ?>
+                    <img src="<?php echo get_bloginfo('template_url'); ?>/images/price.png" alt="price" width="15" height="15" /> 
+                    <h3><?php echo __("Price",'AuctionTheme'); ?>:</h3>
+                    <p><?php echo auctionTheme_get_show_price(auctionTheme_get_current_price(get_the_ID())); ?>
+                    <?php if($only_buy_now == '1') : ?>
+                      [<?php _e("BuyNow",'AuctionTheme'); ?>]                                
+                    <?php endif; ?>
+                    </p>
+                  </li>
+            
+                  <?php if($only_buy_now != '1') : ?>
+                    <?php if(!empty($buy_now)): ?>
+                    
+                      <li>
+                        <img src="<?php echo get_bloginfo('template_url'); ?>/images/price.png" alt="price" width="15" height="15" /> 
+                        <h3><?php echo __("Buy Now",'AuctionTheme'); ?>:</h3>
+                        <p><?php echo auctionTheme_get_show_price($buy_now); ?></p>
+                      </li>
+                    <?php endif; ?>
+                    
+                    
                     <li>
-                      <img src="<?php echo get_bloginfo('template_url'); ?>/images/clock.png" width="15" alt="clock" height="15" /> 
-                      <h3><?php echo __("Expires in",'AuctionTheme'); ?>:</h3>
-                                      
-                                      <p class="expiration_auction_p"><?php echo ($closed=="1" ? __('Closed', 'AuctionTheme') : ($ending - current_time('timestamp',0))); ?></p>
-                                      
-                      <!--<p><?php echo ($closed=="1" ? __('Closed', 'AuctionTheme') : AuctionTheme_prepare_seconds_to_words($ending - current_time('timestamp',0))); ?></p> -->
-                    </li>
-                <?php 
+                      <img src="<?php echo get_bloginfo('template_url'); ?>/images/posted.png" width="15" alt="posted" height="15" />  
+                      <h3><?php _e("Bids",'AuctionTheme');?>:</h3>
+                      <p><?php echo auctionTheme_number_of_bid(get_the_ID()); ?></p> 
+                    </li>   
+                  <?php endif; ?>
+
+                  <li>
+                    <img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="15" alt="posted" height="15" /> 
+                    <h3><?php echo __("Posted on",'AuctionTheme'); ?>:</h3>
+                    <p><?php the_time("j F Y g:i A"); ?></p>
+                  </li>
+                  
+                  <?php if($closed == "0"):              
+                    $AuctionTheme_no_time_on_buy_now = get_option('AuctionTheme_no_time_on_buy_now');
+                    if($only_buy_now == "1" and $AuctionTheme_no_time_on_buy_now == "yes"): 
+                      //asd
+                    else:
+                    ?>
+                      <li>
+                        <img src="<?php echo get_bloginfo('template_url'); ?>/images/clock.png" width="15" alt="clock" height="15" /> 
+                        <h3><?php echo __("Expires in",'AuctionTheme'); ?>:</h3>
+                                        
+                                        <p class="expiration_auction_p"><?php echo ($closed=="1" ? __('Closed', 'AuctionTheme') : ($ending - current_time('timestamp',0))); ?></p>
+                                        
+                        <!--<p><?php echo ($closed=="1" ? __('Closed', 'AuctionTheme') : AuctionTheme_prepare_seconds_to_words($ending - current_time('timestamp',0))); ?></p> -->
+                      </li>
+                  <?php 
+                    endif; 
                   endif; 
-                endif; 
-                ?>
+                  ?>
+                                
+                  <?php  if($asd_paid_items == 1): ?> 
+                    <li>
+                      <img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="15" alt="posted" height="15" /> 
+                      <h3><?php echo __("Buyer",'AuctionTheme'); ?>:</h3>
+                      <p> <a href="<?php echo AuctionTheme_get_user_profile_link($winner->ID); ?>"><?php echo $winner->user_login; ?></a></p>
+                    </li>
+                    <li>
+                      <img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="15" alt="posted" height="15" /> 
+                      <h3><?php echo __("Bought On",'AuctionTheme'); ?>:</h3>
+                      <p> <?php echo date_i18n("j F Y g:i A", $rows->date_choosen); ?></p>
+                    </li>
+                                
+                  <?php endif; ?>
                               
-                <?php  if($asd_paid_items == 1): ?> 
-                  <li>
-                    <img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="15" alt="posted" height="15" /> 
-                    <h3><?php echo __("Buyer",'AuctionTheme'); ?>:</h3>
-                    <p> <a href="<?php echo AuctionTheme_get_user_profile_link($winner->ID); ?>"><?php echo $winner->user_login; ?></a></p>
-                  </li>
-                  <li>
-                    <img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="15" alt="posted" height="15" /> 
-                    <h3><?php echo __("Bought On",'AuctionTheme'); ?>:</h3>
-                    <p> <?php echo date_i18n("j F Y g:i A", $rows->date_choosen); ?></p>
-                  </li>
-                              
-                <?php endif; ?>
-                            
-            </ul><?php */?>
+              </ul><?php */?>
 
-            <ul class="auction-details1">
-              <li><h3>Agent:</h3><p><?php the_author() ?></p></li>
-              <li><h3>Guide Price:</h3><p><?php echo get_post_meta($pid, 'guide_price' ,true); ?></p></li>
-              <li><h3>Auction:</h3><p><?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?></p></li>
-              <?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
-              if(!empty($viewing)){
-                echo "<li><h3>Viewing Days:</h3><p>" . $viewing . "</p></li>";
-              }
-              ?>
-            </ul>
-          </div>
-          <div class="partner_image"><?php echo get_avatar( get_the_author_meta('email'), 72 );; ?>
+              <ul class="auction-details1">
+                <li class="text-success"><strong>Guide Price: <?php echo get_post_meta($pid, 'guide_price' ,true); ?></strong></li>                
+                <li><strong>Auction:</strong> <?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?></li>
+                <li><strong>Agent:</strong> <?php the_author() ?>
+                  <div class="partner_image pull-right"><?php echo get_avatar( get_the_author_meta('email'), 72 );; ?>
+                  </div>
+                </li>
+                <?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
+                if(!empty($viewing)){
+                  echo "<li><h3>Viewing Days:</h3><p>" . $viewing . "</p></li>";
+                }
+                ?>
+              </ul>
+            </div>
           </div>
         </div>
       </div>        

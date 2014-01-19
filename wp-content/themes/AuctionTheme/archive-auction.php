@@ -174,8 +174,6 @@ if(function_exists('bcn_display'))
 
 
 		?>
-		<p class="pk_lst_grd"><?php echo $list_view; ?> | <?php echo $grid_view; ?></p>
-
 
 		</div> 
 		<div class="box_content">
