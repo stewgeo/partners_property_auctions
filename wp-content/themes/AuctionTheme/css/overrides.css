@@ -217,11 +217,11 @@ border-right: solid 1px #bbb;
 
 #buying .collapse-item,#partners .collapse-item{
   background-color: #E7E7E7;
-  padding: 10px; 
+  padding: 10px;
 }
 
-#buying .collapse-item:hover, #partners .click-line:hover{
-  cursor:pointer; 
+#buying .collapse-item a,#partners .collapse-item a{
+  color:black;
 }
 
 #buying .glyphicon-ok, #selling .glyphicon-ok{
