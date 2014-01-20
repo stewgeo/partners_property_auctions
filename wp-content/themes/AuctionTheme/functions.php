@@ -7769,7 +7769,7 @@ function notify_new_post($post_id) {
 	if( ( $_POST['post_status'] == 'publish' ) && ( $_POST['original_post_status'] != 'publish' ) ) {
         $post = get_post($post_id);
         $author = get_userdata($post->post_author);
-		$author_email = "jonny@theenergyworkshop.co.uk";
+		$author_email = "richard@partnerspropertyauctions.co.uk";
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $email_subject = "Send Invoice to ";
