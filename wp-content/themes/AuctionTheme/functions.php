@@ -7729,4 +7729,71 @@ function auctiontheme_show_status_offer($approved, $rejected)
   if($approved == 1 and $rejected == 0) return __('Accepted','AuctionTheme'); 
 }
 
-?>
+// SEND EMAIL ONCE POST IS PUBLISHED
+
+function notify_new_post($post_id) {
+    if( ( $_POST['post_status'] == 'publish' ) && ( $_POST['original_post_status'] != 'publish' ) ) {
+        $post = get_post($post_id);
+        $author = get_userdata($post->post_author);
+        $author_email = $author->user_email;
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $email_subject = "Your property has been added to Partners Property Auctions";
+
+        ob_start(); ?>
+
+        <html>
+            <body>
+                <p>
+                    Hi <?php echo $author->display_name ?>,
+                </p>
+                <p>
+                    Your property <a href="<?php echo get_permalink($post->ID) ?>"><?php the_title_attribute() ?></a> has been published.
+                </p>
+                <p>
+                Kind regards,<br />
+                Richard Harper
+                </p>
+            </body>
+        </html>
+
+        <?php
+
+        $message = ob_get_contents();
+
+        ob_end_clean();
+
+        wp_mail( $author_email, $email_subject, $message, $headers );
+    }		
+	
+	if( ( $_POST['post_status'] == 'publish' ) && ( $_POST['original_post_status'] != 'publish' ) ) {
+        $post = get_post($post_id);
+        $author = get_userdata($post->post_author);
+		$author_email = "jonny@theenergyworkshop.co.uk";
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $email_subject = "Send Invoice to ";
+        $email_subject .= $author->display_name;
+
+        ob_start(); ?>
+
+        <html>
+            <body>
+                <p>
+                    The property <a href="<?php echo get_permalink($post->ID) ?>"><?php the_title_attribute() ?></a> has been published.<br>
+                    You need to send an invoice to <?php echo $author->display_name ?>.
+                </p>
+            </body>
+        </html>
+
+        <?php
+
+        $message = ob_get_contents();
+
+        ob_end_clean();
+
+        wp_mail($author_email, $email_subject, $message, $headers );
+    }
+}
+
+add_action( 'publish_auction', 'notify_new_post' ); ?>
