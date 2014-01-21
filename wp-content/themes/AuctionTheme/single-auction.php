@@ -829,11 +829,11 @@
                 <div class="box_content">
 				
 					<div class="ad-page-image-holder">
-						<?php echo AuctionTheme_get_first_post_image(get_the_ID(), 250, 170, 'img_class'); ?>
+						<?php echo AuctionTheme_get_first_post_image(get_the_ID(), 300, 200, 'img_class'); ?>
 						
 						<?php
 				
-				$arr = AuctionTheme_get_post_images(get_the_ID(), 4);
+				$arr = AuctionTheme_get_post_images(get_the_ID(), 12);
 
 				if($arr)
 				{

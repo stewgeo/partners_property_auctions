@@ -676,7 +676,7 @@ margin-top: 0px;
 .attachment-75x65, .attachment-50x50, .attachment-normal-auction-thumb, .attachment-42x42
 {
 	border:1px solid #ddd;
-	padding:2px;
+	padding:1px;
 	box-shadow:0 0 2px #dedede;
 	-moz-box-shadow:0 0 2px #dedede;
 	-webkit-box-shadow:0 0 2px #dedede;
@@ -789,7 +789,7 @@ margin-top: 0px;
 .ad-page-image-holder
 {
 	float:left;
-	width:275px;
+	width:300px;
 }
 
 .auction-page-details-holder
@@ -1431,8 +1431,8 @@ a:hover
 {
 	float:left;
 	display:block;
-	margin-right:5px;
-	margin-left: 0px;
+	margin-right:3px;
+	margin-left: 3px;
 	
 }
 .other-dets
