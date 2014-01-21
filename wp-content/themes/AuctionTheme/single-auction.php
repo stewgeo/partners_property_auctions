@@ -1215,7 +1215,14 @@
 					   }
 					   else {?>
 					       <li><a class='various fancybox.iframe' href="<?php echo get_bloginfo('template_url')?>/contact.php?subject=viewing_request%3A_<?php echo urlencode(strtolower(str_replace(' ', '_', $location)));?>">Arrange a Viewing</a></li>
-<?php } ?>
+<?php } ?><br /><br /><br />
+<li><a href="<?php global $post;
+	$pid = $post->ID;
+	echo get_post_meta($pid, 'epc', true); ?>" title="Energy Performance Certificate">Energy Performance Certificate</a></li>
+    <li><a href="<?php global $post;
+	$pid = $post->ID;
+	echo get_post_meta($pid, 'legal_pack', true); ?>" title="Legal Pack">Legal Pack</a></li>
+                            <li><a href="javascript:window.print()">Click to Print This Page</a></li><br />
                     <br /><br />
                             <li>
 							<div class="watch-list"><?php 
@@ -1236,8 +1243,8 @@
 								
 								</div>
 							</li>
-                          	<li><a href="#">Download as PDF</a></li>
-                            <li><a href="javascript:window.print()">Click to Print This Page</a></li>
+                          	
+                            
 						</ul>
 						
 						
@@ -1465,16 +1472,7 @@ codeAddress("<?php
             </div>
             <div class="clear10"></div>
            		
-			<div class="my_box3">
- 
-            
-            	<div class="box_title"><?php echo __("Legal Pack","AuctionTheme"); ?></div>
-                <div class="box_content">
-					<p><a href="<?php global $post;
-	$pid = $post->ID;
-	echo get_post_meta($pid, 'epc', true); ?>" title="Energy Performance Certificate">Energy Performance Certificate</a></p>
-				</div>
-			</div>
+
             
             
 			<div class="tags-placeholder">

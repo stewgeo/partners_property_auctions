@@ -1283,9 +1283,13 @@ function auctionTheme_save_custom_fields($pid)
         update_post_meta($pid, 'auction_lat',   $lat);
         update_post_meta($pid, 'auction_long',  $long);
 
-// Add PDF source to custom Meta    
+// Add epc to custom Meta    
     if(isset($_POST['epc']))
   update_post_meta($pid,"epc",auctionTheme_clear_sums_of_cash($_POST['epc']));
+  
+// Add legal pack to custom Meta    
+    if(isset($_POST['legal_pack']))
+  update_post_meta($pid,"legal_pack",auctionTheme_clear_sums_of_cash($_POST['legal_pack']));
     }   
   
 }
@@ -3093,9 +3097,13 @@ function auctionTheme_theme_auction_legal_pack(){
   global $post;
   $pid = $post->ID;
   ?>
+  <label for="upload_legal">Legal Pack: 
+    <input id="upload_legal" type="text" size="36" name="legal_pack" value="<?php echo get_post_meta($pid, 'legal_pack', true); ?>" /> 
+    <input id="upload_legal_button" class="button" type="button" value="Upload" />
+</label><br>
   <label for="upload_image">EPC: 
     <input id="upload_image" type="text" size="36" name="epc" value="<?php echo get_post_meta($pid, 'epc', true); ?>" /> 
-    <input id="upload_image_button" class="button" type="button" value="Upload PDF" />
+    <input id="upload_image_button" class="button" type="button" value="Upload" />
 </label>
   <?php
 }
@@ -5005,7 +5013,7 @@ function auctionTheme_theme_auction_dts()
  <script>
 
 jQuery(document).ready(function() {
-             jQuery('#ending,#viewing_days').datetimepicker({
+             jQuery('#ending').datetimepicker({
             showSecond: true,
       dateFormat: 'dd-mm-yy',
             timeFormat: 'hh:mm:ss'
