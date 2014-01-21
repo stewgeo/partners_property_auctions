@@ -3079,8 +3079,20 @@ function auctionTheme_set_metaboxes()
 	remove_meta_box( 'auction_locationdiv', 'auction', 'side');
     remove_meta_box( 'postexcerpt', 'auction', 'normal');
     remove_meta_box( 'tagsdiv-post_tag', 'auction', 'side');
-    
+    remove_meta_box( 'commentstatusdiv', 'auction', 'normal');
   
+}
+add_action( 'admin_menu', 'remove_author_metabox' );
+add_action( 'post_submitbox_misc_actions', 'move_author_to_publish_metabox' );
+function remove_author_metabox() {
+    remove_meta_box( 'authordiv', 'auction', 'normal' );
+}
+function move_author_to_publish_metabox() {
+    global $post_ID;
+    $post = get_post( $post_ID );
+    echo '<div id="author" class="misc-pub-section" style="border-top-style:solid; border-top-width:1px; border-top-color:#EEEEEE; border-bottom-width:0px;">Partner Agent: ';
+    post_author_meta_box( $post );
+    echo '</div>';
 }
 /*****************************************************************************
 *
