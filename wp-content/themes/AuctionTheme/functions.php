@@ -3075,6 +3075,8 @@ function auctionTheme_set_metaboxes()
     add_meta_box( 'auction_dets',       'Property Details',     'auctionTheme_theme_auction_dts', 'auction', 'side','high' );
     do_action('AuctionTheme_meta_boxes_menu');
     remove_meta_box( 'postimagediv', 'auction', 'side');
+    remove_meta_box( 'auction_catdiv', 'auction', 'normal');
+	remove_meta_box( 'auction_locationdiv', 'auction', 'side');
     remove_meta_box( 'postexcerpt', 'auction', 'normal');
     remove_meta_box( 'tagsdiv-post_tag', 'auction', 'side');
     
