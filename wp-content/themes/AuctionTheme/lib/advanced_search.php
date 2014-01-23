@@ -486,26 +486,22 @@ function AuctionTheme_adv_search_area_function()
     
     
     
-      <div class="my_box3">
-           
-            
-              <div class="box_title"><?php _e("Map Results","AuctionTheme"); ?></div>
-              <div class="box_content"> 
+      <div class="col-md-12">
+        <div class="box_title"><?php _e("Map Results","AuctionTheme"); ?></div>
+        <div class="box_content"> 
                 
-                <div id="map" style="width: 100%; height: 300px;border:2px solid #ccc;float:left"></div>
+        <div id="map" style="width: 100%; height: 300px;border:2px solid #ccc;float:left"></div>
                 
-                <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
-            
-         
-              
-                </div>
-                </div>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+                    
+      </div>
+    </div>
                 
     <?php endif; ?>
     
     <script>
 <?php global $local_long, $local_lat, $radius ;  ?>
- var myLatlng = new google.maps.LatLng(1,1);
+ var myLatlng = new google.maps.LatLng(53.961432,-1.081467);
   var myOptions = {
     zoom: 11,
     center: myLatlng,
@@ -514,33 +510,31 @@ function AuctionTheme_adv_search_area_function()
   var map = new google.maps.Map(document.getElementById("map"), myOptions);
   var bounds = new google.maps.LatLngBounds();
   
-    
-    
-    <?php
+  <?php
   
   foreach($my_arr as $item):
   
   ?>
 
-  var Marker = new google.maps.Marker({
-      position: new google.maps.LatLng(<?php echo $item['lat']; ?>,<?php echo $item['long']; ?>),
-      map: map,
-      title:"<?php echo $item['ttl']; ?>"
-  });
-  
-  google.maps.event.addListener(Marker, 'click', function() {
-    window.location = '<?php echo $item['lnk']; ?>';
-  });
-  
-  var ll = new google.maps.LatLng(<?php echo $item['lat']; ?>, 
-        <?php echo $item['long']; ?>);
-    bounds.extend(ll);
-
-  
-<?php endforeach; ?>
+    var Marker = new google.maps.Marker({
+        position: new google.maps.LatLng(<?php echo $item['lat']; ?>,<?php echo $item['long']; ?>),
+        map: map,
+        title:"<?php echo $item['ttl']; ?>"
+    });
     
+    google.maps.event.addListener(Marker, 'click', function() {
+      window.location = '<?php echo $item['lnk']; ?>';
+    });
     
-map.fitBounds(bounds);
+    var ll = new google.maps.LatLng(<?php echo $item['lat']; ?>, 
+          <?php echo $item['long']; ?>);
+      bounds.extend(ll);
+  
+  <?php endforeach; ?>
+    
+  if (!bounds.isEmpty()){  
+    map.fitBounds(bounds);
+  }
 </script>
     
     <!-- ############################################# -->    
