@@ -49,6 +49,10 @@
   } 
 }
 
+.nav-button-paddding{
+  padding-left:42px;
+  padding-top:3px;
+}
 
 .navbar-default .navbar-nav > li > a {
   color: black;
