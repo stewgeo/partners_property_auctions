@@ -39,7 +39,7 @@ function AuctionTheme_my_account_area_function()
 						auctionTheme_get_post();
 					endwhile; else:
 					
-					_e("There are no auctions yet.",'AuctionTheme');
+					_e("No entries match your search criteria.",'AuctionTheme');
 					
 					endif;
 					

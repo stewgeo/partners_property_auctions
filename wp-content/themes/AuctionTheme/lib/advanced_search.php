@@ -462,7 +462,7 @@ function AuctionTheme_adv_search_area_function()
     
     else:
     
-    _e('There are no auctions.','AuctionTheme');
+    _e('No entries match your search criteria.','AuctionTheme');
     
     endif;
 
