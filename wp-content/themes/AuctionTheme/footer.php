@@ -85,35 +85,39 @@ endif;
 
 
 		<div id="site-info" class="row">
-			<div class="span12">
-				<div class="pull-left">
-
-					<h3>Copyright &copy; Partners Property Auctions <?php 
-					$time = time () ; 
-					$year= date("Y",$time) . "<br>"; 
-					echo $year;
-					?> </h3>
-
-				</div>
+			<div class="col-md-6">
+					<h4>Contact Us</h4>
+					<h5><span class="glyphicon glyphicon-envelope"></span> sales@partnerspropertyauctions.co.uk</h5>
+					<h5><span class="glyphicon glyphicon-earphone"></span> 07732 374685</h5>
+			</div>
+			<div class="col-md-6">
 				<div class="pull-right">
-					<a href="<?php echo get_page_link(1607); ?>">Conditions of Sale</a>
-					<a href="<?php echo get_page_link(1851); ?>">Privacy Policy</a>
+					<a href="<?php echo get_page_link(1607); ?>">Conditions of Sale</a> | 
+					<a href="<?php echo get_page_link(1851); ?>">Privacy Policy</a> | 
 					<a href="<?php echo get_page_link(1849); ?>">Partner Download Area</a>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="span12">
-				<div class="pull-left">
+			<div class="col-md-6">
 					<a href="http://www.tpos.co.uk/">
 						<img src="<?php echo get_bloginfo('template_url');?>/images/footer/ombudsman.jpg">
 					</a>
-<?php /*?>					<a href="http://www.nava.org.uk/">
+					<?php /*?>					<a href="http://www.nava.org.uk/">
 						<img src="<?php echo get_bloginfo('template_url');?>/images/footer/nava.jpg">
 					</a><?php */?>
 					<a href="http://www.tradingstandards.gov.uk/">
 						<img src="<?php echo get_bloginfo('template_url');?>/images/footer/trading_standards_logo.png">
 					</a>
+				</div>
+				<div class="col-md-6">
+					<div class="pull-right">				
+						<div class="text-muted">Copyright &copy; Partners Property Auctions <?php 
+						$time = time () ; 
+						$year= date("Y",$time) . "<br>"; 
+						echo $year;
+						?> </div>			
+					</div>	
 				</div>
 			</div>
 		</div>

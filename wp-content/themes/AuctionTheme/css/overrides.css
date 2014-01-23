@@ -58,6 +58,10 @@
   color: black;
 }
 
+#footer{
+  text-align: left;
+}
+
 #right-header-nav > li > a { 
   color: #027dbd;
   font-size:13px;
