@@ -1212,10 +1212,10 @@
 					   		<a href = "#contact" class="open-contact" data-toggle="modal" data-to="<?php
                                     
 			if(get_the_author_meta('display_name') =="Hudson Moody"){
-				echo "hudsonmoody@partnerspropertyauctions.co.uk";
+				echo "property@hudson-moody.com";
 			}
 			elseif(get_the_author_meta('display_name') =="YHomes"){
-				echo "yhomes@partnerspropertyauctions.co.uk";
+				echo "admin@yorkshirehomes.co.uk";
 			}
 			else {echo "jonnyrharper@gmail.com";}
 			
@@ -1229,10 +1229,10 @@
 					   		<a href = "#contact" class="open-contact" data-toggle="modal" data-to="<?php
                                     
 			if(get_the_author_meta('display_name') =="Hudson Moody"){
-				echo "hudsonmoody@partnerspropertyauctions.co.uk";
+				echo "property@hudson-moody.com";
 			}
 			elseif(get_the_author_meta('display_name') =="YHomes"){
-				echo "yhomes@partnerspropertyauctions.co.uk";
+				echo "admin@yorkshirehomes.co.uk";
 			}
 			else {echo "jonnyrharper@gmail.com";}
 			
@@ -1668,10 +1668,10 @@ codeAddress("<?php
 							   		<a href = "#contact" data-toggle="modal" class="open-contact" data-to="<?php
                                     
 			if(get_the_author_meta('display_name') =="Hudson Moody"){
-				echo "hudsonmoody@partnerspropertyauctions.co.uk";
+				echo "property@hudson-moody.com";
 			}
 			elseif(get_the_author_meta('display_name') =="YHomes"){
-				echo "yhomes@partnerspropertyauctions.co.uk";
+				echo "admin@yorkshirehomes.co.uk";
 			}
 			else {echo "jonnyrharper@gmail.com";}
 			

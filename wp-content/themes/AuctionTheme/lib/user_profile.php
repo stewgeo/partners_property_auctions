@@ -50,10 +50,10 @@
                           <a href = "#contact" class="open-contact" data-toggle="modal" data-to="<?php
                                     
 			if($username =="Hudson Moody"){
-				echo "hudsonmoody@partnerspropertyauctions.co.uk";
+				echo "property@hudson-moody.com";
 			}
 			elseif($username =="YHomes"){
-				echo "yhomes@partnerspropertyauctions.co.uk";
+				echo "admin@yorkshirehomes.co.uk";
 			}
 			else {echo "jonnyrharper@gmail.com";}
 			

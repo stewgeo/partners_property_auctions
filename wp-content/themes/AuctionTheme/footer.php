@@ -136,7 +136,7 @@ endif;
                                 </div>
                                 <div class = "modal-body">
                                
-                                    <div class = "form-group">
+                                    <div class = "form-group hide">
                                        
                                         <label for = "to" class = "col-lg-2 control-label">To:</label>
                                         <div class = "col-lg-10">

@@ -3747,7 +3747,7 @@ function auctionTheme_get_post_function_grid( $arr = '')
                 
                   </div>   
                      
-                     </div>
+                   
 <?php
 } }
 
