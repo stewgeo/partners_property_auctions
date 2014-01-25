@@ -1252,7 +1252,7 @@
 	$legal=get_post_meta($pid, 'legal_pack', true);
 	if(empty($legal)){?>
 		<a href = '#contact' class='open-contact' data-toggle='modal' data-to='info@partnerspropertyauctions.co.uk' data-contact-subject="Register interest for legal pack for <?php $location = get_post_meta($pid, "Location", true);	
-	echo $location; ?>">Request Legal Pack</a><?php
+	echo $location; ?>">Legal Pack Being Prepared</a><?php
 	}
 	else {
 	echo "<a href = '" . $legal . " ' title='Legal Pack'>Legal Pack</a></li>";
