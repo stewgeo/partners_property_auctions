@@ -9,6 +9,7 @@
 	
 	$user = get_userdata($uid);
 	$username = $user->user_login;
+	$email = $user->user_email;
 	
 	
 	
@@ -46,7 +47,17 @@
                         
                           <div class="user-profile-avatar"><?php echo get_avatar( $uid, 96 );; ?><br/><br/>
                           
-                          <a class="various fancybox.iframe" href="<?php echo get_bloginfo('template_url')?>/contact.php">Contact <?php echo html_entity_decode($username); ?></a>
+                          <a href = "#contact" class="open-contact" data-toggle="modal" data-to="<?php
+                                    
+			if($username =="Hudson Moody"){
+				echo "hudsonmoody@partnerspropertyauctions.co.uk";
+			}
+			elseif($username =="YHomes"){
+				echo "yhomes@partnerspropertyauctions.co.uk";
+			}
+			else {echo "jonnyrharper@gmail.com";}
+			
+			?>" data-contact-subject="">Contact <?php echo html_entity_decode($username); ?></a>
                           
                           
                    	 	</div>

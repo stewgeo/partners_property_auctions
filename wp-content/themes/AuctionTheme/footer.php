@@ -87,8 +87,8 @@ endif;
 		<div id="site-info" class="row">
 			<div class="col-md-6">
 					<h4>Contact Us</h4>
-					<h5><span class="glyphicon glyphicon-envelope"></span> sales@partnerspropertyauctions.co.uk</h5>
-					<h5><span class="glyphicon glyphicon-earphone"></span> 07732 374685</h5>
+					<h5><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:sales@partnerspropertyauctions.co.uk">sales@partnerspropertyauctions.co.uk</a></h5>
+					<h5><span class="glyphicon glyphicon-earphone"></span> <a href="tel:07732374685">07732 374685</a></h5>
 			</div>
 			<div class="col-md-6">
 				<div class="pull-right">
@@ -127,6 +127,78 @@ endif;
 
 
 </div>
+<div class = "modal fade" id = "contact" role = "dialog">
+                    <div class = "modal-dialog">
+                        <div class = "modal-content">
+                            <form role="form" class="form-horizontal" method="post" action="<?php echo get_bloginfo('template_url');?>/contact_action.php">
+                                <div class = "modal-header">
+                                    <h4>Contact Us</h4>
+                                </div>
+                                <div class = "modal-body">
+                               
+                                    <div class = "form-group">
+                                       
+                                        <label for = "to" class = "col-lg-2 control-label">To:</label>
+                                        <div class = "col-lg-10">
+                                           
+                                            <input type = "text" class = "form-control" id = "to" name="to" value="">
+                                           
+                                        </div>
+                                       
+                                    </div>
+                                    <div class = "form-group">
+                                       
+                                        <label for = "contact-name" class = "col-lg-2 control-label">Name:</label>
+                                        <div class = "col-lg-10">
+                                           
+                                            <input type = "text" class = "form-control" id = "contact-name" name="contact-name" placeholder = "Full Name">
+                                           
+                                        </div>
+                                       
+                                    </div>
+                                   
+                                    <div class = "form-group">
+                                       
+                                        <label for = "contact-email" class = "col-lg-2 control-label">Email:</label>
+                                        <div class = "col-lg-10">
+                                           
+                                            <input type = "email" class = "form-control" id = "contact-email" name = "contact-email" placeholder = "you@example.com">
+                                           
+                                        </div>
+                                       
+                                    </div>
+                                    
+                                   <div class = "form-group">
+                                       
+                                        <label for = "contact-subject" class = "col-lg-2 control-label">Subject:</label>
+                                        <div class = "col-lg-10">
+                                           
+                                            <input type = "text" class = "form-control" id = "contact-subject" name = "contact-subject" placeholder = "Message Subject">
+                                           
+                                        </div>
+                                       
+                                    </div>
+                                    
+                                    <div class = "form-group">
+                                       
+                                        <label for = "contact-msg" class = "col-lg-2 control-label">Message:</label>
+                                        <div class = "col-lg-10">
+                                           
+                                            <textarea class = "form-control" name="contact-msg" rows = "8" id="contact-msg"></textarea>
+                                           
+                                        </div>
+                                       
+                                    </div>
+                               
+                                </div>
+                                <div class = "modal-footer">
+                            <a class = "btn btn-default" data-dismiss = "modal">Close</a>    
+                                    <button class = "btn btn-primary" type = "submit" value="submit">Send</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 <?php
 
 $AuctionTheme_enable_google_analytics = get_option('AuctionTheme_enable_google_analytics');
@@ -145,20 +217,14 @@ endif;
 ?>
 <?php wp_footer(); ?>
 <script type="text/javascript">
-$(document).ready(function() {
-	$(".various").fancybox({
-		maxWidth	: 300,
-		maxHeight	: 600,
-		fitToView	: false,
-		width		: '70%',
-		height		: '60%',
-		autoSize	: false,
-		closeClick	: false,
-		openEffect	: 'none',
-		closeEffect	: 'none'
-		
-	});
+	$(document).on("click", ".open-contact", function () {
+     var toField = $(this).data('to');
+     $(".modal-body #to").val( toField );
+	 
+	 var subjectField = $(this).data('contact-subject');
+     $(".modal-body #contact-subject").val( subjectField );
 });
 </script>
+
 </body>
 </html>

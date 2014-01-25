@@ -1,42 +1,41 @@
 <?php
-$to = "jonnyrharper@gmail.com";
-if(isset($_POST['first_name']))
+if(isset($_POST['to']))
 {
-	$first_name = $_POST['first_name'];
+	$to = $_POST['to'];
 	}
   else
   {
-	$first_name = "";  
+	$to = "info@partnerspropertyauctions.co.uk";  
   };
-if(isset($_POST['last_name']))
+if(isset($_POST['contact-name']))
 {
-	$last_name = $_POST['last_name'];
+	$contact_name = $_POST['contact-name'];
 	}
   else
   {
-	$last_name = "";  
+	$contact_name = "";  
   };
-if(isset($_POST['subject']))
+if(isset($_POST['contact-subject']))
 {
-	$subject = $_POST['subject'];
+	$subject = $_POST['contact-subject'];
 	}
   else
   {
 	$subject = "No Subject";  
   };
   
-   if(isset($_POST['email']))
+   if(isset($_POST['contact-email']))
 {
-	$email = $_POST['email'];
+	$email = $_POST['contact-email'];
 	}
   else
   {
 	$email = "No Email";  
   }; 
   
-  if(isset($_POST['message']))
+  if(isset($_POST['contact-msg']))
 {
-	$message = $_POST['message'];
+	$message = $_POST['contact-msg'];
 	}
   else
   {
@@ -56,14 +55,17 @@ function filter_email( $input ) {
 	return $email;
 }  
 
+if ($to == 'info@partnerspropertyauctions.co.uk'){
+	$cc='';
+} else
+{
+	$cc='info@partnerspropertyauctions.co.uk';
+}
   
-$headers = 'From:' . filter_name($first_name) . ' ' . filter_name($last_name) . ' <' . filter_email($email) . '>' . "\r\n" .
-"BCC: jonny@harperdesigns.co.uk";
+$headers = 'From:' . filter_name($contact_name) . ' <' . filter_email($email) . '>' . "\r\n" .
+"CC: " . $cc;
  if(mail($to,$subject,$message,$headers)) {
-	 if(isset($_POST['newsletter'])){
-		 
-	 };
      echo "Thank you for your message which has been sent successfully.";
 } else { 
-     echo "There was a problem sending your message. Please email <a href='mailto:richard@partnerspropertyauctions.co.uk'>richard@partnerspropertyauctions.co.uk</a> or call 07732 374685. Sorry for any inconvenience caused."; 
+     echo "There was a problem sending your message. Please email <a href='mailto:info@partnerspropertyauctions.co.uk'>info@partnerspropertyauctions.co.uk</a> or call 07732 374685. Sorry for any inconvenience caused."; 
 }  ?>

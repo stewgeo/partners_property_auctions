@@ -1209,12 +1209,36 @@
                               <?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
 				   if(!empty($viewing)){
 					   echo "<li><h3>Viewing Day:</h3>" . $viewing . " or";?>
-					   <a class='various fancybox.iframe' href="<?php echo get_bloginfo('template_url')?>/contact.php?subject=viewing_request%3A_<?php echo urlencode(strtolower(str_replace(' ', '_', $location)));?>">Arrange a Viewing</a>
+					   		<a href = "#contact" class="open-contact" data-toggle="modal" data-to="<?php
+                                    
+			if(get_the_author_meta('display_name') =="Hudson Moody"){
+				echo "hudsonmoody@partnerspropertyauctions.co.uk";
+			}
+			elseif(get_the_author_meta('display_name') =="YHomes"){
+				echo "yhomes@partnerspropertyauctions.co.uk";
+			}
+			else {echo "jonnyrharper@gmail.com";}
+			
+			?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
+	echo $location; ?>">Arrange a Viewing</a>
                        <?php
                        echo "</li>";
 					   }
 					   else {?>
-					       <li><a class='various fancybox.iframe' href="<?php echo get_bloginfo('template_url')?>/contact.php?subject=viewing_request%3A_<?php echo urlencode(strtolower(str_replace(' ', '_', $location)));?>">Arrange a Viewing</a></li>
+					       <li>
+					   		<a href = "#contact" class="open-contact" data-toggle="modal" data-to="<?php
+                                    
+			if(get_the_author_meta('display_name') =="Hudson Moody"){
+				echo "hudsonmoody@partnerspropertyauctions.co.uk";
+			}
+			elseif(get_the_author_meta('display_name') =="YHomes"){
+				echo "yhomes@partnerspropertyauctions.co.uk";
+			}
+			else {echo "jonnyrharper@gmail.com";}
+			
+			?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
+	echo $location; ?>">Arrange a Viewing</a>
+                           </li>
 <?php } ?><br /><br /><br />
 <li><a href="<?php global $post;
 	$pid = $post->ID;
@@ -1641,7 +1665,18 @@ codeAddress("<?php
 			?>" class="nice_link"><?php _e("Contact Seller",'AuctionTheme'); ?></a>
 				
                 <?php } ?><?php */?>
-		<a class="various fancybox.iframe" href="<?php echo get_bloginfo('template_url')?>/contact.php?subject=<?php  echo urlencode(strtolower(str_replace(' ', '_', $location)));?>">Contact <?php the_author() ?></a>       		</p>
+							   		<a href = "#contact" data-toggle="modal" class="open-contact" data-to="<?php
+                                    
+			if(get_the_author_meta('display_name') =="Hudson Moody"){
+				echo "hudsonmoody@partnerspropertyauctions.co.uk";
+			}
+			elseif(get_the_author_meta('display_name') =="YHomes"){
+				echo "yhomes@partnerspropertyauctions.co.uk";
+			}
+			else {echo "jonnyrharper@gmail.com";}
+			
+			?>" data-contact-subject="<?php $location = get_post_meta($pid, "Location", true);	
+	echo $location; ?>">Contact <?php the_author() ?></a>       		</p>
         </li>
 	</li>	
 	<?php

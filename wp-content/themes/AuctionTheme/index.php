@@ -90,8 +90,8 @@ get_header();
               <input type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" class="form-control" size="25" value="" required="" placeholder="Your email address">
 
             </div>
-            <input type="submit" class="btn" name="submit" value="Subscribe">
-          </div>
+            <input type="submit" class="btn" name="submit" value="Subscribe"></form>
+            </div>
         </div>
       </div>   
     </div>    
