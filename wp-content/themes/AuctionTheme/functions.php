@@ -3136,8 +3136,7 @@ function auctionTheme_theme_auction_images()
 ?>
   
     
-    <script type="text/javascript" src="<?php echo get_bloginfo('template_url'); ?>/lib/uploadify/jquery.uploadify-3.1.js"></script>     
-  <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/lib/uploadify/uploadify.css" type="text/css" />
+    <script type="text/javascript" src="<?php echo get_bloginfo('template_url'); ?>/lib/uploadify/jquery.uploadify-3.1.js"></script><link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/lib/uploadify/uploadify.css" type="text/css" />
   
     <script type="text/javascript">
   
@@ -3746,7 +3745,7 @@ function auctionTheme_get_post_function_grid( $arr = '')
                       
                 
                   </div>   
-                     
+</div>                     
                    
 <?php
 } }
