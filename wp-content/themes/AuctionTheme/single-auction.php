@@ -1243,9 +1243,21 @@
 <li><a href="<?php global $post;
 	$pid = $post->ID;
 	echo get_post_meta($pid, 'epc', true); ?>" title="Energy Performance Certificate">Energy Performance Certificate</a></li>
-    <li><a href="<?php global $post;
+    <li>
+	<?php 
+	
+	global $post;
 	$pid = $post->ID;
-	echo get_post_meta($pid, 'legal_pack', true); ?>" title="Legal Pack">Legal Pack</a></li>
+	
+	$legal=get_post_meta($pid, 'legal_pack', true);
+	if(empty($legal)){?>
+		<a href = '#contact' class='open-contact' data-toggle='modal' data-to='info@partnerspropertyauctions.co.uk' data-contact-subject="Register interest for legal pack for <?php $location = get_post_meta($pid, "Location", true);	
+	echo $location; ?>">Request Legal Pack</a><?php
+	}
+	else {
+	echo "<a href = '" . $legal . " ' title='Legal Pack'>Legal Pack</a></li>";
+	}
+	?></li>
                             <li><a href="javascript:window.print()">Click to Print This Page</a></li><br />
                     <br /><br />
                             <li>
