@@ -714,31 +714,24 @@ function auctionTheme_add_theme_styles()
   wp_register_script( 'social_pr', get_bloginfo('template_url').'/js/connect.js');
   wp_register_script( 'respond_js', 'http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');  
   wp_register_script( 'bootstrap_js', 'http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.js');
-  wp_register_script( 'rowlink_js', get_bloginfo('template_url').'/js/vendor/bootstrap-rowlink.js');
-  
+  wp_register_script( 'rowlink_js', get_bloginfo('template_url').'/js/vendor/bootstrap-rowlink.js');  
   wp_register_script( 'easing', '//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js');
   //wp_register_script( 'jquery_cowntdown', get_bloginfo('template_url').'/js/jquery.countdown.js');
   wp_register_script( 'bootstrap_min', 'http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css');
-  
-  
   wp_register_style( 'bootstrap_style1', get_bloginfo('template_url').'/css/bootstrap_min.css', array(), '20120822', 'all' );
     wp_register_style( 'bootstrap_style2', get_bloginfo('template_url').'/css/css.css', array(), '20120822', 'all' );
   wp_register_style( 'bootstrap_style3', get_bloginfo('template_url').'/css/bootstrap_responsive.css', array(), '20120822', 'all' );
   wp_register_style( 'bootstrap_ie6',   get_bloginfo('template_url').'/css/bootstrap_ie6.css', array(), '20120822', 'all' );
   wp_register_style( 'bootstrap_gal',   get_bloginfo('template_url').'/css/bootstrap_gal.css', array(), '20120822', 'all' );
   wp_register_style( 'fileupload_ui',   get_bloginfo('template_url').'/css/jquery.fileupload-ui.css', array(), '20120822', 'all' );
-  wp_register_style( 'uploadify_css',   get_bloginfo('template_url').'/lib/uploadify/uploadify.css', array(), '20120822', 'all' );
-  
-  
+  wp_register_style( 'uploadify_css',   get_bloginfo('template_url').'/lib/uploadify/uploadify.css', array(), '20120822', 'all' ); 
   wp_register_script( 'html5_js', get_bloginfo('template_url').'/js/html5.js');
   wp_register_script( 'jquery_ui', get_bloginfo('template_url').'/js/vendor/jquery.ui.widget.js');
   wp_register_script( 'templ_min', get_bloginfo('template_url').'/js/templ.min.js');
   wp_register_script( 'load_image', get_bloginfo('template_url').'/js/load_image.min.js');
   wp_register_script( 'canvas_to_blob', get_bloginfo('template_url').'/js/canvas_to_blob.js');
   wp_register_script( 'iframe_transport', get_bloginfo('template_url').'/js/jquery.iframe-transport.js');
-  wp_register_script( 'load_image', get_bloginfo('template_url').'/js/load_image.min.js');
-  
-  
+  wp_register_script( 'load_image', get_bloginfo('template_url').'/js/load_image.min.js'); 
   wp_register_style( 'fileupload_ui',   get_bloginfo('template_url').'/css/fileupload_ui.css', array(), '20120822', 'all' );
   wp_register_script( 'fileupload_main', get_bloginfo('template_url').'/js/jquery.fileupload.min.js');
   wp_register_script( 'fileupload_fp', get_bloginfo('template_url').'/js/jquery.fileupload-fp.js');
