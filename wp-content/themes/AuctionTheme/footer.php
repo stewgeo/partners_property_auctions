@@ -199,22 +199,7 @@ endif;
                         </div>
                     </div>
                 </div>
-<?php
 
-$AuctionTheme_enable_google_analytics = get_option('AuctionTheme_enable_google_analytics');
-if($AuctionTheme_enable_google_analytics == "yes"):		
-	echo stripslashes(get_option('AuctionTheme_analytics_code'));	
-endif;
-
-	//----------------
-
-$AuctionTheme_enable_other_tracking = get_option('AuctionTheme_enable_other_tracking');
-if($AuctionTheme_enable_other_tracking == "yes"):		
-	echo stripslashes(get_option('AuctionTheme_other_tracking_code'));	
-endif;
-
-
-?>
 <?php wp_footer(); ?>
 <script type="text/javascript">
 	$(document).on("click", ".open-contact", function () {

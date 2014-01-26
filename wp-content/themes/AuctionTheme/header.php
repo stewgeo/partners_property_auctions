@@ -111,15 +111,6 @@
 		if(auctiontheme_is_home()):
 	
 	?>	
-		
-	  jQuery('#slider2').bxSlider({
-		auto: true,
-		speed: 1000,
-		pause: 5000,
-		autoControls: false,
-		 displaySlideQty: 5,
-    	moveSlideQty: 1
-	  });
 	  
 	  
 	  
@@ -132,98 +123,7 @@
 	
 		
 	</script>
-     <?php
-	 	
-		$AuctionTheme_color_for_footer = get_option('AuctionTheme_color_for_footer');
-		if(!empty($AuctionTheme_color_for_footer))
-		{
-			echo '<style> #footer { background:#'.$AuctionTheme_color_for_footer.' }</style>';	
-		}
-		
-		
-		$AuctionTheme_color_for_bk = get_option('AuctionTheme_color_for_bk');
-		if(!empty($AuctionTheme_color_for_bk))
-		{
-			echo '<style> body { background:#'.$AuctionTheme_color_for_bk.' }</style>';	
-		}
-		
-		$AuctionTheme_color_for_top_links = get_option('AuctionTheme_color_for_top_links');
-		$AuctionTheme_color_for_top_links2 = get_option('AuctionTheme_color_for_top_links2');
-		
-		if(!empty($AuctionTheme_color_for_top_links))
-		{
-			echo '<style> .top-links ul li a:link, .top-links ul li a:visited { background:#'.$AuctionTheme_color_for_top_links.' }
-			.top-links ul li a:hover { background:#'.$AuctionTheme_color_for_top_links2.' }
-			
-			</style>';	
-		}
-		
-		//----------------------
-		
-		$AuctionTheme_color_for_main_links = get_option('AuctionTheme_color_for_main_links');
 
-		
-		if(!empty($AuctionTheme_color_for_main_links))
-		{
-			$AuctionTheme_color_for_main_links2 = get_option('AuctionTheme_color_for_main_links2');
-			$AuctionTheme_color_for_main_links3 = get_option('AuctionTheme_color_for_main_links3');
-			$AuctionTheme_color_for_main_links4 = get_option('AuctionTheme_color_for_main_links4');
-		
-			echo '<style> 
-			
-			.main-thing-menu { background: #'.$AuctionTheme_color_for_main_links.'; border-color:#'.$AuctionTheme_color_for_main_links4.' }
-			.main-thing-menu ul li a:link, .main-thing-menu ul li a:visited 
-			{ background:#'.$AuctionTheme_color_for_main_links.'; color:#'.$AuctionTheme_color_for_main_links3.';  }
-			.main-thing-menu ul li a:hover { background:#'.$AuctionTheme_color_for_main_links2.';  color:#'.$AuctionTheme_color_for_main_links3.' }
-			
-			</style>';	
-		}
-		
-		//----------------------
-		
-		$AuctionTheme_color_for_text_footer = get_option('AuctionTheme_color_for_text_footer');
-		
-		if(!empty($AuctionTheme_color_for_top_links))
-		{
-			echo '<style> 
-			
-			#footer-widget-area,#site-info, #footer-widget-area div ul li .widget-title, #footer .textwidget{ color:#'.$AuctionTheme_color_for_text_footer.' }
-			#footer a:link, #footer a:visited { color:#'.$AuctionTheme_color_for_text_footer.' }
-			#footer a:hover { color:#'.$AuctionTheme_color_for_text_footer.' }
-			#site-info { border-color: #'.$AuctionTheme_color_for_text_footer.'  }
-			
-			</style>';	
-		}
-		
-		
-		
-		//----------------------
-		
-	 	$AuctionTheme_home_page_layout = get_option('AuctionTheme_home_page_layout');
-		if(AuctionTheme_is_home()):
-			if($AuctionTheme_home_page_layout == "4"):
-				echo '<style>#content { float:right; width:695px } #left-sidebar { float:left; }</style>';
-			endif;
-			
-			if($AuctionTheme_home_page_layout == "5"):
-				echo '<style>#content { width:100%; }  </style>';
-			endif;
-			
-			if($AuctionTheme_home_page_layout == "3"):
-				echo '<style>#content { width:410px } .title_holder { width:257px; margin-bottom:15px } #left-sidebar{	float:left;margin-right:15px;}
-				 </style>';
-			endif;
-			
-			
-			if($AuctionTheme_home_page_layout == "2"):
-				echo '<style>#content { width:410px } #left-sidebar{ float:right } #left-sidebar{ margin-right:15px; } .title_holder { width:257px; margin-bottom:15px }
-				 </style>';
-			endif;
-		
-		endif;
-	 
-	 
-	 ?>
      
      <!-- ########################################## -->
 	<script>
@@ -248,55 +148,6 @@
     <div class="top">
         <div class="container">         
             <ul class="loginbar pull-right" id="right-header-nav">
-                <?php /*?><?php if(current_user_can('level_10')) {?> <li><a href="<?php bloginfo('siteurl'); ?>/wp-admin"><?php 
-                echo __("Wp-Admin","AuctionTheme"); ?></a></li> <?php }
-
-                if(is_home())
-                $home_class_active = 'active';  
-                
-                global $wp_query, $pagenow;
-                $vars = $wp_query->query_vars;
-                $special_page = $vars['special_page'];
-                
-                if($special_page == "post-new")   $post_new_class   = 'active'; 
-                if($special_page == "adv-sea")    $adv_sea_new_class  = 'active';
-                if($special_page == "account")    $account_new_class  = 'active';
-                if($special_page == "blog")     $blog_new_class   = 'active'; 
-                if($special_page == "watch")    $watch_class    = 'active';                 
-                if($pagenow == "wp-login.php" and !isset($_GET['action']))    $class_log      = "active"; 
-                if($pagenow == "wp-login.php" and $_GET['action'] == 'register')  $class_register   = "active"; 
-                
-                  $AuctionTheme_show_blue_menu = get_option('AuctionTheme_show_main_menu');
-                  
-                  if($AuctionTheme_show_blue_menu != "yes"):
-              ?>
-
-                <li>
-                  <a href="<?php bloginfo('siteurl') ?>" class="<?php echo $home_class_active; ?>"><?php echo __("Home","AuctionTheme"); ?></a>
-                </li>
-                                                     
-               <?php
-                
-                endif;
-                
-                $menu_name = 'primary-auctiontheme-header';
-
-                if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
-                $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-
-                $menu_items = wp_get_nav_menu_items($menu->term_id);
-
-
-                foreach ( (array) $menu_items as $key => $menu_item ) {
-                  $title = $menu_item->title;
-                  $url = $menu_item->url;
-                  
-                  if(!empty($title))
-                  {echo '<li><a href="' . $url . '">' . $title . '</a></li>'; }
-                }
-                  
-                } 
-                ?><?php */?>
                 <li>
                   <a href = "#contact" data-toggle="modal" class="open-contact"  data-to="info@partnerspropertyauctions.co.uk" data-contact-subject="">Contact Us</a>
                 </li>
@@ -305,31 +156,7 @@
                   <a class="<?php echo $watch_class; ?>" href="<?php echo AuctionTheme_watch_list(); ?>"><?php echo __("Favourites","AuctionTheme"); ?></a>
                 </li>
                 <li class="devider"></li>
-                <?php /*?><?php
-                  if(AuctionTheme_is_able_to_post_auctions()):
-                ?>
-                <li>
-                  <a href="<?php echo AuctionTheme_post_new_link(); ?>" class="<?php echo $post_new_class; ?>">
-                    <?php echo __("Post New Auction","AuctionTheme"); ?>
-                  </a> 
-                </li>      
-                <?php endif; ?><?php */?>
                       
-                <?php if(get_option('auctionTheme_enable_blog') == "yes") { ?>
-                <li>
-                  <a class="<?php echo $blog_new_class; ?>" href="<?php echo AuctionTheme_blog_link(); ?>"><?php echo __("Blog","AuctionTheme"); ?></a> 
-                </li>
-                <?php } ?>
-                      
-                <?php /*?><?php
-                  if($AuctionTheme_show_blue_menu != "yes"):
-                ?>
-                <li>
-                  <a href="<?php echo AuctionTheme_advanced_search_link(); ?>" 
-                          class="<?php echo $adv_sea_new_class; ?>"><?php _e("Advanced Search","AuctionTheme");?></a>
-                </li> 
-                <?php
-                endif;<?php */?>
                 <?php
                     if(is_user_logged_in())
                     {
@@ -343,10 +170,12 @@
                               class="<?php echo $account_new_class; ?>"><?php echo __("My Account","AuctionTheme"); ?></a>
                       </li><?php */?>
                       <li>
-                        <a href="<? echo get_bloginfo('url').'/wp-admin/'?>" class="<?php echo $account_new_class; ?>"><?php echo __("My Account","AuctionTheme"); ?></a>
+                        <a href="<? echo get_bloginfo('url').'/wp-admin/'?>" class="<?php echo $account_new_class; ?>">My Account</a> 
                       </li>
+                                      <li class="devider"></li>
+
                       <li>
-                        <a href="<?php echo wp_logout_url(); ?>"><?php echo __("Log Out","AuctionTheme"); ?></a>
+                        <a href="<?php echo wp_logout_url(); ?>">Log Out</a>
                       </li>                 
                     <?php
                     }
@@ -427,9 +256,7 @@
                     <li><a href="<?php echo get_post_type_archive_link('auction'); ?>">All Properties</a></li>
                     <li><a href="<?php echo get_page_link(1524); ?>"><?php echo get_the_title(1524)?></a></li>
                     <li><a href="<?php echo get_page_link(1375); ?>"><?php echo get_the_title(1375)?></a></li>
-					<?php /*?>          
-					<li><a href="<?php echo get_permalink(get_option('AuctionTheme_adv_search_id')); ?>"><?php _e('Advanced Search','AuctionTheme'); ?></a></li>     
-                    <li><a href="<?php echo get_page_link(1264); ?>"><?php echo get_the_title(1264)?></a></li>  <?php */?>
+					
                  </ul>
               <?php else: 
           

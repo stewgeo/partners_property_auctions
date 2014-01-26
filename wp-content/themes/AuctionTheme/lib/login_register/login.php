@@ -332,7 +332,7 @@ function AuctionTheme_do_login_scr()
 				 if ( !empty( $_REQUEST['redirect_to'] ) ) {
 					$redirect_to = get_permalink(get_option('AuctionTheme_my_account_page_id'));
 				 } else {
-					$redirect_to = $_REQUEST['redirect_to'];
+					$redirect_to = 'wp-admin/';
 				 }
 				 
 				 if(empty($redirect_to)) $redirect_to = get_permalink(get_option('AuctionTheme_my_account_page_id'));

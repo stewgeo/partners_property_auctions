@@ -48,40 +48,7 @@
   include 'lib/post_new.php';
   include 'lib/login_register/custom2.php';
   include 'lib/ending_soonest_auctions.php';
-  
-  include 'lib/widgets/browse-by-category.php';
-  include 'lib/widgets/browse-by-location.php';
-  include 'lib/widgets/latest-posted-auctions.php';
-  include 'lib/widgets/most-visited-auctions.php';
-  include 'lib/widgets/ending-soonest-auctions.php';
-  include 'lib/widgets/ending-soonest-auctions-big.php';
-  include 'lib/widgets/best-rated-users.php';
-  include 'lib/widgets/featured-auctions.php';
-  include 'lib/widgets/latest-featured-auctions-big.php';
-  include 'lib/widgets/search_widget.php';
-  
-  include 'lib/my_account/my_account.php';
-  include 'lib/my_account/personal_info.php';
-  include 'lib/my_account/private_messages.php';
-  include 'lib/my_account/feedback.php';
-  include 'lib/my_account/payments.php';
-  include 'lib/my_account/won_items.php';
-  include 'lib/my_account/not_won_items.php';
-  include 'lib/my_account/shipped_items.php';
-  include 'lib/my_account/paid_n_shipped.php';
-  include 'lib/my_account/outstanding_payments.php';
-  include 'lib/my_account/items_i_bid.php';
-  include 'lib/my_account/active_auctions.php';
-  include 'lib/my_account/sold_items.php';
-  include 'lib/my_account/closed_auctions.php';
-  include 'lib/my_account/unpublished_auctions.php';
-  include 'lib/my_account/awaiting_payments.php';
-  include 'lib/my_account/no_shipped_items.php';
-  include 'lib/my_account/pay_for_item.php';
-  include 'lib/my_account/pay_item_by_credits.php';
-  include 'lib/my_account/paid_items.php';
-  include 'lib/my_account/seller_offers.php';
-  include 'lib/my_account/buyer_offers.php';
+
   
   
   include 'lib/all_categories.php';
@@ -729,7 +696,12 @@ function auctionTheme_pay_for_item_by_credits_link($bid_id)
 *
 **************************************************************/
 
-
+if (!is_admin()) add_action("wp_enqueue_scripts", "bloglow_custom_jquery_cdn", 11);
+function bloglow_custom_jquery_cdn() {
+wp_deregister_script('jquery');
+wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", false, null);
+wp_enqueue_script('jquery');
+}
 
 function auctionTheme_add_theme_styles()  
 { 
@@ -739,16 +711,14 @@ function auctionTheme_add_theme_styles()
   
   
   
-  wp_register_style( 'bx_styles', get_bloginfo('template_url').'/css/bx_styles.css', array(), '20120822', 'all' );
   wp_register_script( 'social_pr', get_bloginfo('template_url').'/js/connect.js');
-  wp_register_script( 'respond_js', get_bloginfo('template_url').'/js/vendor/respond.js');  
-  wp_register_script( 'bootstrap_js', get_bloginfo('template_url').'/js/bootstrap.js');
+  wp_register_script( 'respond_js', 'http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');  
+  wp_register_script( 'bootstrap_js', 'http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.js');
   wp_register_script( 'rowlink_js', get_bloginfo('template_url').'/js/vendor/bootstrap-rowlink.js');
   
-  wp_register_script( 'easing', get_bloginfo('template_url').'/js/jquery.easing.1.3.js');
-  wp_register_script( 'bx_slider', get_bloginfo('template_url').'/js/jquery.bxSlider.min.js');
-  wp_register_script( 'jquery_cowntdown', get_bloginfo('template_url').'/js/jquery.countdown.js');
-  wp_register_script( 'bootstrap_min', get_bloginfo('template_url').'/js/bootstrap.min.js');
+  wp_register_script( 'easing', '//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js');
+  //wp_register_script( 'jquery_cowntdown', get_bloginfo('template_url').'/js/jquery.countdown.js');
+  wp_register_script( 'bootstrap_min', 'http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css');
   
   
   wp_register_style( 'bootstrap_style1', get_bloginfo('template_url').'/css/bootstrap_min.css', array(), '20120822', 'all' );
@@ -766,19 +736,19 @@ function auctionTheme_add_theme_styles()
   wp_register_script( 'load_image', get_bloginfo('template_url').'/js/load_image.min.js');
   wp_register_script( 'canvas_to_blob', get_bloginfo('template_url').'/js/canvas_to_blob.js');
   wp_register_script( 'iframe_transport', get_bloginfo('template_url').'/js/jquery.iframe-transport.js');
-  wp_register_script( 'load_image', get_bloginfo('template_url').'/js/load_image.js');
+  wp_register_script( 'load_image', get_bloginfo('template_url').'/js/load_image.min.js');
   
   
   wp_register_style( 'fileupload_ui',   get_bloginfo('template_url').'/css/fileupload_ui.css', array(), '20120822', 'all' );
-  wp_register_script( 'fileupload_main', get_bloginfo('template_url').'/js/jquery.fileupload.js');
+  wp_register_script( 'fileupload_main', get_bloginfo('template_url').'/js/jquery.fileupload.min.js');
   wp_register_script( 'fileupload_fp', get_bloginfo('template_url').'/js/jquery.fileupload-fp.js');
-  wp_register_script( 'fileupload_ui', get_bloginfo('template_url').'/js/jquery.fileupload-ui.js');
+  wp_register_script( 'fileupload_ui', get_bloginfo('template_url').'/js/jquery.fileupload-ui.min.js');
   
   wp_register_script( 'locale_thing', get_bloginfo('template_url').'/js/locale.js');
   
   wp_register_script( 'main_thing', get_bloginfo('template_url').'/js/main.js');
   wp_register_script( 'js_cors_ie8', get_bloginfo('template_url').'/js/cors/jquery.xdr-transport.js');
-  wp_register_script( 'jquery16', get_bloginfo('template_url').'/js/jquery16.js');
+  //wp_register_script( 'jquery16', get_bloginfo('template_url').'/js/jquery16.min.js');
   
   //wp_deregister_script('jquery');
   //wp_register_script( 'jquery', get_bloginfo('template_url').'/js/jquery19.js');
@@ -795,13 +765,11 @@ function auctionTheme_add_theme_styles()
   // enqueing:
       
      wp_enqueue_script( 'jqueryhoverintent' );
-     wp_enqueue_style( 'bx_styles' );
      wp_enqueue_script( 'social_pr' );
      wp_enqueue_script( 'respond_js' );
      wp_enqueue_script( 'rowlink_js' );
      wp_enqueue_script( 'bootstrap_js' );
      wp_enqueue_script( 'easing' );
-     wp_enqueue_script( 'bx_slider' );
      wp_enqueue_script( 'jquery_cowntdown' );
      wp_enqueue_script( 'dcjqmegamenu' );
     wp_enqueue_style( 'mega_menu_thing' );
@@ -2917,7 +2885,6 @@ function AuctionTheme_admin_main_head_scr()
   if($_GET['action'] == "edit" or $_GET['post_type'] == "auction"):
 ?>  
   
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
  <?php endif; ?>   
     <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/css/admin.css" type="text/css" />    
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/colorpicker.css" type="text/css" />
@@ -2925,7 +2892,8 @@ function AuctionTheme_admin_main_head_scr()
   <link type="text/css" href="<?php bloginfo('template_url'); ?>/css/jquery-ui-1.8.16.custom.css" rel="stylesheet" /> 
   
     <link rel="stylesheet" media="all" type="text/css" href="<?php echo get_bloginfo('template_url'); ?>/css/ui-thing.css" />
-  <script type="text/javascript" language="javascript" src="<?php echo get_bloginfo('template_url'); ?>/js/jquery-ui-timepicker-addon.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo get_bloginfo('template_url'); ?>/js/jquery-ui-timepicker-addon.js"></script>
     
   <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/idtabs.js"></script>  
  
