@@ -1367,11 +1367,6 @@ a.nice_link:hover
 	margin-top:0px
 }
 
-a:link, a:visited
-{
-	color:#475F77;
-	text-decoration:none
-}
 
 a:hover
 {
@@ -1515,7 +1510,6 @@ margin-right:4px;
 
 .other-dets5 li p{
 	float:left;width:130px;
-	font-size:12px;
 	padding:0px;
 	margin:0px;
 	margin-top:2px
@@ -2158,8 +2152,7 @@ background: url('images/bul.png') no-repeat;
 /*	background:#e8e8e8;
 */	overflow:hidden	;
 	width:100%;
-	border-bottom:1px solid #ccc;	
-	border-top:1px solid #ccc;	
+	border-bottom:1px solid #ccc;
 }
 
 .bid_panel_err

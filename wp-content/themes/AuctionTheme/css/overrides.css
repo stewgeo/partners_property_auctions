@@ -239,3 +239,16 @@ border-right: solid 1px #bbb;
 .post{
   padding-bottom: 20px;
 }
+
+
+/* Signle Property page */
+#single-property-details .row{
+  padding-bottom: 20px;
+
+}
+
+#single-property-details  .open-contact{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

@@ -815,7 +815,7 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 	<?php do_action('AuctionTheme_auction_page_before_title_div'); ?>
 
 
-	<div class="row">
+	<div id="single-property-details" class="row">
 		<div class="col-md-8">
 			<div class="box_title auction_page_title">
 				<h1><?php the_title() ?>
@@ -1042,14 +1042,10 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 
 		            				<li>
 		            					<h3><?php echo __("Make an Offer","AuctionTheme"); ?>:</h3>
-		            					<p>
 		            						<?php if($AuctionTheme_currency_position == "front") echo auctiontheme_get_currency(); ?>
-		            						<input type="text" size="5" name="offered_price" /> <?php if($AuctionTheme_currency_position != "front") echo auctiontheme_get_currency(); ?></p>
-		            					</li>
-
-		            					<li>
-		            						<h3>&nbsp;</h3>
-		            						<p><input type="submit" class="my-buttons2" name="make_offer" value="<?php _e("Submit Offer","AuctionTheme"); ?>" /></p>
+		            						<input type="text" size="5" name="offered_price" /> <?php if($AuctionTheme_currency_position != "front") echo auctiontheme_get_currency(); ?>
+		        
+		            						<input type="submit" class="btn btn-primary btn-sm" name="make_offer" value="<?php _e("Submit Offer","AuctionTheme"); ?>" />
 		            					</li>
 
 		            				</ul>
@@ -1200,64 +1196,7 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 								<h3><?php _e("Auction",'AuctionTheme');?>:</h3>
 								<p><?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?></p> 
 							</li>
-							<?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
-							if(!empty($viewing)){
-								echo "<li><h3>Viewing Day:</h3>" . $viewing . " or";?>
-								<a href = "#contact" class="open-contact" data-toggle="modal" data-to="<?php
-
-								if(get_the_author_meta('display_name') =="Hudson Moody"){
-									echo "property@hudson-moody.com";
-								}
-								elseif(get_the_author_meta('display_name') =="YHomes"){
-									echo "admin@yorkshirehomes.co.uk";
-								}
-								else {echo "jonnyrharper@gmail.com";}
-
-								?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
-								echo $location; ?>">Arrange a Viewing</a>
-								<?php
-								echo "</li>";
-							}
-							else {?>
-							<li>
-								<a href = "#contact" class="open-contact" data-toggle="modal" data-to="<?php
-
-								if(get_the_author_meta('display_name') =="Hudson Moody"){
-									echo "property@hudson-moody.com";
-								}
-								elseif(get_the_author_meta('display_name') =="YHomes"){
-									echo "admin@yorkshirehomes.co.uk";
-								}
-								else {echo "jonnyrharper@gmail.com";}
-
-								?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
-								echo $location; ?>">Arrange a Viewing</a>
-							</li>
-							<?php } ?><br /><br /><br />
-							<li>
-								<a href="<?php global $post;
-								$pid = $post->ID;
-								echo get_post_meta($pid, 'epc', true); ?>" title="Energy Performance Certificate">Energy Performance Certificate</a>
-							</li>
-							<li>
-								<?php 
-								
-								global $post;
-								$pid = $post->ID;
-								
-								$legal=get_post_meta($pid, 'legal_pack', true);
-								if(empty($legal)){?>
-								<a href = '#contact' class='open-contact' data-toggle='modal' data-to='info@partnerspropertyauctions.co.uk' data-contact-subject="Register interest for legal pack for <?php $location = get_post_meta($pid, "Location", true);	
-								echo $location; ?>">Legal Pack Being Prepared</a><?php
-								}
-								else {
-									echo "<a href = '" . $legal . " ' title='Legal Pack'>Legal Pack</a></li>";
-								}
-								?>
-							</li>
-							<li>
-								<a href="javascript:window.print()">Click to Print This Page</a>
-							</li>
+			
 							<br/><br/><br/>
 							<li>
 								<div class="watch-list"><?php 
@@ -1273,11 +1212,9 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 					</div>
 				</div>		
 			</div>
+			<!-- ########### DESCRIPTION ############ -->
 			<div class="row">
 				<?php do_action('AuctionTheme_auction_page_before_description_div'); ?>
-
-				<!-- ####################### -->
-
 				<div class="col-md-12">
 					<div class="box_title"><?php echo __("Description","AuctionTheme"); ?></div>
 					<div class="box_content">
@@ -1285,7 +1222,60 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 					</div>
 				</div>
 			</div>
-			<!-- ####################### -->
+
+			<!-- ########### Specifics ############ -->
+			<div class="row">
+				<?php
+
+				$arrms = get_auction_fields_values($post->ID);
+				if(count($arrms) > 0) 
+				{
+				} ?>
+				<div class="col-md-12">
+					<div class="box_title"><?php _e("Property Specifics",'AuctionTheme'); ?></div>
+					<div class="box_content">
+						<p>
+							<ul class="other-dets5">
+								<li>						
+									<?php
+										if(count($arrms) > 0) 
+										{
+									?>
+								
+									<table width="100%">
+										<?php
+										for($i=0;$i<count($arrms);$i++)
+										{
+
+											?>
+											<tr>
+
+												<th class="gold_thing_th"><?php echo $arrms[$i]['field_name'];?></th>
+												<th><?php 
+
+
+												if(is_array($arrms[$i]['field_value'][0]))
+												{
+
+													foreach($arrms[$i]['field_value'][0] as $vl)
+													{
+
+														echo $vl	.'<br/>';
+													}
+												}
+												else echo $arrms[$i]['field_value'][0];
+												?></th>
+											</tr>
+											<?php } ?>
+									</table>
+								<?php } ?>
+							</ul>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- ########### MAP ############ -->
+
 			<div class="row">
 				<?php do_action('AuctionTheme_auction_page_before_map_div'); ?>
 
@@ -1382,11 +1372,12 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 				</div>
 			</div>
 		</div>
+
+		<!--###### Partners Right Panel#####-->
 		<?php
 		echo '<div class="col-md-4" class="page-sidebar">';
 			echo '<ul class="xoxo">';
 			?>
-
 				<li class="widget-container widget_text" id="ad-other-details">
 					<h3 class="widget-title"><?php _e("Partner Agent",'AuctionTheme'); ?></h3>
 					<div class="my-only-widget-content">
@@ -1394,16 +1385,45 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 
 							<ul class="other-dets5">
 								<li>
-									<?php echo get_avatar( get_the_author_meta('email'), 96 );; ?>
-									<p><a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>"><?php the_author() ?></a></p>
+									<div class="pull-right" ><?php echo get_avatar( get_the_author_meta('email'), 96 );; ?></div>
 									<p><?php the_author_description(); ?></p>
-								</li> 
-
-								<li>
 									<p class="auto-width"><a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>">See more properties by <?php the_author();?> </a></p>
 								</li>
 								<li>
-										<a href = "#contact" data-toggle="modal" class="open-contact" data-to="<?php
+									<?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
+									if(!empty($viewing)){
+										echo "<h3>Viewing Day:</h3>" . $viewing . " or";?>
+										<a href = "#contact" class="btn btn-success open-contact" data-toggle="modal" data-to="<?php
+
+										if(get_the_author_meta('display_name') =="Hudson Moody"){
+											echo "property@hudson-moody.com";
+										}
+										elseif(get_the_author_meta('display_name') =="YHomes"){
+											echo "admin@yorkshirehomes.co.uk";
+										}
+										else {echo "jonnyrharper@gmail.com";}
+
+										?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
+										echo $location; ?>">Arrange a Viewing</a>
+										<?php
+									}
+									else {?>
+										<a href = "#contact" class="btn btn-success open-contact" role="button" data-toggle="modal" data-to="<?php
+
+										if(get_the_author_meta('display_name') =="Hudson Moody"){
+											echo "property@hudson-moody.com";
+										}
+										elseif(get_the_author_meta('display_name') =="YHomes"){
+											echo "admin@yorkshirehomes.co.uk";
+										}
+										else {echo "jonnyrharper@gmail.com";}
+
+										?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
+										echo $location; ?>">Arrange a Viewing</a>
+									<?php } ?>
+								</li>
+								<li>
+										<a href = "#contact" data-toggle="modal" class="btn btn-default open-contact" data-to="<?php
 
 										if(get_the_author_meta('display_name') =="Hudson Moody"){
 											echo "property@hudson-moody.com";
@@ -1421,47 +1441,39 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 					</div>
 				</li>
 				<li class="widget-container widget_text" id="ad-other-details">
-					<h3 class="widget-title"><?php _e("Property Specifics",'AuctionTheme'); ?></h3>
+					<h3 class="widget-title">Property Resources</h3>
 					<div class="my-only-widget-content">
 						<p>
+
 							<ul class="other-dets5">
-								<li>						
-									<?php
-										if(count($arrms) > 0) 
-										{
+								<li>
+									<a href="<?php global $post;
+									$pid = $post->ID;
+									echo get_post_meta($pid, 'epc', true); ?>" title="Energy Performance Certificate">Energy Performance Certificate</a>
+								</li>
+								<li>
+									<?php 
+									
+									global $post;
+									$pid = $post->ID;
+									
+									$legal=get_post_meta($pid, 'legal_pack', true);
+									if(empty($legal)){?>
+									<a href = '#contact' class='open-contact' data-toggle='modal' data-to='info@partnerspropertyauctions.co.uk' data-contact-subject="Register interest for legal pack for <?php $location = get_post_meta($pid, "Location", true);	
+									echo $location; ?>">Legal Pack Being Prepared</a><?php
+									}
+									else {
+										echo "<a href = '" . $legal . " ' title='Legal Pack'>Legal Pack</a></li>";
+									}
 									?>
-								
-									<table width="100%">
-										<?php
-										for($i=0;$i<count($arrms);$i++)
-										{
-
-											?>
-											<tr>
-
-												<th class="gold_thing_th"><?php echo $arrms[$i]['field_name'];?></th>
-												<th><?php 
-
-
-												if(is_array($arrms[$i]['field_value'][0]))
-												{
-
-													foreach($arrms[$i]['field_value'][0] as $vl)
-													{
-
-														echo $vl	.'<br/>';
-													}
-												}
-												else echo $arrms[$i]['field_value'][0];
-												?></th>
-											</tr>
-											<?php } ?>
-									</table>
-								<?php } ?>
+								</li>
+								<li>
+									<a href="javascript:window.print()">Click to Print This Page</a>
+								</li>
 							</ul>
 						</p>
 					</div>
-				</li>
+				</li>				
 			</ul>
 			<?php
 				dynamic_sidebar( 'auction-widget-area' );
@@ -1469,16 +1481,6 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 		</div>
 	</div>
 
-
-
-
-	</div>	
-	<?php
-
-	$arrms = get_auction_fields_values($post->ID);
-	if(count($arrms) > 0) 
-	{
-	} ?>
 
 	<div class="clear10"></div>
 
