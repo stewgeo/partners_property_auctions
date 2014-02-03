@@ -103,9 +103,9 @@ endif;
 					<a href="http://www.tpos.co.uk/">
 						<img src="<?php echo get_bloginfo('template_url');?>/images/footer/ombudsman.jpg">
 					</a>
-					<?php /*?>					<a href="http://www.nava.org.uk/">
+					<a href="http://www.nava.org.uk/">
 						<img src="<?php echo get_bloginfo('template_url');?>/images/footer/nava.jpg">
-					</a><?php */?>
+					</a>
 					<a href="http://www.tradingstandards.gov.uk/">
 						<img src="<?php echo get_bloginfo('template_url');?>/images/footer/trading_standards_logo.png">
 					</a>
