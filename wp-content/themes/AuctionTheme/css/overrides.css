@@ -252,3 +252,11 @@ border-right: solid 1px #bbb;
   margin-top: 10px;
   margin-bottom: 20px;
 }
+
+.arrange-viewing-btn{
+  padding-top: 9px;
+}
+
+.auction-resource-item{
+  padding-right:20px;
+}

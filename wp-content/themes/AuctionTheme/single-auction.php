@@ -817,20 +817,30 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 
 	<div id="single-property-details" class="row">
 		<div class="col-md-8">
-			<div class="box_title auction_page_title">
-				<h1><?php the_title() ?>
-					<small>
-						<?php
-							$location = get_post_meta($pid, "Location", true);	
-							echo $location;
-						?>
-					</small>
-				</h1>
+			<div class="auction_page_title">
+				<div class="pull-left">
+					<h1><?php the_title() ?>
+						<br>
+						<small>
+							<?php
+								$location = get_post_meta($pid, "Location", true);	
+								echo $location;
+							?>
+						</small>
+					</h1>
+				</div>
+				<div class="pull-right">
+					<h4>
+						<small><?php echo __("Guide Price","AuctionTheme"); ?></small>
+						<br>
+						<?php echo get_post_meta(get_the_ID(), 'guide_price' ,true); ?>
+					</h4>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="ad-page-image-holder">
-						<?php echo AuctionTheme_get_first_post_image(get_the_ID(), 300, 200, 'img_class'); ?>
+						<?php echo AuctionTheme_get_first_post_image(get_the_ID(), 750, 600, 'img_class'); ?>
 
 						<?php
 						
@@ -863,355 +873,102 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 					$closed 	 = get_post_meta(get_the_ID(),'closed',true);
 
 					?>
-					<div class="auction-page-details-holder">
-						<div>
-
-						<?php if(AuctionTheme_is_owner_of_post()): ?>
-						<div class="owner_act">
-							<div class="padd10">
-
-								<?php if($closed == "1"): ?>
-
-								<?php printf(__('You are the owner of this auction. <a href="%s">Relist Auction</a>.','AuctionTheme'), get_bloginfo('siteurl').'/?a_action=relist_auction&pid='.get_the_ID()); ?>
-
-							<?php else: ?>
-							<?php
-
-							if(auctionTheme_number_of_bid_see_and_buy_now(get_the_ID()) != false) { $mms = 1;
-								
-								?>
-								<?php printf(__('You are the owner of this auction. <a href="%s">Edit auction</a>.','AuctionTheme'), get_bloginfo('siteurl').'/?a_action=edit_auction&pid='.get_the_ID()); ?>
-
-								<?php }
-
-
-								if($mms != 1){ 
-									if(	get_option('AuctionTheme_enable_editing_when_bid_placed') == "yes"){			  
-										?>
-										<?php printf(__('You are the owner of this auction. <a href="%s">Edit auction</a>.','AuctionTheme'), get_bloginfo('siteurl').'/?a_action=edit_auction&pid='.get_the_ID()); ?>
-
-
-										<?php }} endif; ?>
-
-							</div>
-						</div>
-
-						<?php endif; ?>
-
-						<?php
-
-						if($closed == "0") :
-							if($bid_posted == "0"): ?> 
-
-						<div class="bid_panel_err">
-							<div class="padd10">
-								<?php _e("Your bid has not been posted. Please correct the errors and try again.","AuctionTheme");
-								echo '<br/>';
-								foreach($errors as $err)
-									echo $err.'<br/>';
-								?>
-							</div>
-						</div>
-
-						<?php endif; ?>
-
-
-						<?php if($_GET['rejected_offer'] == 1): ?>
-
-						<div class="bid_panel_ok">
-							<div class="padd10">
-								<?php _e("You have rejected the offer.","AuctionTheme");
-
-								?>
-							</div>
-						</div>
-
-						<?php endif; ?>
-
-						<?php if($_GET['accepted_offer'] == 1): ?>
-
-						<div class="bid_panel_ok">
-							<div class="padd10">
-								<?php _e("You have accepted the offer.","AuctionTheme");
-
-								?>
-							</div>
-						</div>
-
-						<?php endif; ?>
-
-						<?php if($_GET['offer_posted'] == 1): ?>
-						
-						<div class="bid_panel_ok">
-							<div class="padd10">
-								<?php _e("Your offer has been submitted to the buyer.","AuctionTheme");
-
-								?>
-							</div>
-						</div>
-
-						<?php endif; ?>
-
-						<?php if($_GET['bid_posted'] == 1): ?>
-
-						<div class="bid_panel_ok">
-							<div class="padd10">
-								<?php _e("Your bid has been posted.","AuctionTheme");
-
-								?>
-							</div>
-						</div>
-
-						<?php endif; ?>
-
-						<?php
-
-						$shipping = get_post_meta(get_the_ID(), 'shipping', true);
-						if(is_numeric($shipping) && $shipping > 0 && !empty($shipping))
-							$shp = '<b>'.auctionTheme_get_show_price($shipping).'</b><br/>';
-						else $shipping = 0;
-
-						if($shipping != 0):
-
-							?>	
-
-						                <?php /*?><div class="bid_panel">
-						                <div class="padd10">
-						                <ul class="auction-details">
-													<li>
-														<h3><?php echo __("Shipping","AuctionTheme"); ?>:</h3>
-														<p><?php echo $shp; ?></p>
-													</li>
-						                </ul>
-						                </div>
-						            </div><?php */?>
-						        <?php endif; ?>
-
-
-
-						        <?php
-
-						        $only_buy_now = get_post_meta(get_the_ID(), 'only_buy_now', true);
-
-
-						        if($only_buy_now != '1'):
-
-						        	?>
-						        <!-- ######### -->
-
-		        <div class="bid_panel">
-		        	<div class="padd10">
-								<?php /*?>                
-								<form method="post" id="my_bid_form_1" onsubmit="return confirm_my_bid();">
-								<input type="hidden" value="1" name="bid_now_cc" /><?php */?>
-								<ul class="auction-details">
-									<li>
-										<h3><?php echo __("Guide Price","AuctionTheme"); ?>:</h3>
-										<p><?php echo get_post_meta(get_the_ID(), 'guide_price' ,true); ?></p>
-									</li>
-
-		                            <?php /*?><li>
-										<h3>&nbsp;</h3>
-										<p><input type="text" name="bid" id="bids_val" size="10" /> 
-		                                <input type="hidden" name="control_id" value="<?php echo base64_encode(get_the_ID()); ?>" />
-		                                <input class="my-buttons" type="submit" id="place_bid" name="bid_now" value="<?php _e("Place Bid","AuctionTheme"); ?>" /></p>
-		                            </li><?php */?>
-		                            
-		                        </ul>
-		                        <?php /*?>                  </form><?php */?>
-		                    </div>
-		                </div>
-		                
-		            <?php endif; ?>
-
-
-
-		            <?php 
-
-		            $allow_offers = get_post_meta(get_the_ID(),'allow_offers',true);
-		            if(!auctiontheme_see_if_offer_posted(get_the_ID(), $uid) and $allow_offers == "1"): 
-
-		            	$AuctionTheme_currency_position = get_option('AuctionTheme_currency_position');	
-
-		            ?>
-
-		            <div class="bid_panel">
-		            	<div class="padd10">
-		            		<form method="post"> <input type="hidden" name="control_id" value="<?php echo base64_encode(get_the_ID()); ?>" />
-		            			<ul class="auction-details">
-
-		            				<li>
-		            					<h3><?php echo __("Make an Offer","AuctionTheme"); ?>:</h3>
-		            						<?php if($AuctionTheme_currency_position == "front") echo auctiontheme_get_currency(); ?>
-		            						<input type="text" size="5" name="offered_price" /> <?php if($AuctionTheme_currency_position != "front") echo auctiontheme_get_currency(); ?>
-		        
-		            						<input type="submit" class="btn btn-primary btn-sm" name="make_offer" value="<?php _e("Submit Offer","AuctionTheme"); ?>" />
-		            					</li>
-
-		            				</ul>
-		            			</form>
-		            		</div>
-		            	</div>
-
-		            <?php endif; ?>
-		            <?php
-
-		            $offr = auctiontheme_waiting_to_answer_offer(get_the_ID(), $uid);
-
-		            if( $offr != false):
-
-		            	?>
-
-		            <div class="bid_panel">
-		            	<div class="padd10">
-
-		            		<ul class="auction-details">
-
-		            			<li>
-		            				<?php
-
-		            				if($offr->counteroffer_sent == 0 and $offr->counteroffer_accepted == 0 and $offr->counteroffer_rejected == 0)								
-		            					echo sprintf(__("Your offer of %s was submitted. Waiting the seller's answer.","AuctionTheme"), auctiontheme_get_sumitted_offer_price(get_the_ID(),$uid)); ?>
-		            				<?php
-
-		            				if($offr->counteroffer_sent == 1 and $offr->counteroffer_accepted == 0 and $offr->counteroffer_rejected == 0)
-		            				{
-		            					if(get_post_meta(get_the_ID(), 'closed', true) == 0)
-		            					{
-		            						echo '<br/>' . sprintf(__('Seller sent counter offer of: %s','AuctionTheme'), auctiontheme_get_show_price($offr->counteroffer_price));
-		            						echo '<br/>' . '<a href="'.get_bloginfo('siteurl').'/?a_action=accept_counter_offer&pid='.get_the_ID().'&ids='.$offr->id.'">'.__('Accept Offer','AuctionTheme').'</a> | 
-		            						<a href="'.get_bloginfo('siteurl').'/?a_action=reject_counter_offer&pid='.get_the_ID().'&ids='.$offr->id.'">'.__('Reject Offer','AuctionTheme').'</a> ';		
-		            					}
-		            				}
-
-		            				?>
-		            			</li>
-
-
-
-		            		</ul>
-
-		            	</div>
-		            </div>
-
-
-		        <?php endif; ?>
-
-		        <?php 
-
-		        else: 
-						// auction closed
-		        	?>
-
-		        <div class="bid_panel">
-		        	<div class="padd10">
-
-		        		<?php
-
-		        		$pid = get_the_ID();
-		        		$winner = get_post_meta(get_the_ID(), 'winner', true);
-		        		if(!empty($winner))
-		        		{
-
-		        			global $wpdb;
-		        			$q = "select bid from ".$wpdb->prefix."auction_bids where pid='$pid' and winner='1'";
-		        			$r = $wpdb->get_results($q);
-		        			$r = $r[0];
-
-		        			_e("Auction closed for price: ","AuctionTheme");
-		        			echo auctionTheme_get_show_price($r->bid);
-
-		        		}
-
-		        		?>
-
-		        	</div>
-		        </div>
-
-		   			<?php endif; ?>
-						</div>
-
-		  			<ul class="auction-details">
-
-
-		          <?php /*?> <li>
-									<img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="20" height="20" /> 
-									<h3><?php echo __("Auction ID","AuctionTheme"); ?>:</h3>
-									<p>#<?php the_ID(); ?></p>
-								</li>
-		                      
-					         <?php
-							 
-							 $reserve = get_post_meta(get_the_ID(),'reserve',true);
-							 
-							 if(!empty($reserve)):
-							 ?>    
-		                          <li>
-									<img src="<?php echo get_bloginfo('template_url'); ?>/images/price.png" width="20" height="20" /> 
-									<h3><?php echo __("Reserve","AuctionTheme"); ?>:</h3>
-									<p><?php 
-									
-									$prc = auctionTheme_get_current_price(get_the_ID());
-									if($prc >= $reserve) echo __('Reserve price met.',"AuctionTheme");
-									else echo __('Reserve price not met.',"AuctionTheme");
-									 ?></p>
-								</li> 
-							<?php endif; ?>   <?php */?>
-		                         <?php /*?>                 
-								<li>
-									<img src="<?php echo get_bloginfo('template_url'); ?>/images/location.png" width="20" height="20" /> 
-									<h3><?php echo __("Location","AuctionTheme"); ?>:</h3>
-									<p><?php echo get_the_term_list( get_the_ID(), 'auction_location', '', ', ', '' ); ?></p>
-								</li><?php */?>
-								
-								<?php /*?><li>
-									<img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="20" height="20" /> 
-									<h3><?php echo __("Posted on","AuctionTheme"); ?>:</h3>
-									<p><?php the_time("jS \o\\f F Y \a\\t g:i A"); ?></p>
-								</li><?php */?>
-								
-								<?php
-								
-								if($closed == "0"): 
-									$AuctionTheme_no_time_on_buy_now = get_option('AuctionTheme_no_time_on_buy_now');
-								if($only_buy_now == "1" and $AuctionTheme_no_time_on_buy_now == "yes"): 
-								//asd
-									else:
-										?>	
-								<?php /*?><li>
-									<img src="<?php echo get_bloginfo('template_url'); ?>/images/clock.png" width="20" height="20" /> 
-									<h3><?php echo __("Time Left","AuctionTheme"); ?>:</h3>
-		                              
-		                              <p class="expiration_auction_p"><?php echo ($closed == "0" ? ($ending - current_time('timestamp',0)) 
-									: __("Expired/Closed","AuctionTheme")); ?></p>
-		                              
-								<!--	<p><?php echo ($closed == "0" ? AuctionTheme_prepare_seconds_to_words($ending - current_time('timestamp',0)) 
-									: __("Expired/Closed","AuctionTheme")); ?></p> -->
-								</li><?php */?>
-							<?php endif; endif; ?>
-							<li>
-								<?php /*?>                            					
-								<img src="<?php echo get_bloginfo('template_url'); ?>/images/clock.png" width="20" height="20" /> 
-								<?php */?>					
-								<h3><?php _e("Auction",'AuctionTheme');?>:</h3>
-								<p><?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?></p> 
-							</li>
-			
-							<br/><br/><br/>
-							<li>
-								<div class="watch-list"><?php 
-									if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):				
-										?>
-									<a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('- Favourites','AuctionTheme'); ?></a>
-									<?php else: ?>
-									<a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('+ Favourites','AuctionTheme'); ?></a>
-									<?php endif; ?>   
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>		
+          <div>
+            <span class="auction-resource-item"><?php 
+              if(AuctionTheme_check_if_pid_is_in_watchlist(get_the_ID(), $uid) == true):        
+                ?>
+              <span class='glyphicon glyphicon-bookmark'></span>
+              <a class="rem-to-watchlist" rel="<?php the_ID(); ?>"  href="#"><?php _e('Favourites','AuctionTheme'); ?></a>
+              <?php else: ?>
+              <span class='glyphicon glyphicon-bookmark'></span>
+              <a class="add-to-watchlist" rel="<?php the_ID(); ?>" href="#"><?php _e('Favourites','AuctionTheme'); ?></a>
+              <?php endif; ?>   
+            </span>     
+          
+            <span class="auction-resource-item">
+              <span class="glyphicon glyphicon-leaf"></span>
+              <a href="<?php global $post;
+              $pid = $post->ID;
+              echo get_post_meta($pid, 'epc', true); ?>" title="Energy Performance Certificate">Energy Performance Certificate</a>
+            </span>
+            <span class="auction-resource-item">
+              <?php 
+              
+              global $post;
+              $pid = $post->ID;
+              
+              $legal=get_post_meta($pid, 'legal_pack', true);
+              if(empty($legal)){?>
+              <span class='glyphicon glyphicon-file'></span>
+              <a href = '#contact' class='open-contact' data-toggle='modal' data-to='info@partnerspropertyauctions.co.uk' data-contact-subject="Register interest for legal pack for <?php $location = get_post_meta($pid, "Location", true); 
+              echo $location; ?>">Legal Pack Being Prepared</a><?php
+              }
+              else {
+                echo "<span class='glyphicon glyphicon-file'></span>";
+                echo "<a href = '" . $legal . " ' title='Legal Pack'>Legal Pack</a></li>";
+              }
+              ?>
+            </span>
+            <span class="auction-resource-item">
+              <span class='glyphicon glyphicon-print'></span>
+              <a href="javascript:window.print()">Click to Print This Page</a>
+            </span>
+          </div>
+        </div>      
 			</div>
+
+      <!-- ########### Specifics ############ -->
+      <div class="row">
+        <?php
+
+        $arrms = get_auction_fields_values($post->ID);
+        if(count($arrms) > 0) 
+        {
+        } ?>
+        <div class="col-md-12">
+          <div class="box_title"><?php _e("At a Glance",'AuctionTheme'); ?></div>
+          <div class="box_content">
+            <p>
+              <ul class="other-dets5">
+                <li>            
+                  <?php
+                    if(count($arrms) > 0) 
+                    {
+                  ?>
+                
+                  <table width="100%">
+                    <?php
+                    for($i=0;$i<count($arrms);$i++)
+                    {
+
+                      ?>
+                      <tr>
+
+                        <th class="gold_thing_th"><?php echo $arrms[$i]['field_name'];?></th>
+                        <th><?php 
+
+
+                        if(is_array($arrms[$i]['field_value'][0]))
+                        {
+
+                          foreach($arrms[$i]['field_value'][0] as $vl)
+                          {
+
+                            echo $vl  .'<br/>';
+                          }
+                        }
+                        else echo $arrms[$i]['field_value'][0];
+                        ?></th>
+                      </tr>
+                      <?php } ?>
+                  </table>
+                <?php } ?>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+
 			<!-- ########### DESCRIPTION ############ -->
 			<div class="row">
 				<?php do_action('AuctionTheme_auction_page_before_description_div'); ?>
@@ -1223,57 +980,6 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 				</div>
 			</div>
 
-			<!-- ########### Specifics ############ -->
-			<div class="row">
-				<?php
-
-				$arrms = get_auction_fields_values($post->ID);
-				if(count($arrms) > 0) 
-				{
-				} ?>
-				<div class="col-md-12">
-					<div class="box_title"><?php _e("Property Specifics",'AuctionTheme'); ?></div>
-					<div class="box_content">
-						<p>
-							<ul class="other-dets5">
-								<li>						
-									<?php
-										if(count($arrms) > 0) 
-										{
-									?>
-								
-									<table width="100%">
-										<?php
-										for($i=0;$i<count($arrms);$i++)
-										{
-
-											?>
-											<tr>
-
-												<th class="gold_thing_th"><?php echo $arrms[$i]['field_name'];?></th>
-												<th><?php 
-
-
-												if(is_array($arrms[$i]['field_value'][0]))
-												{
-
-													foreach($arrms[$i]['field_value'][0] as $vl)
-													{
-
-														echo $vl	.'<br/>';
-													}
-												}
-												else echo $arrms[$i]['field_value'][0];
-												?></th>
-											</tr>
-											<?php } ?>
-									</table>
-								<?php } ?>
-							</ul>
-						</p>
-					</div>
-				</div>
-			</div>
 			<!-- ########### MAP ############ -->
 
 			<div class="row">
@@ -1376,8 +1082,370 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 		<!--###### Partners Right Panel#####-->
 		<?php
 		echo '<div class="col-md-4" class="page-sidebar">';
-			echo '<ul class="xoxo">';
-			?>
+		?>
+			<div class="arrange-viewing-btn">
+				<?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
+				if(!empty($viewing)){
+					echo "<h3>Viewing Day:</h3>" . $viewing . " or";?>
+					<a href = "#contact" class="btn btn-success open-contact" data-toggle="modal" data-to="<?php
+
+					if(get_the_author_meta('display_name') =="Hudson Moody"){
+						echo "property@hudson-moody.com";
+					}
+					elseif(get_the_author_meta('display_name') =="YHomes"){
+						echo "admin@yorkshirehomes.co.uk";
+					}
+					else {echo "jonnyrharper@gmail.com";}
+
+					?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
+					echo $location; ?>">Arrange a Viewing</a>
+					<?php
+				}
+				else {?>
+					<a href = "#contact" class="btn btn-success open-contact" role="button" data-toggle="modal" data-to="<?php
+
+					if(get_the_author_meta('display_name') =="Hudson Moody"){
+						echo "property@hudson-moody.com";
+					}
+					elseif(get_the_author_meta('display_name') =="YHomes"){
+						echo "admin@yorkshirehomes.co.uk";
+					}
+					else {echo "jonnyrharper@gmail.com";}
+
+					?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
+					echo $location; ?>">Arrange a Viewing</a>
+				<?php } ?>
+			</div>		
+			<ul class="xoxo">
+        <li class="widget-container widget_text" id="ad-other-details">
+          <h3 class="widget-title"><?php _e("Auction Details",'AuctionTheme'); ?></h3>
+          <div class="my-only-widget-content">
+          <ul class="auction-details">
+
+
+            <?php /*?> <li>
+                <img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="20" height="20" /> 
+                <h3><?php echo __("Auction ID","AuctionTheme"); ?>:</h3>
+                <p>#<?php the_ID(); ?></p>
+              </li>
+                        
+                 <?php
+             
+             $reserve = get_post_meta(get_the_ID(),'reserve',true);
+             
+             if(!empty($reserve)):
+             ?>    
+                            <li>
+                <img src="<?php echo get_bloginfo('template_url'); ?>/images/price.png" width="20" height="20" /> 
+                <h3><?php echo __("Reserve","AuctionTheme"); ?>:</h3>
+                <p><?php 
+                
+                $prc = auctionTheme_get_current_price(get_the_ID());
+                if($prc >= $reserve) echo __('Reserve price met.',"AuctionTheme");
+                else echo __('Reserve price not met.',"AuctionTheme");
+                 ?></p>
+              </li> 
+            <?php endif; ?>   <?php */?>
+                           <?php /*?>                 
+              <li>
+                <img src="<?php echo get_bloginfo('template_url'); ?>/images/location.png" width="20" height="20" /> 
+                <h3><?php echo __("Location","AuctionTheme"); ?>:</h3>
+                <p><?php echo get_the_term_list( get_the_ID(), 'auction_location', '', ', ', '' ); ?></p>
+              </li><?php */?>
+              
+              <?php /*?><li>
+                <img src="<?php echo get_bloginfo('template_url'); ?>/images/cal.png" width="20" height="20" /> 
+                <h3><?php echo __("Posted on","AuctionTheme"); ?>:</h3>
+                <p><?php the_time("jS \o\\f F Y \a\\t g:i A"); ?></p>
+              </li><?php */?>
+              
+              <?php
+              
+              if($closed == "0"): 
+                $AuctionTheme_no_time_on_buy_now = get_option('AuctionTheme_no_time_on_buy_now');
+              if($only_buy_now == "1" and $AuctionTheme_no_time_on_buy_now == "yes"): 
+              //asd
+                else:
+                  ?>  
+              <?php /*?><li>
+                <img src="<?php echo get_bloginfo('template_url'); ?>/images/clock.png" width="20" height="20" /> 
+                <h3><?php echo __("Time Left","AuctionTheme"); ?>:</h3>
+                                
+                                <p class="expiration_auction_p"><?php echo ($closed == "0" ? ($ending - current_time('timestamp',0)) 
+                : __("Expired/Closed","AuctionTheme")); ?></p>
+                                
+              <!--  <p><?php echo ($closed == "0" ? AuctionTheme_prepare_seconds_to_words($ending - current_time('timestamp',0)) 
+                : __("Expired/Closed","AuctionTheme")); ?></p> -->
+              </li><?php */?>
+            <?php endif; endif; ?>
+            <li>
+              <?php /*?>                                      
+              <img src="<?php echo get_bloginfo('template_url'); ?>/images/clock.png" width="20" height="20" /> 
+              <?php */?>
+              <span class="glyphicon glyphicon-calendar"></span>
+              <span><?php _e("National Science Learning Centre, York",'AuctionTheme');?></span>
+              </br>
+              <?php echo get_the_term_list( $post->ID, 'auction_info', '', ' in ', '' ); ?>
+            </li>
+          </ul>            
+
+          <?php if(AuctionTheme_is_owner_of_post()): ?>
+          <div class="owner_act">
+            <div class="padd10">
+
+              <?php if($closed == "1"): ?>
+
+              <?php printf(__('You are the owner of this auction. <a href="%s">Relist Auction</a>.','AuctionTheme'), get_bloginfo('siteurl').'/?a_action=relist_auction&pid='.get_the_ID()); ?>
+
+            <?php else: ?>
+            <?php
+
+            if(auctionTheme_number_of_bid_see_and_buy_now(get_the_ID()) != false) { $mms = 1;
+              
+              ?>
+              <?php printf(__('You are the owner of this auction. <a href="%s">Edit auction</a>.','AuctionTheme'), get_bloginfo('siteurl').'/?a_action=edit_auction&pid='.get_the_ID()); ?>
+
+              <?php }
+
+
+              if($mms != 1){ 
+                if( get_option('AuctionTheme_enable_editing_when_bid_placed') == "yes"){        
+                  ?>
+                  <?php printf(__('You are the owner of this auction. <a href="%s">Edit auction</a>.','AuctionTheme'), get_bloginfo('siteurl').'/?a_action=edit_auction&pid='.get_the_ID()); ?>
+
+
+                  <?php }} endif; ?>
+
+            </div>
+          </div>
+
+          <?php endif; ?>
+
+          <?php
+
+          if($closed == "0") :
+            if($bid_posted == "0"): ?> 
+
+          <div class="bid_panel_err">
+            <div class="padd10">
+              <?php _e("Your bid has not been posted. Please correct the errors and try again.","AuctionTheme");
+              echo '<br/>';
+              foreach($errors as $err)
+                echo $err.'<br/>';
+              ?>
+            </div>
+          </div>
+
+          <?php endif; ?>
+
+
+          <?php if($_GET['rejected_offer'] == 1): ?>
+
+          <div class="bid_panel_ok">
+            <div class="padd10">
+              <?php _e("You have rejected the offer.","AuctionTheme");
+
+              ?>
+            </div>
+          </div>
+
+          <?php endif; ?>
+
+          <?php if($_GET['accepted_offer'] == 1): ?>
+
+          <div class="bid_panel_ok">
+            <div class="padd10">
+              <?php _e("You have accepted the offer.","AuctionTheme");
+
+              ?>
+            </div>
+          </div>
+
+          <?php endif; ?>
+
+          <?php if($_GET['offer_posted'] == 1): ?>
+          
+          <div class="bid_panel_ok">
+            <div class="padd10">
+              <?php _e("Your offer has been submitted to the buyer.","AuctionTheme");
+
+              ?>
+            </div>
+          </div>
+
+          <?php endif; ?>
+
+          <?php if($_GET['bid_posted'] == 1): ?>
+
+          <div class="bid_panel_ok">
+            <div class="padd10">
+              <?php _e("Your bid has been posted.","AuctionTheme");
+
+              ?>
+            </div>
+          </div>
+
+          <?php endif; ?>
+
+          <?php
+
+          $shipping = get_post_meta(get_the_ID(), 'shipping', true);
+          if(is_numeric($shipping) && $shipping > 0 && !empty($shipping))
+            $shp = '<b>'.auctionTheme_get_show_price($shipping).'</b><br/>';
+          else $shipping = 0;
+
+          if($shipping != 0):
+
+            ?>  
+
+                          <?php /*?><div class="bid_panel">
+                          <div class="padd10">
+                          <ul class="auction-details">
+                        <li>
+                          <h3><?php echo __("Shipping","AuctionTheme"); ?>:</h3>
+                          <p><?php echo $shp; ?></p>
+                        </li>
+                          </ul>
+                          </div>
+                      </div><?php */?>
+                  <?php endif; ?>
+
+
+
+          <?php
+
+          $only_buy_now = get_post_meta(get_the_ID(), 'only_buy_now', true);
+
+
+          if($only_buy_now != '1'):
+
+            ?>
+          <!-- ######### -->
+
+          <div>
+            <div>
+              <?php /*?>                
+              <form method="post" id="my_bid_form_1" onsubmit="return confirm_my_bid();">
+              <input type="hidden" value="1" name="bid_now_cc" /><?php */?>
+              <ul class="auction-details">
+
+                <?php /*?>
+                <li>
+                  <h3>&nbsp;</h3>
+                  <p><input type="text" name="bid" id="bids_val" size="10" /> 
+                  <input type="hidden" name="control_id" value="<?php echo base64_encode(get_the_ID()); ?>" />
+                  <input class="my-buttons" type="submit" id="place_bid" name="bid_now" value="<?php _e("Place Bid","AuctionTheme"); ?>" /></p>
+                </li><?php */?>
+                              
+              </ul>
+              <?php /*?></form><?php */?>
+            </div>
+          </div>
+                  
+          <?php endif; ?>
+          <?php 
+
+          $allow_offers = get_post_meta(get_the_ID(),'allow_offers',true);
+          if(!auctiontheme_see_if_offer_posted(get_the_ID(), $uid) and $allow_offers == "1"): 
+
+            $AuctionTheme_currency_position = get_option('AuctionTheme_currency_position'); 
+
+          ?>
+
+          <div class="bid_panel">
+            <div class="padd10">
+              <form method="post"> <input type="hidden" name="control_id" value="<?php echo base64_encode(get_the_ID()); ?>" />
+                <ul class="auction-details">
+
+                  <li>
+                    <h3><?php echo __("Make an Offer","AuctionTheme"); ?>:</h3>
+                      <?php if($AuctionTheme_currency_position == "front") echo auctiontheme_get_currency(); ?>
+                      <input type="text" size="5" name="offered_price" /> <?php if($AuctionTheme_currency_position != "front") echo auctiontheme_get_currency(); ?>
+      
+                      <input type="submit" class="btn btn-primary btn-sm" name="make_offer" value="<?php _e("Submit Offer","AuctionTheme"); ?>" />
+                    </li>
+
+                  </ul>
+                </form>
+              </div>
+            </div>
+
+              <?php endif; ?>
+              <?php
+
+              $offr = auctiontheme_waiting_to_answer_offer(get_the_ID(), $uid);
+
+              if( $offr != false):
+
+                ?>
+
+              <div class="bid_panel">
+                <div class="padd10">
+
+                  <ul class="auction-details">
+
+                    <li>
+                      <?php
+
+                      if($offr->counteroffer_sent == 0 and $offr->counteroffer_accepted == 0 and $offr->counteroffer_rejected == 0)               
+                        echo sprintf(__("Your offer of %s was submitted. Waiting the seller's answer.","AuctionTheme"), auctiontheme_get_sumitted_offer_price(get_the_ID(),$uid)); ?>
+                      <?php
+
+                      if($offr->counteroffer_sent == 1 and $offr->counteroffer_accepted == 0 and $offr->counteroffer_rejected == 0)
+                      {
+                        if(get_post_meta(get_the_ID(), 'closed', true) == 0)
+                        {
+                          echo '<br/>' . sprintf(__('Seller sent counter offer of: %s','AuctionTheme'), auctiontheme_get_show_price($offr->counteroffer_price));
+                          echo '<br/>' . '<a href="'.get_bloginfo('siteurl').'/?a_action=accept_counter_offer&pid='.get_the_ID().'&ids='.$offr->id.'">'.__('Accept Offer','AuctionTheme').'</a> | 
+                          <a href="'.get_bloginfo('siteurl').'/?a_action=reject_counter_offer&pid='.get_the_ID().'&ids='.$offr->id.'">'.__('Reject Offer','AuctionTheme').'</a> ';    
+                        }
+                      }
+
+                      ?>
+                    </li>
+
+
+
+                  </ul>
+
+                </div>
+              </div>
+
+
+          <?php endif; ?>
+
+          <?php 
+
+          else: 
+          // auction closed
+            ?>
+
+          <div class="bid_panel">
+            <div class="padd10">
+
+              <?php
+
+              $pid = get_the_ID();
+              $winner = get_post_meta(get_the_ID(), 'winner', true);
+              if(!empty($winner))
+              {
+
+                global $wpdb;
+                $q = "select bid from ".$wpdb->prefix."auction_bids where pid='$pid' and winner='1'";
+                $r = $wpdb->get_results($q);
+                $r = $r[0];
+
+                _e("Auction closed for price: ","AuctionTheme");
+                echo auctionTheme_get_show_price($r->bid);
+
+              }
+
+              ?>
+
+            </div>
+          </div>
+          <?php endif; ?>
+        </li>
 				<li class="widget-container widget_text" id="ad-other-details">
 					<h3 class="widget-title"><?php _e("Partner Agent",'AuctionTheme'); ?></h3>
 					<div class="my-only-widget-content">
@@ -1388,39 +1456,6 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 									<div class="pull-right" ><?php echo get_avatar( get_the_author_meta('email'), 96 );; ?></div>
 									<p><?php the_author_description(); ?></p>
 									<p class="auto-width"><a href="<?php echo AuctionTheme_get_user_profile_link($post->post_author);?>">See more properties by <?php the_author();?> </a></p>
-								</li>
-								<li>
-									<?php $viewing=get_post_meta($pid, 'viewing_days' ,true);
-									if(!empty($viewing)){
-										echo "<h3>Viewing Day:</h3>" . $viewing . " or";?>
-										<a href = "#contact" class="btn btn-success open-contact" data-toggle="modal" data-to="<?php
-
-										if(get_the_author_meta('display_name') =="Hudson Moody"){
-											echo "property@hudson-moody.com";
-										}
-										elseif(get_the_author_meta('display_name') =="YHomes"){
-											echo "admin@yorkshirehomes.co.uk";
-										}
-										else {echo "jonnyrharper@gmail.com";}
-
-										?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
-										echo $location; ?>">Arrange a Viewing</a>
-										<?php
-									}
-									else {?>
-										<a href = "#contact" class="btn btn-success open-contact" role="button" data-toggle="modal" data-to="<?php
-
-										if(get_the_author_meta('display_name') =="Hudson Moody"){
-											echo "property@hudson-moody.com";
-										}
-										elseif(get_the_author_meta('display_name') =="YHomes"){
-											echo "admin@yorkshirehomes.co.uk";
-										}
-										else {echo "jonnyrharper@gmail.com";}
-
-										?>" data-contact-subject="Arrange a Viewing of <?php $location = get_post_meta($pid, "Location", true);	
-										echo $location; ?>">Arrange a Viewing</a>
-									<?php } ?>
 								</li>
 								<li>
 										<a href = "#contact" data-toggle="modal" class="btn btn-default open-contact" data-to="<?php
@@ -1439,41 +1474,7 @@ if(isset($_POST['bid_now']) or isset($_POST['bid_now_cc']))
 							</ul>
 						</p>
 					</div>
-				</li>
-				<li class="widget-container widget_text" id="ad-other-details">
-					<h3 class="widget-title">Property Resources</h3>
-					<div class="my-only-widget-content">
-						<p>
-
-							<ul class="other-dets5">
-								<li>
-									<a href="<?php global $post;
-									$pid = $post->ID;
-									echo get_post_meta($pid, 'epc', true); ?>" title="Energy Performance Certificate">Energy Performance Certificate</a>
-								</li>
-								<li>
-									<?php 
-									
-									global $post;
-									$pid = $post->ID;
-									
-									$legal=get_post_meta($pid, 'legal_pack', true);
-									if(empty($legal)){?>
-									<a href = '#contact' class='open-contact' data-toggle='modal' data-to='info@partnerspropertyauctions.co.uk' data-contact-subject="Register interest for legal pack for <?php $location = get_post_meta($pid, "Location", true);	
-									echo $location; ?>">Legal Pack Being Prepared</a><?php
-									}
-									else {
-										echo "<a href = '" . $legal . " ' title='Legal Pack'>Legal Pack</a></li>";
-									}
-									?>
-								</li>
-								<li>
-									<a href="javascript:window.print()">Click to Print This Page</a>
-								</li>
-							</ul>
-						</p>
-					</div>
-				</li>				
+				</li>		
 			</ul>
 			<?php
 				dynamic_sidebar( 'auction-widget-area' );
