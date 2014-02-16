@@ -201,6 +201,9 @@ endif;
                 </div>
 
 <?php wp_footer(); ?>
+	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />    
+	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css" />
+  	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/overrides.css" />  
 <script type="text/javascript">
 	$(document).on("click", ".open-contact", function () {
      var toField = $(this).data('to');
@@ -210,6 +213,109 @@ endif;
      $(".modal-body #contact-subject").val( subjectField );
 });
 </script>
+             <script type="text/javascript">
+			 
+			 <?php
+			 	
+				global $wp_query, $wp_rewrite, $post;
+				
+				$watchlist_pid = get_option('AuctionTheme_watch_list_id');
+				
+				if($post->ID == $watchlist_pid)
+			 	$on_check_list = 1; else $on_check_list = 0;
+				
+			 
+			 ?>
+			
+		var $ = jQuery;
+			 
+			var SITE_URL 			= '<?php echo get_bloginfo('siteurl'); ?>';
+			var is_on_check_list 	= '<?php echo $on_check_list; ?>';
+			var minus_watchlist 	= "<?php echo __('- Favourites','AuctionTheme'); ?>";
+			var plus_watchlist 		= "<?php echo __('+ Favourites','AuctionTheme'); ?>";
+			 
+	function suggest(inputString){
+	
+		if(inputString.length == 0) {
+			jQuery('#suggestions').fadeOut();
+		} else {  
+		jQuery('#big-search').addClass('load');
+			jQuery.post("<?php bloginfo('siteurl'); ?>/wp-admin/admin-ajax.php?action=autosuggest_it", {queryString: ""+inputString+""}, function(data){
+				
+				var stringa = data.charAt(data.length-1);
+								if(stringa == '0') data = data.slice(0, -1);
+								else data = data.slice(0, -2);
+				
+				
+				if(data.length >0) {
+					jQuery('#suggestions').fadeIn();
+					jQuery('#suggestionsList').html(data);
+					jQuery('#big-search').removeClass('load');
+				}
+			});
+		}
+	}
 
+	function fill(thisValue) {
+		//jQuery('#big-search').val(thisValue);
+		//setTimeout("$('#suggestions').fadeOut();", 600);
+	}
+	 
+	
+	jQuery(function(){
+		
+	jQuery('.expiration_auction_p').each(function(index) 
+	{
+		var until_now = jQuery(this).html();
+		jQuery(this).countdown({until: until_now, format: 'dHMS', compact: false});
+											   
+	
+	});
+											 
+		
+	<?php
+		
+		if(auctiontheme_is_home()):
+	
+	?>	
+	  
+	  
+	  
+	  jQuery("#auction-home-page-main-inner").show();	
+	  
+	  <?php endif; ?>
+	  
+	});	
+		
+	
+		
+	</script>
+
+     
+     <!-- ########################################## -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-47293646-1', 'partnerspropertyauctions.co.uk');
+	  ga('send', 'pageview');
+
+	</script>
+    <script type="text/javascript">
+                  var $ = jQuery;
+                  
+                  jQuery(document).ready(function($) {
+                    jQuery('#<?php echo 'item_main_menus'; ?> .menu').dcMegaMenu({
+                      rowItems: <?php echo $menuwidth; ?>,
+                      subMenuWidth: '<?php echo $submenu_width; ?>',
+                      speed: <?php echo $speed; ?>,
+                      effect: '<?php echo $effect; ?>',
+                      event: '<?php echo $event; ?>'
+                      <?php echo $fullWidth; ?>
+                    });
+                  });
+                </script>
 </body>
 </html>
