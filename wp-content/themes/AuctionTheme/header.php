@@ -166,29 +166,6 @@
                     <li><a href="<?php echo get_page_link(1375); ?>"><?php echo get_the_title(1375)?></a></li>
 					
                  </ul>
-              <?php else: 
-          
-                $event = 'hover';
-                $effect = 'fade';
-                $fullWidth = ',fullWidth: true';
-                $speed = 0;
-                $submenu_width = 200;
-                $menuwidth = 100;
-        
-              ?>
-            
-                
-
-                <div class="dcjq-mega-menu" id="<?php echo 'item_main_menus'; ?>">    
-                  <?php
-                    
-                    $menu_name = 'primary-auction-main-header';
-
-                    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) 
-                      $nav_menu = wp_get_nav_menu_object( $locations[ $menu_name ] );         
-                      wp_nav_menu( array( 'fallback_cb' => '', 'menu' => $nav_menu, 'container' => false ) );
-                  ?>    
-                </div>
               <?php endif; ?>              
             </nav>
             </div>

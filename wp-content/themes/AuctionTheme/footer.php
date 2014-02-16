@@ -303,19 +303,5 @@ endif;
 	  ga('send', 'pageview');
 
 	</script>
-    <script type="text/javascript">
-                  var $ = jQuery;
-                  
-                  jQuery(document).ready(function($) {
-                    jQuery('#<?php echo 'item_main_menus'; ?> .menu').dcMegaMenu({
-                      rowItems: <?php echo $menuwidth; ?>,
-                      subMenuWidth: '<?php echo $submenu_width; ?>',
-                      speed: <?php echo $speed; ?>,
-                      effect: '<?php echo $effect; ?>',
-                      event: '<?php echo $event; ?>'
-                      <?php echo $fullWidth; ?>
-                    });
-                  });
-                </script>
 </body>
 </html>
