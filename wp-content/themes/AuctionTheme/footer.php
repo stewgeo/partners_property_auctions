@@ -204,15 +204,6 @@ endif;
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />    
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css" />
   	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/overrides.css" />  
-<script type="text/javascript">
-	$(document).on("click", ".open-contact", function () {
-     var toField = $(this).data('to');
-     $(".modal-body #to").val( toField );
-	 
-	 var subjectField = $(this).data('contact-subject');
-     $(".modal-body #contact-subject").val( subjectField );
-});
-</script>
              <script type="text/javascript">
 			 
 			 <?php
