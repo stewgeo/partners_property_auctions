@@ -108,7 +108,7 @@ get_header();
         <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=5"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/churchills.png" class="img-responsive"></a>
         <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=4"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/hudson-moody.png" class="img-responsive"></a> 
         <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=10"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/giles-edwards.png" class="img-responsive"></a>
-        <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=6"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/quantum.gif" class="img-responsive"></a>
+        <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=6"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/quantum.png" class="img-responsive"></a>
         <a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=8"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/austin-brooks.png" class="img-responsive"></a>
 		<a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=11"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/ribston-pippin.png" class="img-responsive"></a>
 		<a href="<?php bloginfo('wpurl'); ?>/?a_action=user_profile&post_author=12"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/partners/martin_&_co.png" class="img-responsive"></a>
