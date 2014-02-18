@@ -33,12 +33,6 @@
 
 	<?php wp_enqueue_script("jquery"); ?>
 
-	<?php
-
-		wp_head();
-
-	?>	
-
     <?php do_action('AuctionTheme_before_head_tag_open'); ?>
    
      <!-- ########################################### -->

@@ -200,6 +200,11 @@ endif;
                     </div>
                 </div>
 
+	<?php
+
+		wp_head();
+
+	?>	
 <?php wp_footer(); ?>
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />    
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css" />
