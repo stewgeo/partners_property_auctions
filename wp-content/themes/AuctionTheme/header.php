@@ -31,7 +31,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-	<?php wp_enqueue_script("jquery"); ?>
+	  <?php wp_enqueue_script("jquery"); ?>
+    <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />    
+    <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_directory'); ?>/css/overrides.css" />  
 
     <?php do_action('AuctionTheme_before_head_tag_open'); ?>
    
